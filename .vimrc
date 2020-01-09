@@ -6,6 +6,12 @@ let mapleader = " "
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
+set expandtab
+set shiftwidth=2
+set autoindent
+set smartindent
+set softtabstop=2
+set tabstop=2
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set history=50
 set ruler         " show the cursor position all the time
