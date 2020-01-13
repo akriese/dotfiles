@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-CODING=/mnt/c/Users/Anton/Documents/Coding/
+COD=/mnt/c/Users/Anton/Documents/Coding/
 export PATH="$HOME/bin:$CODING/Scripts:$PATH"
 cd /mnt/c/Users/Anton/Documents/Coding
 alias cod='cd ~/Documents/Coding'
