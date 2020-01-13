@@ -120,6 +120,7 @@ if ! shopt -oq posix; then
 fi
 
 CODING=~/Documents/Coding
+PHONE=/run/user/1000/gvfs
 export PATH="$CODING/Scripts:${PATH}"
 alias cod='cd ~/Documents/Coding'
 alias xc='xcalib -invert -alter'
@@ -128,4 +129,6 @@ alias lsS='ls -Shal'
 alias lsa='ls -la'
 alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"'
 alias hsghci="cd $CODING/Haskell && ghci"
+alias vim='vim -S ~/.vimrc'
 set -o vi
+shopt -s autocd
