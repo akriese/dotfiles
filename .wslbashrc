@@ -118,11 +118,12 @@ fi
 
 COD=/mnt/c/Users/Anton/Documents/Coding/
 export PATH="$HOME/bin:$CODING/Scripts:$PATH"
-cd /mnt/c/Users/Anton/Documents/Coding
-alias cod='cd ~/Documents/Coding'
+alias cod='cd $COD'
 alias xc='xcalib -invert -alter'
 alias agi='sudo apt-get install'
 alias lsS='ls -Shal'
 alias lsa='ls -la'
 alias hsghci="cd $CODING/Haskell && ghci"
 set -o vi
+shopt -s autocd
+cod
