@@ -124,6 +124,8 @@ alias agi='sudo apt-get install'
 alias lsS='ls -Shal'
 alias lsa='ls -la'
 alias hsghci="cd $CODING/Haskell && ghci"
+alias vim='vim -S ~/.vimrc'
+alias vi='vim'
 set -o vi
 shopt -s autocd
 cod
