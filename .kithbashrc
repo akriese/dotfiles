@@ -2,14 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-cd /mnt/d/c/
-alias cod='cd /mnt/c/Users/a.kri/coding'
-alias smp='cd /mnt/d/c/smp'
-set -o vi
-alias agi='sudo apt-get install'
-alias lsS='ls -Shal'
-alias lsa='ls -la'
-export PATH=/mnt/c/Users/a.kri/coding/Scripts:$PATH
 
 # If not running interactively, don't do anything
 case $- in
@@ -124,3 +116,17 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+cd /mnt/d/c/
+CODING=/mnt/c/Users/a.kri/coding
+SMP=/mnt/d/c/smp
+alias cod='cd /mnt/c/Users/a.kri/coding'
+alias smp='cd /mnt/d/c/smp'
+alias vim='vim -S ~/.vimrc'
+alias vi='vim -S ~/.vimrc'
+set -o vi
+alias agi='sudo apt-get install'
+alias lsS='ls -Shal'
+alias lsa='ls -la'
+export PATH=/mnt/c/Users/a.kri/coding/Scripts:$PATH
+shopt -s autocd
