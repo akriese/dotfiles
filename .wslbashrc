@@ -126,6 +126,7 @@ alias lsa='ls -la'
 alias hsghci="cd $CODING/Haskell && ghci"
 alias vim='vim -S ~/.vimrc'
 alias vi='vim'
+alias pissh='ssh pi@192.168.178.152'
 set -o vi
 shopt -s autocd
 cod
