@@ -116,8 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-COD=/mnt/c/Users/Anton/Documents/Coding/
-export PATH="$HOME/bin:$CODING/Scripts:$PATH"
+CODING=/mnt/c/Users/Anton/Documents/Coding/
+SCRIPTS=$CODING/Scripts
+export PATH="$HOME/bin:$SCRIPTS:$PATH"
 alias cod='cd $COD'
 alias xc='xcalib -invert -alter'
 alias agi='sudo apt-get install'

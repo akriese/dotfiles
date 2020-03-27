@@ -120,8 +120,9 @@ if ! shopt -oq posix; then
 fi
 
 CODING=~/Documents/Coding
+SCRIPTS=$CODING/Scripts
 PHONE=/run/user/1000/gvfs
-export PATH="$CODING/Scripts:${PATH}"
+export PATH="$SCRIPTS:${PATH}"
 alias cod='cd ~/Documents/Coding'
 alias xc='xcalib -invert -alter'
 alias agi='sudo apt-get install'
