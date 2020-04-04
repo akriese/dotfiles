@@ -119,7 +119,7 @@ fi
 CODING=/mnt/c/Users/Anton/Documents/Coding/
 SCRIPTS=$CODING/Scripts
 export PATH="$HOME/bin:$SCRIPTS:$PATH"
-alias cod='cd $COD'
+alias cod='cd $CODING'
 alias xc='xcalib -invert -alter'
 alias agi='sudo apt-get install'
 alias lsS='ls -Shal'
@@ -128,6 +128,7 @@ alias hsghci="cd $CODING/Haskell && ghci"
 alias vim='vim -S ~/.vimrc'
 alias vi='vim'
 alias pissh='ssh pi@192.168.178.152'
+alias lncrna="export DISPLAY=localhost:0 && ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
 set -o vi
 shopt -s autocd
 cod
