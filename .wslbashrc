@@ -128,7 +128,7 @@ alias hsghci="cd $CODING/Haskell && ghci"
 alias vim='vim -S ~/.vimrc'
 alias vi='vim'
 alias pissh='ssh pi@192.168.178.152'
-alias lncrna="export DISPLAY=localhost:0 && ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
+alias lncrna="export DISPLAY=localhost:0.0 && ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
 set -o vi
 shopt -s autocd
 cod
