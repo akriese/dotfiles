@@ -137,5 +137,6 @@ alias pissh='ssh pi@192.168.178.152'
 alias lncrna="ssh -c aes128-gcm@openssh.com -XCY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
 alias rotate='xrandr -o'
 alias pdf='evince'
+alias img='eog'
 set -o vi
 shopt -s autocd
