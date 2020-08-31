@@ -1,4 +1,29 @@
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" --> Vundle for extensions
 set encoding=utf-8
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview=1
+let g:SimpylFold_fold_import=1
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoTo<CR>
+Plugin 'vim-syntastic/syntastic'
+Plugin 'jnurmine/Zenburn'
+Plugin 'scrooloose/nerdtree'
+map <leader>n :NERDTreeToggle<CR>
+
+
+call vundle#end()
+filetype plugin indent on
+
+"colorscheme zenburn
 
 " Leader
 let mapleader = " "
@@ -20,6 +45,12 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set mouse=a
+set foldmethod=indent
+set foldlevel=99
+set number relativenumber
+set numberwidth=5
+
+let python_highlight_all=1
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -112,10 +143,6 @@ endif
 " set textwidth=80
 " set colorcolumn=+1
 
-" Numbers
-set number relativenumber
-set numberwidth=5
-
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
@@ -168,9 +195,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
+" folding shortcut
+nnoremap <space> za
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
