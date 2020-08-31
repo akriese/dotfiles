@@ -1,4 +1,4 @@
 PHONE=/run/user/1000/gvfs
 
-CODING=$HOME/Documents/Coding/
+CODING=$HOME/Documents/Coding
 source $CODING/dotfiles/.allbashrc

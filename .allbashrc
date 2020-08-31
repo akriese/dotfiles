@@ -102,6 +102,7 @@ fi
 
 
 SCRIPTS=$CODING/Scripts
+export PATH=$SCRIPTS:$PATH
 
 set -o vi
 shopt -s autocd
