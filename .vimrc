@@ -2,6 +2,9 @@
 " --> Vundle for extensions
 set encoding=utf-8
 
+" Leader
+let mapleader = " "
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,19 +21,23 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
-
+Plugin 'frazrepo/vim-rainbow'
+map <leader>r :RainbowToggle<CR>
+Plugin 'airblade/vim-gitgutter'
+map <leader>v :GitGutterToggle<CR>
+Plugin 'preservim/nerdcommenter'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
 
 "colorscheme zenburn
 
-" Leader
-let mapleader = " "
-
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
+set noshowmode
 set expandtab
 set shiftwidth=2
 set autoindent
@@ -51,6 +58,16 @@ set number relativenumber
 set numberwidth=5
 
 let python_highlight_all=1
+let g:rainbow_active = 1
+
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -167,20 +184,15 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-"nnoremap hh :echoe "Don't repeat!"<CR>
-"nnoremap jj :echoe "Don't repeat!"<CR>
-"nnoremap kk :echoe "Don't repeat!"<CR>
-"nnoremap ll :echoe "Don't repeat!"<CR>
-
 " vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
+"nnoremap <silent> <Leader>t :TestFile<CR>
+"nnoremap <silent> <Leader>s :TestNearest<CR>
+"nnoremap <silent> <Leader>l :TestLast<CR>
+"nnoremap <silent> <Leader>a :TestSuite<CR>
+"nnoremap <silent> <Leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<Space>
+"nnoremap <Leader>r :RunInInteractiveShell<Space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
