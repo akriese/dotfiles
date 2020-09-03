@@ -28,11 +28,12 @@ map <leader>v :GitGutterToggle<CR>
 Plugin 'preservim/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
 
-"colorscheme zenburn
+colorscheme zenburn
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
