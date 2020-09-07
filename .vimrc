@@ -19,6 +19,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoTo<CR>
 Plugin 'vim-syntastic/syntastic'
 Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
 Plugin 'frazrepo/vim-rainbow'
@@ -29,11 +30,18 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
+Plugin 'mileszs/ack.vim'
+map <leader>a :Ack 
+Plugin 'mg979/vim-visual-multi'
 
 call vundle#end()
 filetype plugin indent on
 
 colorscheme zenburn
+
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
