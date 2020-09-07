@@ -26,4 +26,5 @@ alias lncrna="ssh -c aes128-gcm@openssh.com -XCY -J kriea97@andorra.imp.fu-berli
 alias rotate='xrandr -o'
 alias pdf='evince'
 alias img='eog'
+alias vim_rc='vim $CODING/dotfiles/.vimrc'
 
