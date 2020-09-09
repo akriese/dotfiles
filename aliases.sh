@@ -27,4 +27,5 @@ alias rotate='xrandr -o'
 alias pdf='evince'
 alias img='eog'
 alias vim_rc='vim $CODING/dotfiles/.vimrc'
+alias bash_rc='vim $HOME/.bashrc'
 
