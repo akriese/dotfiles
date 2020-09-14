@@ -1,4 +1,7 @@
 PHONE=/run/user/1000/gvfs
 
+export PATH="$PATH:/usr/share/yarn/bin"
 CODING=$HOME/Documents/Coding
 source $CODING/dotfiles/.allbashrc
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

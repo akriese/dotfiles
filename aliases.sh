@@ -28,4 +28,5 @@ alias pdf='evince'
 alias img='eog'
 alias vim_rc='vim $CODING/dotfiles/.vimrc'
 alias bash_rc='vim $HOME/.bashrc'
+alias jena='ssh -XY -J biprak6@login.fmi.uni-jena.de biprak6@zwoa.bioinf.uni-jena.de'
 
