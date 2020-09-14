@@ -8,34 +8,42 @@ let mapleader = " "
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
+Plug 'junegunn/vim-plug'
+Plug 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=1
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoTo<CR>
-Plugin 'vim-syntastic/syntastic'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
+"Plug 'Valloric/YouCompleteMe'
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g :YcmCompleter GoTo<CR>
+Plug 'vim-syntastic/syntastic'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
-Plugin 'frazrepo/vim-rainbow'
+Plug 'frazrepo/vim-rainbow'
 map <leader>r :RainbowToggle<CR>
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 map <leader>v :GitGutterToggle<CR>
-Plugin 'preservim/nerdcommenter'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-surround'
-Plugin 'mileszs/ack.vim'
-map <leader>a :Ack 
-Plugin 'mg979/vim-visual-multi'
+"Plugin 'mileszs/ack.vim'
+"map <leader>a :Ack 
+Plug 'preservim/nerdcommenter'
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'mg979/vim-visual-multi'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_disable_startup_warning = 1
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug 'davidhalter/jedi-vim'
+Plug 'vifm/vifm.vim'
+let g:vifm_embed_term=1
+let g:vifm_embed_split=1
+"map <leader>n :leftabove vertical 40Vifm<CR>
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 colorscheme zenburn
 
@@ -67,6 +75,7 @@ set foldmethod=indent
 set foldlevel=99
 set number relativenumber
 set numberwidth=5
+set signcolumn=yes
 
 let python_highlight_all=1
 let g:rainbow_active = 1
