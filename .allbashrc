@@ -104,7 +104,8 @@ fi
 SCRIPTS=$CODING/Scripts
 export PATH=$SCRIPTS:$PATH
 
-set -o vi
-shopt -s autocd
+#set -o vi
+#shopt -s autocd
+shopt -u progcomp
 
 source $CODING/dotfiles/aliases.sh
