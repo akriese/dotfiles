@@ -8,7 +8,12 @@ let mapleader = " "
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
@@ -21,15 +26,18 @@ let g:SimpylFold_fold_import=1
 Plug 'vim-syntastic/syntastic'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdcommenter'
 map <leader>n :NERDTreeToggle<CR>
 Plug 'frazrepo/vim-rainbow'
 map <leader>r :RainbowToggle<CR>
 Plug 'airblade/vim-gitgutter'
 map <leader>v :GitGutterToggle<CR>
+nnoremap <leader>hn :GitGutterNextHunk<CR>
+nnoremap <leader>hl :GitGutterPrevHunk<CR>
+"let g:gitgutter_diff_args='--cached'
 "Plugin 'mileszs/ack.vim'
-"map <leader>a :Ack 
-Plug 'preservim/nerdcommenter'
+"map <leader>a :Ack
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -88,7 +96,7 @@ let g:rainbow_active = 1
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 let g:coc_global_extensions=['coc-json',
                 \ 'coc-python', 'coc-sh', 'coc-clangd',
-                \ 'coc-r-lsp', 'coc-marketplace' ]
+                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp' ]
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -115,6 +123,7 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
