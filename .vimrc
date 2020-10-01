@@ -27,6 +27,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+" \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
 map <leader>n :NERDTreeToggle<CR>
 Plug 'frazrepo/vim-rainbow'
@@ -51,6 +52,7 @@ Plug 'vifm/vifm.vim'
 let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 "map <leader>n :leftabove vertical 40Vifm<CR>
+Plug 'guns/xterm-color-table.vim'
 
 call plug#end()
 
@@ -85,6 +87,8 @@ set foldlevel=99
 set number relativenumber
 set numberwidth=5
 set signcolumn=yes
+set colorcolumn=80
+highlight ColorColumn ctermbg=167
 
 let python_highlight_all=1
 let g:rainbow_active = 1
