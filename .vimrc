@@ -1,5 +1,3 @@
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" --> Vundle for extensions
 set encoding=utf-8
 
 " Leader
@@ -169,32 +167,10 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
 augroup END
 
-" ALE linting events
-"augroup ale
-"  autocmd!
-
-"  if g:has_async
-"    autocmd VimEnter *
-"      \ set updatetime=1000 |
-"      \ let g:ale_lint_on_text_changed = 0
-""    autocmd CursorHold * call ale#Queue(0)
- "   autocmd CursorHoldI * call ale#Queue(0)
- "   autocmd InsertEnter * call ale#Queue(0)
- "   autocmd InsertLeave * call ale#Queue(0)
- " else
- "   echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
- " endif
-"augroup END
-
-" When the type of shell script is /bin/sh, assume a POSIX-compatible
+let &t_TI = ""
+let &t_TE = ""
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -218,10 +194,6 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
-
-" Make it obvious where 80 characters is
-" set textwidth=80
-" set colorcolumn=+1
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -247,13 +219,6 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-test mappings
-"nnoremap <silent> <Leader>t :TestFile<CR>
-"nnoremap <silent> <Leader>s :TestNearest<CR>
-"nnoremap <silent> <Leader>l :TestLast<CR>
-"nnoremap <silent> <Leader>a :TestSuite<CR>
-"nnoremap <silent> <Leader>gt :TestVisit<CR>
-
 " Run commands that require an interactive shell
 "nnoremap <Leader>r :RunInInteractiveShell<Space>
 
@@ -269,10 +234,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
