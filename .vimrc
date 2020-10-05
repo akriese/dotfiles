@@ -119,6 +119,8 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+autocmd BufWritePre * %s/\s\+$//e
+
 let c='a'
 while c <= 'z'
   exec "set <A-".c.">=\e".c
