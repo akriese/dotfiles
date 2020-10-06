@@ -224,6 +224,11 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+" go back to insert mode when warning not to use arrow keys in insert mode
+inoremap <Left> <esc>l:echo "Use h" <bar> star<CR>
+inoremap <Right> <esc>l:echo "Use l" <bar> star<CR>
+inoremap <Up> <esc>l:echo "Use k" <bar> star<CR>
+inoremap <Down> <esc>l:echo "Use j" <bar> star<CR>
 
 " Run commands that require an interactive shell
 "nnoremap <Leader>r :RunInInteractiveShell<Space>
