@@ -24,7 +24,9 @@ Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'mileszs/ack.vim'
+if executable('ack')
+  Plug 'mileszs/ack.vim'
+endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -32,7 +34,6 @@ Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'vifm/vifm.vim'
 Plug 'guns/xterm-color-table.vim'
 
 call plug#end()
@@ -40,11 +41,6 @@ call plug#end()
 colorscheme zenburn
 
 set hlsearch
-
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
-
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -70,11 +66,13 @@ set numberwidth=5
 set signcolumn=yes
 set colorcolumn=80
 set wildmode=list:longest,list:full
+
+" set color of colorcolumn
 highlight ColorColumn ctermbg=167
 let python_highlight_all=1
-let g:rainbow_active = 1
 
 " Plugin globals
+let g:rainbow_active = 1
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=1
 let g:coc_disable_startup_warning = 1
@@ -124,6 +122,7 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+" remove trailing whitespace on saving
 autocmd BufWritePre * %s/\s\+$//e
 
 let c='a'
