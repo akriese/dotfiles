@@ -16,40 +16,23 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
 Plug 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1
-let g:SimpylFold_fold_import=1
-"Plug 'Valloric/YouCompleteMe'
-"let g:ycm_autoclose_preview_window_after_completion=1
-"map <leader>g :YcmCompleter GoTo<CR>
 Plug 'vim-syntastic/syntastic'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
-map <leader>n :NERDTreeToggle<CR>
 Plug 'frazrepo/vim-rainbow'
-map <leader>r :RainbowToggle<CR>
 Plug 'airblade/vim-gitgutter'
-map <leader>v :GitGutterToggle<CR>
-nnoremap <leader>hn :GitGutterNextHunk<CR>
-nnoremap <leader>hl :GitGutterPrevHunk<CR>
-"let g:gitgutter_diff_args='--cached'
-"Plugin 'mileszs/ack.vim'
-"map <leader>a :Ack
+Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_disable_startup_warning = 1
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'davidhalter/jedi-vim'
 Plug 'vifm/vifm.vim'
-let g:vifm_embed_term=1
-let g:vifm_embed_split=1
-"map <leader>n :leftabove vertical 40Vifm<CR>
 Plug 'guns/xterm-color-table.vim'
 
 call plug#end()
@@ -86,10 +69,25 @@ set number relativenumber
 set numberwidth=5
 set signcolumn=yes
 set colorcolumn=80
+set wildmode=list:longest,list:full
 highlight ColorColumn ctermbg=167
-
 let python_highlight_all=1
 let g:rainbow_active = 1
+
+" Plugin globals
+let g:SimpylFold_docstring_preview=1
+let g:SimpylFold_fold_import=1
+let g:coc_disable_startup_warning = 1
+let g:vifm_embed_term=1
+let g:vifm_embed_split=1
+
+" ALL PLUGIN RELATED mappings
+map <leader>n :NERDTreeToggle<CR>
+map <leader>r :RainbowToggle<CR>
+map <leader>v :GitGutterToggle<CR>
+nnoremap <leader>hn :GitGutterNextHunk<CR>
+nnoremap <leader>hl :GitGutterPrevHunk<CR>
+map <leader>a :Ack
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
@@ -156,10 +154,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
-
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
@@ -214,9 +208,6 @@ inoremap <Right> <esc>l:echo "Use l" <bar> star<CR>
 inoremap <Up> <esc>l:echo "Use k" <bar> star<CR>
 inoremap <Down> <esc>l:echo "Use j" <bar> star<CR>
 
-" Run commands that require an interactive shell
-"nnoremap <Leader>r :RunInInteractiveShell<Space>
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -235,8 +226,3 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
