@@ -130,6 +130,12 @@ set timeout ttimeoutlen=50
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
+" clipboard shortcuts
+nnoremap <leader>y "*y
+nnoremap <leader>Y "+y
+nnoremap <leader>p "*p
+nnoremap <leader>P "+p
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
