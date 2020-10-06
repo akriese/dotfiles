@@ -142,6 +142,11 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+" disable Background Color Erase (BCE)
+if &term =~ '256color'
+  set t_ut=
+endif
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -173,8 +178,10 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
 augroup END
 
+" Disable character forwarding for shell (removes weird character bug)
 let &t_TI = ""
 let &t_TE = ""
+
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
