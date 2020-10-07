@@ -220,6 +220,30 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" new operators for 'inside' next/last parens, braces etc.
+"let klammer_dict = {
+  "\'(': '(',
+  "\'b': '(',
+  "\'[': '[',
+  "\'{': '{',
+  "\')': '(',
+  "\']': '[',
+  "\'}': '{',
+  "\}
+"for [inp, outp] in items(klammer_dict)
+  "let l:comm = ' :exe "normal /"'oupt'"\<lt>cr>vi"outp'
+  "execute 'onoremap in'inp comm<cr>
+"endfor
+onoremap inb :exe "normal /(\rvi("<cr>
+onoremap in( :exe "normal /(\rvi("<cr>
+onoremap in[ :exe "normal /[\rvi["<cr>
+onoremap in{ :exe "normal /{\rvi{"<cr>
+onoremap ilb :exe "normal ?)\rvi)"<cr>
+onoremap il( :exe "normal ?)\rvi)"<cr>
+onoremap il[ :exe "normal ?]\rvi["<cr>
+onoremap il{ :exe "normal ?}\rvi{"<cr>
+
+
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
