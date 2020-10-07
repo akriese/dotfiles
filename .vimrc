@@ -86,6 +86,9 @@ map <leader>v :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>
 nnoremap <leader>hl :GitGutterPrevHunk<CR>
 map <leader>a :Ack
+nnoremap <leader>fh :FZF~<CR>
+nnoremap <leader>fc :FZF<CR>
+nnoremap <leader>ff :FZF
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
