@@ -83,8 +83,8 @@ let g:vifm_embed_split=1
 map <leader>n :NERDTreeToggle<CR>
 map <leader>r :RainbowToggle<CR>
 map <leader>v :GitGutterToggle<CR>
-nnoremap <leader>hn :GitGutterNextHunk<CR>
-nnoremap <leader>hl :GitGutterPrevHunk<CR>
+nnoremap <leader>hn :GitGutterNextHunk<CR>zz
+nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
 map <leader>a :Ack
 nnoremap <leader>fh :FZF~<CR>
 nnoremap <leader>fc :FZF<CR>
