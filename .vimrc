@@ -224,28 +224,17 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " new operators for 'inside' next/last parens, braces etc.
-"let klammer_dict = {
-  "\'(': '(',
-  "\'b': '(',
-  "\'[': '[',
-  "\'{': '{',
-  "\')': '(',
-  "\']': '[',
-  "\'}': '{',
-  "\}
-"for [inp, outp] in items(klammer_dict)
-  "let l:comm = ' :exe "normal /"'oupt'"\<lt>cr>vi"outp'
-  "execute 'onoremap in'inp comm<cr>
-"endfor
-onoremap inb :exe "normal /(\rvi("<cr>
-onoremap in( :exe "normal /(\rvi("<cr>
-onoremap in[ :exe "normal /[\rvi["<cr>
-onoremap in{ :exe "normal /{\rvi{"<cr>
-onoremap ilb :exe "normal ?)\rvi)"<cr>
-onoremap il( :exe "normal ?)\rvi)"<cr>
-onoremap il[ :exe "normal ?]\rvi["<cr>
-onoremap il{ :exe "normal ?}\rvi{"<cr>
-
+function s:Pair_mappings()
+  let l:pair_dict = { ')':'(', ']':'[', '}':'{', 'b':')',
+      \ '(':'(', '[':'[', '{':'{', '<':'<', '>':'<', '''': '''', '"': '\"' }
+  for [key, val] in items(l:pair_dict)
+    execute 'onoremap in'.key.' :execute "keeppatterns normal! /'.val.'\rvi'.val.'"<cr>'
+    execute 'onoremap il'.key.' :execute "keeppatterns normal! ?'.val.'\rvi'.val.'"<cr>'
+    execute 'onoremap an'.key.' :execute "keeppatterns normal! /'.val.'\rva'.val.'"<cr>'
+    execute 'onoremap al'.key.' :execute "keeppatterns normal! ?'.val.'\rva'.val.'"<cr>'
+  endfor
+endfunction
+call s:Pair_mappings()
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
