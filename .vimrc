@@ -87,8 +87,9 @@ nnoremap <leader>hn :GitGutterNextHunk<CR>
 nnoremap <leader>hl :GitGutterPrevHunk<CR>
 map <leader>a :Ack
 nnoremap <leader>fh :FZF~<CR>
-nnoremap <leader>fc :FZF<CR>
-nnoremap <leader>ff :FZF
+nnoremap <leader>fv :FZF<CR>
+nnoremap <leader>fc :execute "FZF " expand('%:p:h')<cr>
+nnoremap <leader>ff :FZF<space>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
