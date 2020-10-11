@@ -90,4 +90,7 @@ shopt -s histverify
 shopt -s dotglob
 shopt -s globstar
 
+[ -x $(command -v ack) ] && export FZF_DEFAULT_COMMAND="ack -f -s" \
+                         && export FZF_CTRL_T_COMMAND="ack -f -s"
+
 source $CODING/dotfiles/aliases.sh
