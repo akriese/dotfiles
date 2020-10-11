@@ -93,4 +93,6 @@ shopt -s globstar
 [ -x $(command -v ack) ] && export FZF_DEFAULT_COMMAND="ack -f -s" \
                          && export FZF_CTRL_T_COMMAND="ack -f -s"
 
+export PROMPT_COMMAND='history -a'
+
 source $CODING/dotfiles/aliases.sh

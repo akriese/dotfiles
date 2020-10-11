@@ -80,12 +80,12 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>r :RainbowToggle<CR>
-nnoremap <leader>v :GitGutterToggle<CR>
+nnoremap <leader>n  :NERDTreeToggle<CR>
+nnoremap <leader>r  :RainbowToggle<CR>
+nnoremap <leader>v  :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
-nnoremap <leader>a :Ack
+nnoremap <leader>a  :Ack
 nnoremap <leader>fh :FZF~<CR>
 nnoremap <leader>ff :FZF<CR>
 nnoremap <leader>fc :execute "FZF " expand('%:p:h')<cr>
@@ -99,10 +99,10 @@ nnoremap <leader>fv :FZF<space>
 let g:coc_global_extensions=['coc-json',
                 \ 'coc-python', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp' ]
-nmap <silent> gd <Plug>(coc-definition)
+nmap <leader> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
+nmap <silent>rn <Plug>(coc-rename)
 
 function! Check_back_space()
     let col = col('.') - 1
