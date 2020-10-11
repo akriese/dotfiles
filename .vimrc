@@ -80,16 +80,16 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-map <leader>n :NERDTreeToggle<CR>
-map <leader>r :RainbowToggle<CR>
-map <leader>v :GitGutterToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>r :RainbowToggle<CR>
+nnoremap <leader>v :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
-map <leader>a :Ack
+nnoremap <leader>a :Ack
 nnoremap <leader>fh :FZF~<CR>
-nnoremap <leader>fv :FZF<CR>
+nnoremap <leader>ff :FZF<CR>
 nnoremap <leader>fc :execute "FZF " expand('%:p:h')<cr>
-nnoremap <leader>ff :FZF<space>
+nnoremap <leader>fv :FZF<space>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
