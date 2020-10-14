@@ -88,9 +88,9 @@ nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
 nnoremap <leader>a  :Ack
 nnoremap <leader>fh :Helptags<CR>
-nnoremap <leader>ff :FZF<CR>
-nnoremap <leader>fc :execute "FZF " expand('%:p:h')<cr>
-nnoremap <leader>fv :FZF<space>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
+nnoremap <leader>fv :Files<space>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
