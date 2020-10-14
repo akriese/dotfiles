@@ -35,6 +35,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'guns/xterm-color-table.vim'
+Plug 'psliwka/vim-smoothie'
 
 call plug#end()
 
@@ -86,7 +87,7 @@ nnoremap <leader>v  :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
 nnoremap <leader>a  :Ack
-nnoremap <leader>fh :FZF~<CR>
+nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>ff :FZF<CR>
 nnoremap <leader>fc :execute "FZF " expand('%:p:h')<cr>
 nnoremap <leader>fv :FZF<space>
@@ -125,9 +126,6 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
-" remove trailing whitespace on saving
-autocmd BufWritePre * %s/\s\+$//e
 
 let c='a'
 while c <= 'z'
@@ -182,6 +180,9 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+
+  " remove trailing whitespace on saving
+  autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
 " Disable character forwarding for shell (removes weird character bug)
