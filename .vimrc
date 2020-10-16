@@ -76,7 +76,7 @@ let python_highlight_all=1
 let g:rainbow_active = 1
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=1
-let g:coc_disable_startup_warning = 1
+let g:coc_disable_startup_warning=1
 let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
@@ -126,6 +126,11 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
+" fzf settings
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+
 
 let c='a'
 while c <= 'z'
