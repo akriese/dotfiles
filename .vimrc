@@ -231,7 +231,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " new operators for 'inside' next/last parens, braces etc.
-function s:Pair_mappings()
+function! s:Pair_mappings()
   let l:pair_dict = { ')':'(', ']':'[', '}':'{', 'b':')',
       \ '(':'(', '[':'[', '{':'{', '<':'<', '>':'<', '''': '''', '"': '\"' }
   for [key, val] in items(l:pair_dict)
