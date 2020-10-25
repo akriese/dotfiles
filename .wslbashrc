@@ -2,3 +2,5 @@ CODING=/mnt/c/Users/Anton/Documents/Coding/
 source $CODING/dotfiles/.allbashrc
 alias lncrna="export DISPLAY=localhost:0.0 && ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
 cod
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
