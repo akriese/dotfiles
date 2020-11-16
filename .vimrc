@@ -17,8 +17,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
-Plug 'jnurmine/Zenburn'
-Plug 'altercation/vim-colors-solarized'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
@@ -36,10 +34,13 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
+Plug 'tpope/vim-fugitive'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-colorscheme zenburn
+colorscheme gruvbox
+set background=dark
 
 set hlsearch
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -100,10 +101,10 @@ nnoremap <leader>fv :Files<space>
 let g:coc_global_extensions=['coc-json',
                 \ 'coc-python', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp' ]
-nmap <leader> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent>rn <Plug>(coc-rename)
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
+nmap <leader> rn <Plug>(coc-rename)
 
 function! Check_back_space()
     let col = col('.') - 1
@@ -132,12 +133,12 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
 
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
+"let c='a'
+"while c <= 'z'
+  "exec "set <A-".c.">=\e".c
+  "exec "imap \e".c." <A-".c.">"
+  "let c = nr2char(1+char2nr(c))
+"endw
 
 set timeout ttimeoutlen=50
 nnoremap <leader>sv :source $MYVIMRC<CR>
