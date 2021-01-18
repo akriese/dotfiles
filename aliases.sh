@@ -21,7 +21,7 @@ alias lsS='ls -Shal'
 alias lsa='ls -la'
 alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"'
 alias hsghci="cd $CODING/Haskell && ghci"
-alias vim='vim -S ~/.vimrc'
+[ -x $(which nvim) ] && alias vim='nvim' || alias vim='vim -S ~/.vimrc'
 alias vi='vim'
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
