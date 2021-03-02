@@ -12,6 +12,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set rtp +=~/.vim
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
