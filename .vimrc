@@ -35,7 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-fugitive'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 call plug#end()
 
