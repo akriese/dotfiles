@@ -1,7 +1,11 @@
 CODING=~/Documents/coding
 DOWNLOADS=/mnt/d/Downloads/
 source $CODING/dotfiles/.allbashrc
-alias lncrna="export DISPLAY=localhost:0.0 && ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+alias lncrna="ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
+alias win_shutdown="/mnt/c/Windows/System32/shutdown.exe -s"
+export WINUSR=/mnt/c/Users/Anton
+
 cod
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -25,3 +29,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH=${PATH}:/home/anton/edirect
+source "$HOME/.cargo/env"
