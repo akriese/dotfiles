@@ -6,9 +6,22 @@ let mapleader = " "
 set nocompatible
 filetype off
 
+
+if has('win32') || has('win64')
+  set shell=powershell shellquote= shellpipe=\| shellxquote=
+  set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+  set shellredir=\|\ Out-File\ -Encoding\ UTF8
+endif
+
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  if has('win32') || has('win64')
+    !New-Item -Path ~/.vim/autoload/ -ItemType Directory -ea 0
+    !Invoke-WebRequest -OutFile ~/.vim/autoload/plug.vim
+      \ -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  else
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
