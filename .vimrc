@@ -99,9 +99,10 @@ nnoremap <leader>fv :Files<space>
 " coc-python: pip install pylint jedi; coc: enable jedi, jedi path
 " coc-clangd: sudo apt install clangd && evtl symlink erstellen
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
+" coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
                 \ 'coc-python', 'coc-sh', 'coc-clangd',
-                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp' ]
+                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
@@ -250,3 +251,6 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
