@@ -105,6 +105,7 @@ nnoremap <leader>a  :Ack
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
+nnoremap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>fv :Files<space>
 
 " ALL Coc settings
