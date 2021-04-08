@@ -50,6 +50,8 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
+Plug 'pprovost/vim-ps1'
+Plug 'vim-python/python-syntax'
 
 call plug#end()
 
