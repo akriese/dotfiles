@@ -7,7 +7,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -20,7 +20,7 @@ alias agi='sudo apt-get install'
 alias lsS='ls -Shal'
 alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"'
 alias hsghci="cd $CODING/Haskell && ghci"
-[[ -x $(which nvim) ]] && alias vim='nvim' || alias vim='vim -S ~/.vimrc'
+[[ $(whereis nvim) != "nvim:" ]] && alias vim='nvim' || alias vim='vim -S ~/.vimrc'
 alias vi='vim'
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
