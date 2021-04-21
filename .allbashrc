@@ -95,4 +95,5 @@ shopt -s globstar
 
 export PROMPT_COMMAND='history -a'
 
+export EDITOR=vim
 source $CODING/dotfiles/aliases.sh
