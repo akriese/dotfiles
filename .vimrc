@@ -52,6 +52,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
 Plug 'pprovost/vim-ps1'
 Plug 'vim-python/python-syntax'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 
 call plug#end()
 
