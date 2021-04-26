@@ -112,12 +112,12 @@ nnoremap <leader>fv :Files<space>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
-" coc-python: pip install pylint jedi; coc: enable jedi, jedi path
+" coc-jedi: pip install pylint jedi; coc: enable jedi, jedi path
 " coc-clangd: sudo apt install clangd && evtl symlink erstellen
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
-                \ 'coc-python', 'coc-sh', 'coc-clangd',
+                \ 'coc-jedi', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
