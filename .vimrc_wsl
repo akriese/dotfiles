@@ -6,22 +6,9 @@ let mapleader = " "
 set nocompatible
 filetype off
 
-
-if has('win32') || has('win64')
-  set shell=powershell shellquote= shellpipe=\| shellxquote=
-  set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-  set shellredir=\|\ Out-File\ -Encoding\ UTF8
-endif
-
 if empty(glob('~/.vim/autoload/plug.vim'))
-  if has('win32') || has('win64')
-    !New-Item -Path ~/.vim/autoload/ -ItemType Directory -ea 0
-    !Invoke-WebRequest -OutFile ~/.vim/autoload/plug.vim
-      \ -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  else
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -49,10 +36,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'tpope/vim-fugitive'
-Plug 'gruvbox-community/gruvbox'
-Plug 'pprovost/vim-ps1'
-Plug 'vim-python/python-syntax'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -108,18 +92,16 @@ nnoremap <leader>a  :Ack
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
-nnoremap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>fv :Files<space>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
-" coc-jedi: pip install pylint jedi; coc: enable jedi, jedi path
+" coc-python: pip install pylint jedi; coc: enable jedi, jedi path
 " coc-clangd: sudo apt install clangd && evtl symlink erstellen
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
-" coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
-                \ 'coc-jedi', 'coc-sh', 'coc-clangd',
-                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
+                \ 'coc-python', 'coc-sh', 'coc-clangd',
+                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
@@ -269,5 +251,26 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd VimEnter * silent !echo -ne "\e[1 q"
+autocmd VimLeave * silent !echo -ne "\e[5 q"
+" Cursor in terminal
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+" 1 or 0 -> blinking block
+" 2 solid block
+" 3 -> blinking underscore
+" 4 solid underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+
+if &term =~ '^xterm'
+  " normal mode
+  let &t_EI .= "\<Esc>[1 q"
+  " insert mode
+  let &t_SI .= "\<Esc>[5 q"
+endif
+
+" for windows terminal with transparency :D
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
