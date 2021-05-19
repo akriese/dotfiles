@@ -65,11 +65,11 @@ set nobackup
 set nowritebackup
 set noshowmode
 set expandtab
-set shiftwidth=2
+"set shiftwidth=2
 set autoindent
 set smartindent
-set softtabstop=2
-set tabstop=2
+"set softtabstop=2
+"set tabstop=2
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set history=50
 set ruler         " show the cursor position all the time
@@ -208,7 +208,9 @@ augroup vimrcEx
 
   " remove trailing whitespace on saving
   autocmd BufWritePre * %s/\s\+$//e
+
 augroup END
+
 
 " Disable character forwarding for shell (removes weird character bug)
 let &t_TI = ""
