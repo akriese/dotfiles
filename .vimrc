@@ -36,6 +36,7 @@ Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 if executable('ack')
   Plug 'mileszs/ack.vim'
 endif
@@ -48,11 +49,11 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
-Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
 Plug 'pprovost/vim-ps1'
 Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -85,6 +86,7 @@ set numberwidth=5
 set signcolumn=yes
 set colorcolumn=80
 set wildmode=list:longest,list:full
+set updatetime=100 "update time for git gutter
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=167
