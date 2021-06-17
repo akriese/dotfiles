@@ -37,3 +37,8 @@ pc () {
   python -c "print($1)"
 }
 
+tmux_update_display() {
+    export DISPLAY="$(tmux show-env | grep ^DISPLAY | sed -n 's/^DISPLAY=//p')"
+}
+
+[[ -n "$TMUX" ]] && tmux_update_display
