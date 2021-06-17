@@ -2,7 +2,6 @@ CODING=~/Documents/coding
 DOWNLOADS=/mnt/d/Downloads/
 source $CODING/dotfiles/.allbashrc
 export DISPLAY=$(netsh.exe interface ip show ipaddresses "vEthernet (WSL)" | head -n 2 - | tail -n 1 | awk '{ print $2; }'):0
-alias lncrna="ssh -XY -J kriea97@andorra.imp.fu-berlin.de kriea97@lncrna.imp.fu-berlin.de"
 alias win_shutdown="/mnt/c/Windows/System32/shutdown.exe -s"
 export WINUSR=/mnt/c/Users/Anton
 
