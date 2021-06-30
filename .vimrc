@@ -39,6 +39,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 if executable('ack')
   Plug 'mileszs/ack.vim'
+  nnoremap <leader>st  :Ack
+elseif executable('rg')
+  nnoremap <leader>st  :Rg<CR>
 endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -107,12 +110,11 @@ nnoremap <leader>r  :RainbowToggle<CR>
 nnoremap <leader>v  :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
-nnoremap <leader>a  :Ack
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
-nnoremap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>fv :Files<space>
+nnoremap <leader>shl :set hlsearch!<CR>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
