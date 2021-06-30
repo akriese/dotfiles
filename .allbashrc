@@ -90,10 +90,21 @@ shopt -s histverify
 shopt -s dotglob
 shopt -s globstar
 
-[ -x $(command -v ack) ] && export FZF_DEFAULT_COMMAND="ack -f -s" \
-                         && export FZF_CTRL_T_COMMAND="ack -f -s"
+if [[ -x "$(command -v ack)" ]]
+then
+        export FZF_DEFAULT_COMMAND="ack -f -s"
+        export FZF_CTRL_T_COMMAND="ack -f -s"
+elif [[ -x "$(command -v rg)" ]]
+then
+        export FZF_DEFAULT_COMMAND="rg --files --hidden"
+        export FZF_CTRL_T_COMMAND="rg --files --hidden"
+else
+        export FZF_DEFAULT_COMMAND=""
+        export FZF_CTRL_T_COMMAND=""
+fi
 
-export PROMPT_COMMAND='history -a'
+
+export PROMPT_COMMAND='history -a; history -n'
 
 export EDITOR=vim
-source $CODING/dotfiles/aliases.sh
+source $DOTFILES/aliases.sh
