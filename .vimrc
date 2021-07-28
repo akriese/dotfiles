@@ -39,9 +39,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 if executable('ack')
   Plug 'mileszs/ack.vim'
-  nnoremap <leader>st  :Ack
+  nnoremap <leader>ft  :Ack
 elseif executable('rg')
-  nnoremap <leader>st  :Rg<CR>
+  nnoremap <leader>ft  :Rg<CR>
 endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
