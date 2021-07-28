@@ -108,7 +108,7 @@ let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  :NERDTreeToggle<CR>
-nnoremap <leader>r  :RainbowToggle<CR>
+nnoremap <leader>rt :RainbowToggle<CR>
 nnoremap <leader>v  :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
@@ -130,7 +130,7 @@ let g:coc_global_extensions=['coc-json',
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
-nmap <leader> rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 function! Check_back_space()
     let col = col('.') - 1
