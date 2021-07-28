@@ -81,7 +81,9 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
 set mouse=a
 set foldmethod=indent
 set foldlevel=99
@@ -106,7 +108,7 @@ let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  :NERDTreeToggle<CR>
-nnoremap <leader>r  :RainbowToggle<CR>
+nnoremap <leader>rt :RainbowToggle<CR>
 nnoremap <leader>v  :GitGutterToggle<CR>
 nnoremap <leader>hn :GitGutterNextHunk<CR>zz
 nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
@@ -115,6 +117,7 @@ nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
 nnoremap <leader>fv :Files<space>
 nnoremap <leader>shl :set hlsearch!<CR>
+nnoremap <leader>G :Git<CR>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
@@ -128,7 +131,7 @@ let g:coc_global_extensions=['coc-json',
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
-nmap <leader> rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 function! Check_back_space()
     let col = col('.') - 1
