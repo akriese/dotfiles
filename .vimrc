@@ -117,6 +117,7 @@ nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
 nnoremap <leader>fv :Files<space>
 nnoremap <leader>shl :set hlsearch!<CR>
+nnoremap <leader>G :Git<CR>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
