@@ -93,6 +93,7 @@ set signcolumn=yes
 set colorcolumn=80
 set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
+set timeout ttimeoutlen=50
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=167
@@ -107,17 +108,17 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nnoremap <leader>n  :NERDTreeToggle<CR>
-nnoremap <leader>rt :RainbowToggle<CR>
-nnoremap <leader>v  :GitGutterToggle<CR>
-nnoremap <leader>hn :GitGutterNextHunk<CR>zz
-nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
-nnoremap <leader>fh :Helptags<CR>
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fc :execute "Files " expand('%:p:h')<cr>
-nnoremap <leader>fv :Files<space>
-nnoremap <leader>shl :set hlsearch!<CR>
-nnoremap <leader>G :Git<CR>
+nmap <leader>n  :NERDTreeToggle<CR>
+nmap <leader>rt :RainbowToggle<CR>
+nmap <leader>v  :GitGutterToggle<CR>
+nmap <leader>hn :GitGutterNextHunk<CR>zz
+nmap <leader>hl :GitGutterPrevHunk<CR>zz
+nmap <leader>fh :Helptags<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>fc :execute "Files " expand('%:p:h')<cr>
+nmap <leader>fv :Files<space>
+nmap <leader>shl :set hlsearch!<CR>
+nmap <leader>G :Git<CR>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
@@ -132,6 +133,31 @@ nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+
+nnoremap <leader>w :w<CR>
+inoremap ii <ESC>
+nnoremap Y y$
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap J mzJ`z
+" moving text
+inoremap <C-k> <ESC>:m .-2<CR>==i
+inoremap <C-j> <ESC>:m .+1<CR>==i
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+
+" vimrc loading and saving
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+
+" clipboard shortcuts
+nnoremap <leader>y "*y
+nnoremap <leader>Y "+y
+nnoremap <leader>p "*p
+nnoremap <leader>P "+p
+
 
 function! Check_back_space()
     let col = col('.') - 1
@@ -166,16 +192,6 @@ let $FZF_DEFAULT_OPTS='--reverse'
   "exec "imap \e".c." <A-".c.">"
   "let c = nr2char(1+char2nr(c))
 "endw
-
-set timeout ttimeoutlen=50
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-
-" clipboard shortcuts
-nnoremap <leader>y "*y
-nnoremap <leader>Y "+y
-nnoremap <leader>p "*p
-nnoremap <leader>P "+p
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
