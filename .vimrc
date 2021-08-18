@@ -37,11 +37,11 @@ Plug 'preservim/nerdcommenter'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-if executable('ack')
+if executable('rg')
+  nnoremap <leader>ft  :Rg<CR>
+elseif executable('ack')
   Plug 'mileszs/ack.vim'
   nnoremap <leader>ft  :Ack
-elseif executable('rg')
-  nnoremap <leader>ft  :Rg<CR>
 endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -135,6 +135,7 @@ nmap gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 
 nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 inoremap ii <ESC>
 nnoremap Y y$
 nnoremap n nzz
