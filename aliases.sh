@@ -30,6 +30,7 @@ alias vim_rc='vim $HOME/.vimrc'
 alias bash_rc='vim $HOME/.bashrc'
 alias pubip='curl https://ipinfo.io/ip'
 alias lesss='less -S'
+alias htopu='htop --user $(whoami)'
 
 pc () {
   python -c "print($1)"
