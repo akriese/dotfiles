@@ -119,6 +119,8 @@ nmap <leader>fc :execute "Files " expand('%:p:h')<cr>
 nmap <leader>fv :Files<space>
 nmap <leader>shl :set hlsearch!<CR>
 nmap <leader>G :Git<CR>
+nmap <C-d> <Plug>(SmoothieDownwards)zz
+nmap <C-u> <Plug>(SmoothieUpwards)zz
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
