@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # nodejs installieren (mit nvm)
-curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo apt update
-sudo apt install -y nodejs npm
-npm install -g npm
-npm install -g neovim
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source $HOME/.bashrc
+nvm install --lts
 
 # python installieren
 sudo apt install python3 python3-pip -y
