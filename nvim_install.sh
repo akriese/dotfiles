@@ -35,7 +35,7 @@ fi
 
 # ruby setup
 sudo apt install ruby ruby-dev -y
-gem install neovim
+sudo gem install neovim
 
 NEOVIM_DIR=~/Documents/neovim
 
