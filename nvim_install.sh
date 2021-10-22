@@ -6,12 +6,12 @@ source $HOME/.bashrc
 nvm install --lts
 
 # python installieren
-sudo apt install python3 python3-pip -y
+sudo apt install python2 python3 python3-pip -y
 python3 -m pip install --upgrade pip
-
-#curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py
-#sudo python2 get-pip.py
-#rm get-pip.py
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+rm get-pip.py
+python2 -m pip install --upgrade neovim
 python3 -m pip install --upgrade pylint jedi jedi-language-server neovim
 
 # clangd installieren für coc
