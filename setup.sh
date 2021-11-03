@@ -21,4 +21,4 @@ else
     echo "You might want to install 'stow' (e.g. sudo apt install stow)"
 fi
 
-source $local_bashrc
+source "$local_bashrc"
