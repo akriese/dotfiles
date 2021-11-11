@@ -158,6 +158,8 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " clipboard shortcuts
 nnoremap <leader>y "*y
 nnoremap <leader>Y "+y
+vnoremap <leader>y "*y
+vnoremap <leader>Y "+y
 nnoremap <leader>p "*p
 nnoremap <leader>P "+p
 
