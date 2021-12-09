@@ -129,7 +129,7 @@ nmap <C-u> <Plug>(SmoothieUpwards)zz
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
-                \ 'coc-jedi', 'coc-sh', 'coc-clangd',
+                \ 'coc-pyright', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
