@@ -156,12 +156,12 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts
-nnoremap <leader>y "*y
-nnoremap <leader>Y "+y
-vnoremap <leader>y "*y
-vnoremap <leader>Y "+y
-nnoremap <leader>p "*p
-nnoremap <leader>P "+p
+nnoremap <leader>Y "*y
+nnoremap <leader>y "+y
+vnoremap <leader>Y "*y
+vnoremap <leader>y "+y
+nnoremap <leader>P "*p
+nnoremap <leader>p "+p
 
 
 function! Check_back_space()
