@@ -31,6 +31,7 @@ alias bash_rc='vim $HOME/.bashrc'
 alias pubip='curl https://ipinfo.io/ip'
 alias lesss='less -S'
 alias htopu='htop --user $(whoami)'
+alias open='xdg-open'
 
 export MY_EDITOR
 
