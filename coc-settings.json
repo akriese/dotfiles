@@ -1,7 +1,0 @@
-{
- "python.pythonPath": "/home/biprak6/miniconda3/envs/dna_class_prak/bin/python3",
- "python.jediEnabled": true,
- "python.jediPath": "/home/biprak6/miniconda3/envs/dna_class_prak/lib/python3.8/site-packages",
- "python.autoComplete.addBrackets": true
-
-}
