@@ -96,7 +96,7 @@ set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
 
 " set color of colorcolumn
-highlight ColorColumn ctermbg=167
+highlight ColorColumn ctermbg=52
 let python_highlight_all=1
 
 " Plugin globals
