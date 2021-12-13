@@ -132,7 +132,7 @@ nmap <leader>. :SidewaysRight<cr>
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
-                \ 'coc-jedi', 'coc-sh', 'coc-clangd',
+                \ 'coc-pyright', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
@@ -159,10 +159,12 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts
-nnoremap <leader>y "*y
-nnoremap <leader>Y "+y
-nnoremap <leader>p "*p
-nnoremap <leader>P "+p
+nnoremap <leader>Y "*y
+nnoremap <leader>y "+y
+vnoremap <leader>Y "*y
+vnoremap <leader>y "+y
+nnoremap <leader>P "*p
+nnoremap <leader>p "+p
 
 
 function! Check_back_space()
@@ -281,6 +283,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" Exit terminal
+tnoremap <ESC> <C-\><C-n>
+nnoremap <leader>t :split term://bash<CR>
 
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
