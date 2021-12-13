@@ -57,6 +57,7 @@ Plug 'pprovost/vim-ps1'
 Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
+Plug 'AndrewRadev/sideways.vim'
 
 call plug#end()
 
@@ -121,6 +122,8 @@ nmap <leader>shl :set hlsearch!<CR>
 nmap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
+nmap <leader>, :SidewaysLeft<cr>
+nmap <leader>. :SidewaysRight<cr>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
