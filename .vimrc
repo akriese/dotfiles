@@ -304,3 +304,4 @@ set diffopt+=vertical
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
