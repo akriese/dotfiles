@@ -80,8 +80,11 @@ if ! shopt -oq posix; then
 fi
 
 
-SCRIPTS=$CODING/Scripts
-export PATH=$SCRIPTS:$PATH
+if [[ -n $CODING ]]
+then
+        SCRIPTS=$CODING/Scripts
+        export PATH=$SCRIPTS:$PATH
+fi
 
 #set -o vi
 #shopt -s autocd
@@ -110,3 +113,4 @@ export EDITOR=vim
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export DOTFILES=${DOTFILES:-$this_dir}
 source $DOTFILES/aliases.sh
+
