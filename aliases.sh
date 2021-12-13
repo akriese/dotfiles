@@ -41,3 +41,4 @@ tmux_update_display() {
 }
 
 [[ -n "$TMUX" ]] && tmux_update_display
+
