@@ -106,6 +106,8 @@ else
         export FZF_CTRL_T_COMMAND=""
 fi
 
+# WSL Ctrl+Backspace --> delete word
+bind '"\C-H":backward-kill-word'
 
 export PROMPT_COMMAND='history -a; history -n'
 
