@@ -30,6 +30,7 @@ fi
 
 echo "Installing oh-my-posh to $INSTALL_DIR..."
 wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O "$INSTALL_DIR/oh-my-posh"
+chmod +x "$INSTALL_DIR/oh-my-posh"
 
 echo "Adding eval command to .bashrc..."
 CONFIG_COMMAND='eval "$(oh-my-posh --init --shell bash --config "'$OHMYPOSH_THEME'")"'
