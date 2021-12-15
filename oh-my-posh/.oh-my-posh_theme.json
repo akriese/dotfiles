@@ -116,16 +116,6 @@
       "type": "rprompt",
       "segments": [
         {
-          "type": "shell",
-          "style": "plain",
-          "foreground": "#ffffff",
-          "background": "#0077c2",
-          "properties": {
-            "prefix": "<#0077c2,transparent>\uE0B6</>  ",
-            "postfix": " <transparent,#0077c2>\uE0B2</>"
-          }
-        },
-        {
           "type": "executiontime",
           "style": "plain",
           "foreground": "#ffffff",
