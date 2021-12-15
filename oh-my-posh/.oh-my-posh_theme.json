@@ -75,28 +75,6 @@
           }
         },
         {
-          "type": "go",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#111111",
-          "background": "#8ED1F7",
-          "properties": {
-            "prefix": " \uE626 ",
-            "display_version": true
-          }
-        },
-        {
-          "type": "julia",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#111111",
-          "background": "#4063D8",
-          "properties": {
-            "prefix": " \uE624 ",
-            "display_version": true
-          }
-        },
-        {
           "type": "python",
           "style": "powerline",
           "powerline_symbol": "\uE0B0",
@@ -107,44 +85,6 @@
             "display_mode": "context",
             "fetch_virtual_env": true,
             "template": "{{ .Full }} {{ .Venv }}"
-          }
-        },
-        {
-          "type": "ruby",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background": "#AE1401",
-          "properties": {
-            "prefix": " \uE791 ",
-            "display_version": true,
-            "display_mode": "files"
-          }
-        },
-        {
-          "type": "azfunc",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background": "#FEAC19",
-          "properties": {
-            "prefix": " \uf0e7",
-            "display_version": false,
-            "display_mode": "files"
-          }
-        },
-        {
-          "type": "aws",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background_templates": [
-            "{{if contains \"default\" .Profile}}#FFA400{{end}}",
-            "{{if contains \"jan\" .Profile}}#f1184c{{end}}"
-          ],
-          "properties": {
-            "prefix": " \uE7AD ",
-            "display_default": false
           }
         },
         {
