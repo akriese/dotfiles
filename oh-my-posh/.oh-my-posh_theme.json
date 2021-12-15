@@ -35,8 +35,8 @@
             "prefix": " \uF74A ",
             "max_depth": 2,
             "mapped_locations": {
-                    "/": "\u2215",
-                    "~": "\u2302",
+                    "/": "\u002F",
+                    "~": "🏠",
                     "~/dotfiles": "\u2299"
             }
           }
