@@ -21,4 +21,7 @@ else
     echo "You might want to install 'stow' (e.g. sudo apt install stow)"
 fi
 
+
 source "$local_bashrc"
+
+command -v oh-my-posh || bash "$DOTFILES/omp_setup.sh"
