@@ -117,9 +117,10 @@
       "segments": [
         {
           "type": "executiontime",
-          "style": "plain",
+          "style": "diamond",
+          "background": "#0077c2",
           "foreground": "#ffffff",
-          "leading_diamond": "",
+          "leading_diamond": "\uE0B6",
           "trailing_diamond": "",
           "properties": {
             "always_enabled": true,
