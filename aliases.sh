@@ -12,7 +12,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias rcsrc='source ~/.bashrc'
-[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
+#[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
 #alias python='python3'
 alias cod='cd $CODING'
 alias xc='xcalib -invert -alter'
@@ -44,3 +44,4 @@ tmux_update_display() {
 }
 
 [[ -n "$TMUX" ]] && tmux_update_display
+

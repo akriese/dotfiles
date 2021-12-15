@@ -57,6 +57,7 @@ Plug 'pprovost/vim-ps1'
 Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
+Plug 'AndrewRadev/sideways.vim'
 
 call plug#end()
 
@@ -96,7 +97,7 @@ set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
 
 " set color of colorcolumn
-highlight ColorColumn ctermbg=167
+highlight ColorColumn ctermbg=52
 let python_highlight_all=1
 
 " Plugin globals
@@ -121,6 +122,8 @@ nmap <leader>shl :set hlsearch!<CR>
 nmap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
+nmap <leader>, :SidewaysLeft<cr>
+nmap <leader>. :SidewaysRight<cr>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
@@ -129,7 +132,7 @@ nmap <C-u> <Plug>(SmoothieUpwards)zz
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
 let g:coc_global_extensions=['coc-json',
-                \ 'coc-jedi', 'coc-sh', 'coc-clangd',
+                \ 'coc-pyright', 'coc-sh', 'coc-clangd',
                 \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-implementation)
@@ -156,10 +159,12 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts
-nnoremap <leader>y "*y
-nnoremap <leader>Y "+y
-nnoremap <leader>p "*p
-nnoremap <leader>P "+p
+nnoremap <leader>Y "*y
+nnoremap <leader>y "+y
+vnoremap <leader>Y "*y
+vnoremap <leader>y "+y
+nnoremap <leader>P "*p
+nnoremap <leader>p "+p
 
 
 function! Check_back_space()
@@ -279,6 +284,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Exit terminal
+tnoremap <ESC> <C-\><C-n>
+nnoremap <leader>t :split term://bash<CR>
+
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
   let l:pair_dict = { ')':'(', ']':'[', '}':'{', 'b':')',
@@ -301,3 +310,4 @@ set diffopt+=vertical
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4

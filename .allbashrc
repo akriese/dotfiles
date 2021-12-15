@@ -80,8 +80,11 @@ if ! shopt -oq posix; then
 fi
 
 
-SCRIPTS=$CODING/Scripts
-export PATH=$SCRIPTS:$PATH
+if [[ -n $CODING ]]
+then
+        SCRIPTS=$CODING/Scripts
+        export PATH=$SCRIPTS:$PATH
+fi
 
 #set -o vi
 #shopt -s autocd
@@ -103,6 +106,8 @@ else
         export FZF_CTRL_T_COMMAND=""
 fi
 
+# WSL Ctrl+Backspace --> delete word
+bind '"\C-H":backward-kill-word'
 
 export PROMPT_COMMAND='history -a; history -n'
 

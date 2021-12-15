@@ -57,6 +57,7 @@ Plug 'pprovost/vim-ps1'
 Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
+Plug 'AndrewRadev/sideways.vim'
 
 call plug#end()
 
@@ -96,7 +97,7 @@ set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
 
 " set color of colorcolumn
-highlight ColorColumn ctermbg=167
+highlight ColorColumn ctermbg=52
 let python_highlight_all=1
 
 " Plugin globals
@@ -121,6 +122,8 @@ nmap <leader>shl :set hlsearch!<CR>
 nmap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
+nmap <leader>, :SidewaysLeft<cr>
+nmap <leader>. :SidewaysRight<cr>
 
 " ALL Coc settings
 "inoremap <silent><expr> <c-space> coc#refresh()
@@ -281,6 +284,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Exit terminal
+tnoremap <ESC> <C-\><C-n>
+nnoremap <leader>t :split term://bash<CR>
+
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
   let l:pair_dict = { ')':'(', ']':'[', '}':'{', 'b':')',
@@ -303,3 +310,4 @@ set diffopt+=vertical
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
