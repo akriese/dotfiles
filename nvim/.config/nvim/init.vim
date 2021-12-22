@@ -37,12 +37,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-if executable('rg')
-  nnoremap <leader>ft  :Rg<CR>
-elseif executable('ack')
-  Plug 'mileszs/ack.vim'
-  nnoremap <leader>ft  :Ack
-endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -50,6 +44,12 @@ Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+if executable('rg')
+  nnoremap <leader>ft :Rg<CR>
+elseif executable('ack')
+  Plug 'mileszs/ack.vim'
+  nnoremap <leader>ft :Ack
+endif
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'gruvbox-community/gruvbox'
