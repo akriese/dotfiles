@@ -58,6 +58,7 @@ Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/sideways.vim'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -313,3 +314,6 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
+
+lua require("akriese.lspconfig")
