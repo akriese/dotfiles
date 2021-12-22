@@ -41,7 +41,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 if executable('rg')
@@ -131,13 +131,14 @@ nmap <leader>. :SidewaysRight<cr>
 " coc-clangd: sudo apt install clangd && evtl symlink erstellen
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
-let g:coc_global_extensions=['coc-json',
-                \ 'coc-pyright', 'coc-sh', 'coc-clangd',
-                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
-nmap gd <Plug>(coc-definition)
-nmap gy <Plug>(coc-implementation)
-nmap gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
+
+"let g:coc_global_extensions=['coc-json',
+		""\ 'coc-pyright', 'coc-sh', 'coc-clangd',
+		""\ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
+"nmap gd <Plug>(coc-definition)
+"nmap gy <Plug>(coc-implementation)
+"nmap gr <Plug>(coc-references)
+"nmap <leader>rn <Plug>(coc-rename)
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
