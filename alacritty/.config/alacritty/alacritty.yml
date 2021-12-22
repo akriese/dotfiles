@@ -2,22 +2,22 @@
 font:
   font:
     normal:
-      family: Caskaydia Cove Nerd Font Complete Mono
+      family: CaskaydiaCove NF
       style: Regular
 
     bold:
-      family: Caskaydia Cove Nerd Font Complete Mono
+      family: CaskaydiaCove NF
       style: Bold
 
     italic:
-      family: Caskaydia Cove Nerd Font Complete Mono
+      family: CaskaydiaCove NF
       style: Italic
 
     bold_italic:
-      family: Caskaydia Cove Nerd Font Complete Mono
+      family: CaskaydiaCove NF
       style: Bold Italic
 
-  size: 8.0
+  size: 7.0
   offset:
     x: 0
     y: 0
