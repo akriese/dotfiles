@@ -142,6 +142,7 @@ nmap <leader>. :SidewaysRight<cr>
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 inoremap ii <ESC>
 nnoremap Y y$
 nnoremap n nzz
