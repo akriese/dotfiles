@@ -301,7 +301,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Exit terminal
-tnoremap <ESC> <C-\><C-n>
+tnoremap ii <C-\><C-n>
 nnoremap <leader>t :split term://bash<CR>
 
 " new operators for 'inside' next/last parens, braces etc.
