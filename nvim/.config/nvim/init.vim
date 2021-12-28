@@ -58,7 +58,10 @@ Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/sideways.vim'
+
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
 
 call plug#end()
 
@@ -96,6 +99,7 @@ set colorcolumn=80
 set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
+set completeopt=menu,menuone,noselect
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=52
@@ -320,3 +324,4 @@ autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 
 lua require("akriese.lspconfig")
+lua require("akriese.nvim-cmp")
