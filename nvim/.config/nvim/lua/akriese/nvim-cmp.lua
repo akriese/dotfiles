@@ -45,7 +45,12 @@
     }, {
       { name = 'buffer', keyword_length = 4 },
       { name = 'path' },
-    })
+    }),
+
+    experimental = {
+      native_menu = false,
+      ghost_text = true,
+    },
   })
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
