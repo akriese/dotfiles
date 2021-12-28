@@ -29,7 +29,8 @@
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
-      { name = 'buffer' },
+      { name = 'buffer', keyword_length = 4 },
+      { name = 'path' },
     })
   })
 
