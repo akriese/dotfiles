@@ -59,6 +59,7 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/sideways.vim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
@@ -328,3 +329,4 @@ autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 lua require("akriese.lspconfig")
 lua require("akriese.nvim-cmp")
+lua require("akriese.treesitter")
