@@ -172,19 +172,20 @@ nnoremap <leader>P "*p
 nnoremap <leader>p "+p
 
 
-function! Check_back_space()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return 1
-    else
-        return 0
-    endif
-endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ Check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"function! Check_back_space()
+    "let col = col('.') - 1
+    "if !col || getline('.')[col - 1] !~ '\k'
+        "return 1
+    "else
+        "return 0
+    "endif
+"endfunction
+
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ Check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
