@@ -34,7 +34,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
-Plug 'frazrepo/vim-rainbow'
+"Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
@@ -60,6 +60,8 @@ Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/sideways.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
