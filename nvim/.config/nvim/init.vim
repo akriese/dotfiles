@@ -148,6 +148,8 @@ inoremap ii <ESC>
 nnoremap Y y$
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 nnoremap J mzJ`z
 " moving text
 inoremap <C-k> <ESC>:m .-2<CR>==i
