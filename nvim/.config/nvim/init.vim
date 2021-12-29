@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
 "Plug 'frazrepo/vim-rainbow'
@@ -68,6 +68,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
+
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -120,7 +123,8 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nmap <leader>n  :NERDTreeToggle<CR>
+"nmap <leader>n  :NERDTreeToggle<CR>
+nmap <leader>n  :NvimTreeToggle<CR>
 nmap <leader>rt :RainbowToggle<CR>
 nmap <leader>v  :GitGutterToggle<CR>
 nmap <leader>hn :GitGutterNextHunk<CR>zz
@@ -332,3 +336,4 @@ autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 lua require("akriese.lspconfig")
 lua require("akriese.nvim-cmp")
 lua require("akriese.treesitter")
+lua require("akriese.nvim-tree")
