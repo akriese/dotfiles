@@ -72,6 +72,8 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 call plug#end()
 
 colorscheme gruvbox
@@ -337,3 +339,4 @@ lua require("akriese.lspconfig")
 lua require("akriese.nvim-cmp")
 lua require("akriese.treesitter")
 lua require("akriese.nvim-tree")
+lua require("akriese.indent")
