@@ -95,6 +95,7 @@ set colorcolumn=80
 set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
+set inccommand=nosplit
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=52
