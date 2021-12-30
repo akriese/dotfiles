@@ -96,6 +96,21 @@ set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
 set inccommand=nosplit
+if has('wsl')
+    let g:clipboard = {
+          \   'name': 'wslclipboard',
+          \   'copy': {
+          \      '+': '/usr/local/bin/win32yank.exe -i --crlf',
+          \      '*': '/usr/local/bin/win32yank.exe -i --crlf',
+          \    },
+          \   'paste': {
+          \      '+': '/usr/local/bin/win32yank.exe -o --lf',
+          \      '*': '/usr/local/bin/win32yank.exe -o --lf',
+          \   },
+          \   'cache_enabled': 1,
+          \ }
+endif
+set clipboard=unnamedplus
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=52
