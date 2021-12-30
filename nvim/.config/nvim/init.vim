@@ -31,25 +31,25 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-syntastic/syntastic'
-Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 " \| Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdcommenter'
-Plug 'frazrepo/vim-rainbow'
+"Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-if executable('rg')
-  nnoremap <leader>ft  :Rg<CR>
-elseif executable('ack')
-  Plug 'mileszs/ack.vim'
-  nnoremap <leader>ft  :Ack
-endif
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+if executable('rg')
+  nnoremap <leader>ft :Rg<CR>
+elseif executable('ack')
+  Plug 'mileszs/ack.vim'
+  nnoremap <leader>ft :Ack
+endif
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'gruvbox-community/gruvbox'
@@ -58,6 +58,21 @@ Plug 'vim-python/python-syntax'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/sideways.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
@@ -111,6 +126,7 @@ if has('wsl')
           \ }
 endif
 set clipboard=unnamedplus
+set completeopt=menu,menuone,noselect
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=52
@@ -125,7 +141,8 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nmap <leader>n  :NERDTreeToggle<CR>
+"nmap <leader>n  :NERDTreeToggle<CR>
+nmap <leader>n  :NvimTreeToggle<CR>
 nmap <leader>rt :RainbowToggle<CR>
 nmap <leader>v  :GitGutterToggle<CR>
 nmap <leader>hn :GitGutterNextHunk<CR>zz
@@ -147,20 +164,24 @@ nmap <leader>. :SidewaysRight<cr>
 " coc-clangd: sudo apt install clangd && evtl symlink erstellen
 " coc-r-lsp: install.packages('languageserver'); coc: addpath: /urs/bin/R
 " coc-rls: install rustup, 'rustup component add rls rust-analysis rust-src'
-let g:coc_global_extensions=['coc-json',
-                \ 'coc-pyright', 'coc-sh', 'coc-clangd',
-                \ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
-nmap gd <Plug>(coc-definition)
-nmap gy <Plug>(coc-implementation)
-nmap gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
+
+"let g:coc_global_extensions=['coc-json',
+		""\ 'coc-pyright', 'coc-sh', 'coc-clangd',
+		""\ 'coc-r-lsp', 'coc-marketplace', 'coc-vimlsp', 'coc-rls' ]
+"nmap gd <Plug>(coc-definition)
+"nmap gy <Plug>(coc-implementation)
+"nmap gr <Plug>(coc-references)
+"nmap <leader>rn <Plug>(coc-rename)
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 inoremap ii <ESC>
 nnoremap Y y$
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 nnoremap J mzJ`z
 " moving text
 inoremap <C-k> <ESC>:m .-2<CR>==i
@@ -183,19 +204,20 @@ nnoremap <leader>P "*p
 nnoremap <leader>p "+p
 
 
-function! Check_back_space()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return 1
-    else
-        return 0
-    endif
-endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ Check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"function! Check_back_space()
+    "let col = col('.') - 1
+    "if !col || getline('.')[col - 1] !~ '\k'
+        "return 1
+    "else
+        "return 0
+    "endif
+"endfunction
+
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ Check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
@@ -301,7 +323,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Exit terminal
-tnoremap <ESC> <C-\><C-n>
+tnoremap ii <C-\><C-n>
 nnoremap <leader>t :split term://bash<CR>
 
 " new operators for 'inside' next/last parens, braces etc.
@@ -327,3 +349,10 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
+
+lua require("akriese.lspconfig")
+lua require("akriese.nvim-cmp")
+lua require("akriese.treesitter")
+lua require("akriese.nvim-tree")
+lua require("akriese.indent")
