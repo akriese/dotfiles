@@ -93,14 +93,15 @@ shopt -s histverify
 shopt -s dotglob
 shopt -s globstar
 
-if [[ -x "$(command -v ack)" ]]
+if [[ -x "$(command -v rg)" ]]
+then
+        export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --sort-files "
+        export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --sort-files "
+        export FZF_ALT_C_COMMAND="rg --files --hidden --follow --sort-files --null 2> /dev/null | xargs -0 dirname | uniq"
+elif [[ -x "$(command -v ack)" ]]
 then
         export FZF_DEFAULT_COMMAND="ack -f -s"
         export FZF_CTRL_T_COMMAND="ack -f -s"
-elif [[ -x "$(command -v rg)" ]]
-then
-        export FZF_DEFAULT_COMMAND="rg --files --hidden"
-        export FZF_CTRL_T_COMMAND="rg --files --hidden"
 else
         export FZF_DEFAULT_COMMAND=""
         export FZF_CTRL_T_COMMAND=""
