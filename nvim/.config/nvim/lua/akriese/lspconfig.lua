@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local lsp_installer = require("nvim-lsp-installer")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -37,12 +38,21 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright' }
+local opts = {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  capabilities = capabilities,
+}
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    capabilities = capabilities
-  }
+  nvim_lsp[lsp].setup { opts }
 end
+
+lsp_installer.on_server_ready(
+  function(server)
+    server:setup(opts)
+  end
+)
+

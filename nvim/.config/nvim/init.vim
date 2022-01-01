@@ -355,9 +355,8 @@ autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 
-lua require("akriese.lspconfig")
 lua require("akriese.nvim-cmp")
 lua require("akriese.treesitter")
 lua require("akriese.nvim-tree")
 lua require("akriese.indent")
-lua require("akriese.lsp-installer")
+lua require("akriese.lspconfig")
