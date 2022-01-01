@@ -44,12 +44,6 @@ Plug 'mg979/vim-visual-multi'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-if executable('rg')
-  nnoremap <leader>ft :Rg<CR>
-elseif executable('ack')
-  Plug 'mileszs/ack.vim'
-  nnoremap <leader>ft :Ack
-endif
 Plug 'guns/xterm-color-table.vim'
 Plug 'psliwka/vim-smoothie'
 Plug 'gruvbox-community/gruvbox'
@@ -156,6 +150,9 @@ nmap <leader>fh :Helptags<CR>
 nmap <leader>ff :Files<CR>
 nmap <leader>fc :execute "Files " expand('%:p:h')<cr>
 nmap <leader>fv :Files<space>
+if executable('rg')
+  nnoremap <leader>ft :Rg<CR>
+endif
 nmap <leader>shl :set hlsearch!<CR>
 nmap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
@@ -183,6 +180,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
 inoremap ii <ESC>
 nnoremap Y y$
+
+" recenter after search
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
@@ -207,7 +206,6 @@ vnoremap <leader>Y "*y
 vnoremap <leader>y "+y
 nnoremap <leader>P "*p
 nnoremap <leader>p "+p
-
 
 "function! Check_back_space()
     "let col = col('.') - 1
