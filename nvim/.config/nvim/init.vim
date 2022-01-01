@@ -63,6 +63,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -356,3 +357,4 @@ lua require("akriese.nvim-cmp")
 lua require("akriese.treesitter")
 lua require("akriese.nvim-tree")
 lua require("akriese.indent")
+lua require("akriese.lsp-installer")
