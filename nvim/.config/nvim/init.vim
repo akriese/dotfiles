@@ -170,6 +170,7 @@ nmap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
+nnoremap Q <Nop>
 inoremap ii <ESC>
 nnoremap Y y$
 
