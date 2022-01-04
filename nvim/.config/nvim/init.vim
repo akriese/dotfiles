@@ -74,6 +74,11 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
 
+" Telescope
+Plug 'nvim-lua/plenary.nvim' " dependency of Telescope
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 call plug#end()
 
 colorscheme gruvbox
@@ -360,3 +365,4 @@ lua require("akriese.treesitter")
 lua require("akriese.nvim-tree")
 lua require("akriese.indent")
 lua require("akriese.lspconfig")
+lua require("akriese.telescope")
