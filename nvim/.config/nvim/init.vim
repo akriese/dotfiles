@@ -152,14 +152,14 @@ nmap <leader>rt :RainbowToggle<CR>
 nmap <leader>v  :GitGutterToggle<CR>
 nmap <leader>hn :GitGutterNextHunk<CR>zz
 nmap <leader>hl :GitGutterPrevHunk<CR>zz
-nmap <leader>fh :Helptags<CR>
-nmap <leader>ff :Files<CR>
-nmap <leader>fc :execute "Files " expand('%:p:h')<cr>
-nmap <leader>fv :Files<space>
-if executable('rg')
-  nnoremap <leader>ft :Rg<CR>
-endif
 nmap <leader>shl :set hlsearch!<CR>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ft <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
+
 nmap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
