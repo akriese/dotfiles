@@ -159,10 +159,9 @@ nnoremap <leader>fk <cmd>Telescope keymaps<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
-
 nnoremap <leader>G :Git<CR>
-nnoremap <C-d> <Plug>(SmoothieDownwards)zz
-nnoremap <C-u> <Plug>(SmoothieUpwards)zz
+nmap <C-d> <Plug>(SmoothieDownwards)zz
+nmap <C-u> <Plug>(SmoothieUpwards)zz
 nnoremap <leader>, :SidewaysLeft<cr>
 nnoremap <leader>. :SidewaysRight<cr>
 
