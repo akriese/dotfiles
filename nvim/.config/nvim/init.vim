@@ -149,10 +149,6 @@ let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  :NvimTreeToggle<CR>
-nnoremap <leader>rt :RainbowToggle<CR>
-nnoremap <leader>v  :GitGutterToggle<CR>
-nnoremap <leader>hn :GitGutterNextHunk<CR>zz
-nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
