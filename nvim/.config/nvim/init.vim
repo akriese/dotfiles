@@ -166,7 +166,9 @@ nnoremap <C-u> <Plug>(SmoothieUpwards)zz
 nnoremap <leader>, :SidewaysLeft<cr>
 nnoremap <leader>. :SidewaysRight<cr>
 
-nmap <leader>shl :set hlsearch!<CR>
+
+" useful commands
+nnoremap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
