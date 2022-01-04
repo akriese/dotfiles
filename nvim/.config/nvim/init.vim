@@ -114,6 +114,7 @@ set number relativenumber
 set numberwidth=5
 set signcolumn=yes
 set colorcolumn=80
+set termguicolors
 set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
