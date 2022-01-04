@@ -141,10 +141,8 @@ highlight ColorColumn ctermbg=52
 let python_highlight_all=1
 
 " Plugin globals
-let g:rainbow_active = 1
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=1
-let g:coc_disable_startup_warning=1
 let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
@@ -178,6 +176,7 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 nnoremap J mzJ`z
+
 " moving text
 inoremap <C-k> <ESC>:m .-2<CR>==i
 inoremap <C-j> <ESC>:m .+1<CR>==i
