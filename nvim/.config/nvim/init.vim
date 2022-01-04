@@ -148,11 +148,11 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nmap <leader>n  :NvimTreeToggle<CR>
-nmap <leader>rt :RainbowToggle<CR>
-nmap <leader>v  :GitGutterToggle<CR>
-nmap <leader>hn :GitGutterNextHunk<CR>zz
-nmap <leader>hl :GitGutterPrevHunk<CR>zz
+nnoremap <leader>n  :NvimTreeToggle<CR>
+nnoremap <leader>rt :RainbowToggle<CR>
+nnoremap <leader>v  :GitGutterToggle<CR>
+nnoremap <leader>hn :GitGutterNextHunk<CR>zz
+nnoremap <leader>hl :GitGutterPrevHunk<CR>zz
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
@@ -160,11 +160,11 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
 
-nmap <leader>G :Git<CR>
-nmap <C-d> <Plug>(SmoothieDownwards)zz
-nmap <C-u> <Plug>(SmoothieUpwards)zz
-nmap <leader>, :SidewaysLeft<cr>
-nmap <leader>. :SidewaysRight<cr>
+nnoremap <leader>G :Git<CR>
+nnoremap <C-d> <Plug>(SmoothieDownwards)zz
+nnoremap <C-u> <Plug>(SmoothieUpwards)zz
+nnoremap <leader>, :SidewaysLeft<cr>
+nnoremap <leader>. :SidewaysRight<cr>
 
 nmap <leader>shl :set hlsearch!<CR>
 nnoremap <leader>w :w<CR>
