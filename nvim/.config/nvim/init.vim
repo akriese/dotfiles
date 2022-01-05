@@ -28,34 +28,39 @@ endif
 set rtp +=~/.vim
 call plug#begin('~/.vim/plugged')
 
+" Plugin Manager
 Plug 'junegunn/vim-plug'
-Plug 'tmhedberg/SimpylFold'
-Plug 'vim-syntastic/syntastic'
-"Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
-" \| Plug 'ryanoasis/vim-devicons'
-Plug 'preservim/nerdcommenter'
-"Plug 'frazrepo/vim-rainbow'
+Plug 'tmhedberg/SimpylFold' " Folds
+Plug 'preservim/nerdcommenter' " Comments
+Plug 'itchyny/lightline.vim' " Status line
+Plug 'mg979/vim-visual-multi' " Multiple Cursors
+Plug 'psliwka/vim-smoothie' " Smooth scrolling
+
+" Git plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
+
+" Bracket / pair plugins
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'mg979/vim-visual-multi'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'guns/xterm-color-table.vim'
-Plug 'psliwka/vim-smoothie'
+Plug 'AndrewRadev/sideways.vim' " Swap function arguments
+
+" Color scheme
 Plug 'gruvbox-community/gruvbox'
-Plug 'pprovost/vim-ps1'
-Plug 'vim-python/python-syntax'
+Plug 'guns/xterm-color-table.vim'
+
+" Language sepcifics
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
+Plug 'pprovost/vim-ps1'
+
+" Startup panel
 Plug 'mhinz/vim-startify'
-Plug 'AndrewRadev/sideways.vim'
 
 " Syntax plugins
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
+Plug 'vim-python/python-syntax'
+Plug 'vim-syntastic/syntastic'
 
 " LSP plugins
 Plug 'neovim/nvim-lspconfig'
@@ -80,6 +85,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim' " dependency of Telescope
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
