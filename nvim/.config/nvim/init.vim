@@ -114,7 +114,6 @@ set number relativenumber
 set numberwidth=5
 set signcolumn=yes
 set colorcolumn=80
-set termguicolors
 set wildmode=list:longest,list:full
 set updatetime=100 "update time for git gutter
 set timeout ttimeoutlen=50
@@ -318,6 +317,9 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
+autocmd BufEnter term://* setlocal termguicolors
+autocmd BufLeave term://* setlocal notermguicolors
 
 
 lua require("akriese.nvim-cmp")
