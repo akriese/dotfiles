@@ -88,7 +88,7 @@ fi
 
 #set -o vi
 #shopt -s autocd
-shopt -u progcomp
+#shopt -u progcomp # interferes with fzf completion, cant remember why I turned it off
 shopt -s histverify
 shopt -s dotglob
 shopt -s globstar
