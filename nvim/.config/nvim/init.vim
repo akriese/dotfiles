@@ -251,6 +251,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+  autocmd BufRead,BufNewFile *bashrc set filetype=sh
 
   " remove trailing whitespace on saving
   autocmd BufWritePre * %s/\s\+$//e
