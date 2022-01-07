@@ -22,6 +22,7 @@ alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"
 alias hsghci="cd $CODING/Haskell && ghci"
 [[ -n $(command -v nvim) ]] && MY_EDITOR='nvim' || MY_EDITOR='vi -S ~/.vimrc'
 alias vim=$MY_EDITOR
+alias v=$MY_EDITOR
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
 alias pdf='evince'
