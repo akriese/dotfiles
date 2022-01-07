@@ -163,6 +163,7 @@ nnoremap <leader>fb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
+nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
