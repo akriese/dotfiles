@@ -163,6 +163,7 @@ nnoremap <leader>fb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
+nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>G :Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
@@ -301,7 +302,7 @@ nnoremap <C-l> <C-w>l
 
 " Exit terminal
 tnoremap ii <C-\><C-n>
-nnoremap <leader>t :split term://bash<CR>
+nnoremap <leader>t <cmd>split term://bash<CR><cmd>resize12<cr>
 
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
