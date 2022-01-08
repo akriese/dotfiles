@@ -207,44 +207,15 @@ vnoremap <leader>y "+y
 nnoremap <leader>P "*p
 nnoremap <leader>p "+p
 
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" fzf settings
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
-let $FZF_DEFAULT_OPTS='--reverse'
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
-
 " disable Background Color Erase (BCE)
 if &term =~ '256color'
   set t_ut=
-endif
-
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
 endif
 
 filetype plugin indent on
 
 augroup vimrcEx
   autocmd!
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
@@ -256,9 +227,7 @@ augroup vimrcEx
 
   " remove trailing whitespace on saving
   autocmd BufWritePre * %s/\s\+$//e
-
 augroup END
-
 
 " Disable character forwarding for shell (removes weird character bug)
 let &t_TI = ""
@@ -323,10 +292,7 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType Rust setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType python,sh,Rust,cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 autocmd BufEnter term://* setlocal termguicolors
 autocmd BufLeave term://* setlocal notermguicolors
