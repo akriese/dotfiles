@@ -46,9 +46,9 @@ local opts = {
   capabilities = capabilities,
 }
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { opts }
-end
+--for _, lsp in ipairs(servers) do
+  --nvim_lsp[lsp].setup { opts }
+--end
 
 lsp_installer.on_server_ready(
   function(server)
