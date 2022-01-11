@@ -271,7 +271,7 @@ nnoremap <C-l> <C-w>l
 
 " Exit terminal
 tnoremap ii <C-\><C-n>
-nnoremap <leader>t <cmd>split term://bash<CR><cmd>resize12<cr>
+nnoremap <leader>t <cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>
 
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
