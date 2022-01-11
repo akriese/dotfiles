@@ -295,8 +295,9 @@ set diffopt+=vertical
 autocmd FileType python,sh,Rust,cpp setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType lua,vim setlocal sw=2 ts=2 sts=2
 
-autocmd BufEnter term://* setlocal termguicolors
-autocmd BufLeave term://* setlocal notermguicolors
+set termguicolors
+"autocmd BufEnter term://* setlocal termguicolors
+"autocmd BufLeave term://* setlocal notermguicolors
 
 
 lua require("akriese.nvim-cmp")
