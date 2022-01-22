@@ -79,13 +79,13 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', keyword_length = 4 },
+    { name = 'nvim_lsp', keyword_length = 2 },
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
-    { name = 'buffer', keyword_length = 4 },
+    { name = 'buffer', keyword_length = 2 },
     { name = 'path' },
   }),
 
