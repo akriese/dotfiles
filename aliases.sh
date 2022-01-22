@@ -10,6 +10,7 @@ fi
 alias ll='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CF'
+alias wcl='wc -l'
 
 alias rcsrc='source ~/.bashrc'
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
