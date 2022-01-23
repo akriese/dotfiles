@@ -12,7 +12,16 @@ alias la='ls -A'
 alias l='ls -CF'
 alias wcl='wc -l'
 
-alias rcsrc='source ~/.bashrc'
+case "$SHELL" in
+    *zsh*)
+        export RC=$HOME/.zshrc
+        ;;
+    *bash*)
+        export RC=$HOME/.bashrc
+        ;;
+esac
+
+alias rcsrc="source $RC"
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
 #alias python='python3'
 alias cod='cd $CODING'
