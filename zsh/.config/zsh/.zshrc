@@ -23,7 +23,6 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-compinit
 
 autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
@@ -37,8 +36,14 @@ zsh_add_file "zsh-prompt"
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
+compinit
 
 eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
 source $ZDOTDIR/zsh-alias
 bindkey '^ ' autosuggest-accept
+bindkey '^H' backward-kill-word
+bindkey '^K' backward-kill-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
