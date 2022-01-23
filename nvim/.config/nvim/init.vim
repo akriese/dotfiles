@@ -271,7 +271,14 @@ nnoremap <C-l> <C-w>l
 
 " Exit terminal
 tnoremap ii <C-\><C-n>
-nnoremap <leader>t <cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>
+if &shell =~ "zsh"
+  echo "hi"
+  nnoremap <leader>t <cmd>split term://export THIS=%; zsh<CR><cmd>resize12<cr>
+else
+  echo "ho"
+  nnoremap <leader>t <cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>
+endif
+
 
 " new operators for 'inside' next/last parens, braces etc.
 function! s:Pair_mappings()
