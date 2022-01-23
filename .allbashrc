@@ -40,4 +40,5 @@ export PROMPT_COMMAND='history -a; history -n'
 
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export DOTFILES=${DOTFILES:-$this_dir}
+source $DOTFILES/shell_settings.sh
 source $DOTFILES/aliases.sh
