@@ -47,11 +47,3 @@ zsh_add_plugin "hlissner/zsh-autopair"
 eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
 source $ZDOTDIR/zsh-alias
 bindkey '^ ' autosuggest-accept
-
-# Setup fzf
-if [[ ! "$PATH" == */home/anton/.vim/plugged/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/anton/.vim/plugged/fzf/bin"
-fi
-[[ $- == *i* ]] && source "/home/anton/.vim/plugged/fzf/shell/completion.zsh" 2> /dev/null
-source "/home/anton/.vim/plugged/fzf/shell/key-bindings.zsh"
-
