@@ -27,33 +27,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-if [[ -n $CODING ]]
-then
-        SCRIPTS=$CODING/Scripts
-        export PATH=$SCRIPTS:$PATH
-fi
-
-#set -o vi
 #shopt -s autocd
 #shopt -u progcomp # interferes with fzf completion, cant remember why I turned it off
 shopt -s histverify
 shopt -s dotglob
 shopt -s globstar
-
-if [[ -x "$(command -v rg)" ]]
-then
-        export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
-        export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
-        export FZF_ALT_C_COMMAND="rg --files --hidden --follow --sort-files --null 2> /dev/null | xargs -0 dirname | uniq"
-elif [[ -x "$(command -v ack)" ]]
-then
-        export FZF_DEFAULT_COMMAND="ack -f -s"
-        export FZF_CTRL_T_COMMAND="ack -f -s"
-else
-        export FZF_DEFAULT_COMMAND=""
-        export FZF_CTRL_T_COMMAND=""
-fi
 
 # WSL Ctrl+Backspace --> delete word
 bind '"\C-H":backward-kill-word'
@@ -63,4 +41,3 @@ export PROMPT_COMMAND='history -a; history -n'
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export DOTFILES=${DOTFILES:-$this_dir}
 source $DOTFILES/aliases.sh
-export EDITOR=${MY_EDITOR:-vi}
