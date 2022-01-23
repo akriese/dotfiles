@@ -6,7 +6,7 @@ HISTSIZE=20000
 SAVEHIST=10000
 setopt notify
 unsetopt extendedglob
-bindkey -v
+#bindkey -v
 
 autoload -Uz compinit
 setopt INC_APPEND_HISTORY
@@ -42,8 +42,11 @@ compinit
 
 eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
 source $ZDOTDIR/zsh-alias
+
+# keybindings
 bindkey '^ ' autosuggest-accept
 bindkey '^H' backward-kill-word
-bindkey '^K' backward-kill-word
+bindkey '^K' kill-line
+bindkey '^[[3;5~' kill-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
