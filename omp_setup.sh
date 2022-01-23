@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OHMYPOSH_THEME=${OHMYPOSH_THEME:-$HOME/.oh-my-posh_theme.json}
+OHMYPOSH_THEME=${OHMYPOSH_THEME:-$DOTFILES/oh-my-posh/.oh-my-posh_theme.json}
 INSTALL_DIR="$HOME/.local/bin"
 RC="$HOME/.bashrc"
 
