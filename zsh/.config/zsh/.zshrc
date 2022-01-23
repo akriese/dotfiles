@@ -1,19 +1,14 @@
 #!/bin/sh
 source "$DOTFILES/shell_settings.sh"
-# Lines configured by zsh-newuser-install
+export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.histfile
 HISTSIZE=20000
 SAVEHIST=10000
 setopt notify
 unsetopt extendedglob
 bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/anton/.zshrc'
 
 autoload -Uz compinit
-# End of lines added by compinstall
-export ZDOTDIR=$HOME/.config/zsh
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 stty stop undef		# Disable ctrl-s to freeze terminal.
