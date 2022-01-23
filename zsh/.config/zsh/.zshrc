@@ -1,4 +1,5 @@
 #!/bin/sh
+source "$DOTFILES/shell_settings.sh"
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=20000
