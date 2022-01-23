@@ -33,12 +33,12 @@ alias hsghci="cd $CODING/Haskell && ghci"
 [[ -n $(command -v nvim) ]] && MY_EDITOR='nvim' || MY_EDITOR='vi -S ~/.vimrc'
 alias vim=$MY_EDITOR
 alias v=$MY_EDITOR
+alias open_rc="$MY_EDITOR $RC"
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
 alias pdf='evince'
 alias img='eog'
 alias vim_rc='vim $DOTFILES/nvim/.config/nvim/init.vim'
-alias bash_rc='vim $HOME/.bashrc'
 alias pubip='curl https://ipinfo.io/ip'
 alias lesss='less -S'
 alias htopu='htop --user $(whoami)'
