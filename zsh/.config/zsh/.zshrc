@@ -7,7 +7,7 @@ HISTSIZE=20000
 SAVEHIST=10000
 setopt notify
 unsetopt extendedglob
-#bindkey -v
+bindkey -e
 
 autoload -Uz compinit
 setopt INC_APPEND_HISTORY
@@ -44,9 +44,13 @@ compinit
 source $ZDOTDIR/zsh-alias
 
 # keybindings
+noop () { }
+zle -N noop
 bindkey '^ ' autosuggest-accept
 bindkey '^H' backward-kill-word
 bindkey '^K' kill-line
 bindkey '^[[3;5~' kill-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '\e' noop
+bindkey '\e[[3;5~' noop
