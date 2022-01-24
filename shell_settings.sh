@@ -1,5 +1,6 @@
 export EDITOR=${MY_EDITOR:-vi}
 export PATH="$HOME/.local/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 if [[ -n $CODING ]]
 then
