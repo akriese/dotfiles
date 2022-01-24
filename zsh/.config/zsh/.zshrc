@@ -1,6 +1,7 @@
 #!/bin/sh
-source "$DOTFILES/shell_settings.sh"
+export SHELL=$(which zsh)
 export ZDOTDIR=$HOME/.config/zsh
+source "$DOTFILES/shell_settings.sh"
 HISTFILE=~/.histfile
 HISTSIZE=20000
 SAVEHIST=10000
