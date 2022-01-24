@@ -1,4 +1,5 @@
 export EDITOR=${MY_EDITOR:-vi}
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ -n $CODING ]]
 then

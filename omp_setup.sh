@@ -41,9 +41,11 @@ case "$SHELL" in
         CONFIG_COMMAND='eval "$(oh-my-posh --init --shell bash --config "'$OHMYPOSH_THEME'")"'
         ;;
 esac
+
 ! grep -q "$CONFIG_COMMAND" "$RC" && echo "$CONFIG_COMMAND" >> "$RC"
 
 echo "Adding $INSTALL_DIR to PATH..."
+SHELL_EXPORTS="$DOTFILES/shell_settings.sh"
 EXPORT_COMMAND='export PATH='$INSTALL_DIR':$PATH'
-! grep -q "$INSTALL_DIR" <<< "$PATH" && echo "$EXPORT_COMMAND" >> "$RC"
+! grep -q "$INSTALL_DIR" <<< "$PATH" && echo "$EXPORT_COMMAND" >> "$SHELL_EXPORTS"
 
