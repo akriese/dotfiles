@@ -1,6 +1,6 @@
 #!/bin/sh
 export SHELL=$(which zsh)
-export ZDOTDIR=$HOME/.config/zsh
+export ZDOTDIR=${ZDOTDIR:-"$HOME/.config/zsh"}
 source "$DOTFILES/shell_settings.sh"
 HISTFILE=~/.histfile
 HISTSIZE=20000
@@ -41,7 +41,6 @@ zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 compinit
 
-eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
 source $ZDOTDIR/zsh-alias
 
 # keybindings
