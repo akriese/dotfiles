@@ -12,6 +12,7 @@ bindkey -e
 autoload -Uz compinit
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+unsetopt EXTENDED_HISTORY
 stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 unsetopt BEEP
