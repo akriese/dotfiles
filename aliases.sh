@@ -15,6 +15,7 @@ alias wcl='wc -l'
 case "$SHELL" in
     *zsh*)
         export RC=$HOME/.zshrc
+        alias history='fc -l 1'
         ;;
     *bash*)
         export RC=$HOME/.bashrc
