@@ -181,6 +181,8 @@ nnoremap <leader>Q :qa<CR>
 nnoremap Q <Nop>
 inoremap ii <ESC>
 nnoremap Y y$
+inoremap <C-BS> <C-W>
+inoremap <C-h> <C-W>
 
 " recenter after search
 nnoremap n nzz
