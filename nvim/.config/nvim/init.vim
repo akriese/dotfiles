@@ -30,8 +30,12 @@ call plug#begin('~/.vim/plugged')
 
 " Plugin Manager
 Plug 'junegunn/vim-plug'
+
+" Miscellaneous Plugins
 Plug 'tmhedberg/SimpylFold' " Folds
-Plug 'preservim/nerdcommenter' " Comments
+"Plug 'preservim/nerdcommenter' " Comments
+Plug 'numToStr/Comment.nvim' " comments
+
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'mg979/vim-visual-multi' " Multiple Cursors
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
@@ -90,6 +94,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Sidebar
+Plug 'simrat39/symbols-outline.nvim'
 
 call plug#end()
 
