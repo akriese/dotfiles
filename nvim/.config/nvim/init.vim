@@ -163,7 +163,7 @@ let g:vifm_embed_term=1
 let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
-nnoremap <leader>n  :NvimTreeToggle<CR>
+nnoremap <leader>n  <cmd>NvimTreeToggle<CR>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
@@ -173,18 +173,19 @@ nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
 nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
-nnoremap <leader>G :Git<CR>
+nnoremap <leader>G <cmd>Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
-nnoremap <leader>, :SidewaysLeft<cr>
-nnoremap <leader>. :SidewaysRight<cr>
+nnoremap <leader>, <cmd>SidewaysLeft<cr>
+nnoremap <leader>. <cmd>SidewaysRight<cr>
+nnoremap <leader>st <cmd>SymbolsOutline<cr>
 
 
 " useful commands
-nnoremap <leader>shl :set hlsearch!<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qa<CR>
+nnoremap <leader>shl <cmd>set hlsearch!<CR>
+nnoremap <leader>w <cmd>w<CR>
+nnoremap <leader>q <cmd>q<CR>
+nnoremap <leader>Q <cmd>qa<CR>
 nnoremap Q <Nop>
 inoremap ii <ESC>
 nnoremap Y y$
@@ -199,16 +200,16 @@ nnoremap # #zz
 nnoremap J mzJ`z
 
 " moving text
-inoremap <C-k> <ESC>:m .-2<CR>==i
-inoremap <C-j> <ESC>:m .+1<CR>==i
-nnoremap <leader>k :m .-2<CR>==
-nnoremap <leader>j :m .+1<CR>==
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap J :m '>+1<CR>gv=gv
+inoremap <C-k> <ESC><cmd>m .-2<CR>==i
+inoremap <C-j> <ESC><cmd>m .+1<CR>==i
+nnoremap <leader>k <cmd>m .-2<CR>==
+nnoremap <leader>j <cmd>m .+1<CR>==
+vnoremap K <cmd>m '<-2<CR>gv=gv
+vnoremap J <cmd>m '>+1<CR>gv=gv
 
 " vimrc loading and saving
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv <cmd>source $MYVIMRC<CR>
+nnoremap <leader>ev <cmd>vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts
 nnoremap <leader>Y "*y
