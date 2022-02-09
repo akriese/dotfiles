@@ -206,6 +206,8 @@ nnoremap <leader>k <cmd>m .-2<CR>==
 nnoremap <leader>j <cmd>m .+1<CR>==
 vnoremap K <cmd>m '<-2<CR>gv=gv
 vnoremap J <cmd>m '>+1<CR>gv=gv
+vnoremap < <gv
+vnoremap > >gv
 
 " vimrc loading and saving
 nnoremap <leader>sv <cmd>source $MYVIMRC<CR>
