@@ -1,5 +1,6 @@
 export EDITOR=${MY_EDITOR:-vi}
-export PATH="$HOME/.local/bin:$PATH"
+
+[[ "$PATH" == *$HOME/.local/bin* ]] || export PATH="$HOME/.local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
@@ -7,7 +8,7 @@ grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
 if [[ -n $CODING ]]
 then
         SCRIPTS=$CODING/Scripts
-        export PATH=$SCRIPTS:$PATH
+        [[ "$PATH" == *$SCRIPTS* ]] || export PATH="$SCRIPTS:$PATH"
 fi
 
 if [[ -x "$(command -v rg)" ]]
