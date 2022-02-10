@@ -286,7 +286,7 @@ nnoremap <C-l> <C-w>l
 " Exit terminal
 tnoremap ii <C-\><C-n>
 if &shell =~ "zsh"
-  nnoremap <leader>t <cmd>split term://export THIS=%; zsh<CR><cmd>resize12<cr>
+  nnoremap <leader>t <cmd>split term://export THIS=%; unset ZDOTDIR; zsh<CR><cmd>resize12<cr>
 else
   nnoremap <leader>t <cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>
 endif
