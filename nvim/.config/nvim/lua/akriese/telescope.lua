@@ -1,5 +1,9 @@
 require('telescope').setup {
   defaults = {
+    i = {
+      -- ["C-k"] = "which_key",
+      -- ["C-s"] = "send_to_qflist",
+    },
     file_ignore_patterns = {
       "node_modules",
       "%.git",
