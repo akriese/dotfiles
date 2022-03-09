@@ -7,7 +7,7 @@ HISTSIZE=20000
 SAVEHIST=10000
 
 autoload -Uz compinit
-stty stop undef		# Disable ctrl-s to freeze terminal.
+stty stop undef         # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
 zstyle ':completion:*' menu select
@@ -21,6 +21,8 @@ zle -N down-line-or-beginning-search
 
 autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
+source "$ZDOTDIR/zsh-alias"
+source "$ZDOTDIR/zsh-keybinds"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
@@ -35,7 +37,6 @@ zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 compinit
 
-source $ZDOTDIR/zsh-alias
 [[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
