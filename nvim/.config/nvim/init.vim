@@ -35,7 +35,7 @@ Plug 'junegunn/vim-plug'
 Plug 'tmhedberg/SimpylFold' " Folds
 "Plug 'preservim/nerdcommenter' " Comments
 Plug 'numToStr/Comment.nvim' " comments
-
+Plug 'max397574/better-escape.nvim' " Escape with ii without delay
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'mg979/vim-visual-multi' " Multiple Cursors
 Plug 'psliwka/vim-smoothie' " Smooth scrolling
@@ -187,7 +187,6 @@ nnoremap <leader>w <cmd>w<CR>
 nnoremap <leader>q <cmd>q<CR>
 nnoremap <leader>Q <cmd>qa<CR>
 nnoremap Q <Nop>
-inoremap ii <ESC>
 nnoremap Y y$
 inoremap <C-BS> <C-W>
 inoremap <C-h> <C-W>
@@ -329,3 +328,4 @@ lua require("akriese.lspconfig")
 lua require("akriese.telescope")
 lua require("akriese.symbols")
 lua require("akriese.comment")
+lua require("akriese.better-escape")
