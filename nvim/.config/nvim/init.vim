@@ -63,8 +63,8 @@ Plug 'mhinz/vim-startify'
 " Syntax plugins
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
-Plug 'vim-python/python-syntax'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-python/python-syntax'
+" Plug 'vim-syntastic/syntastic'
 
 " LSP plugins
 Plug 'neovim/nvim-lspconfig'
