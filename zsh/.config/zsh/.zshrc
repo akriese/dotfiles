@@ -6,7 +6,6 @@ HISTSIZE=20000
 SAVEHIST=10000
 setopt notify
 unsetopt extendedglob
-bindkey -e
 
 autoload -Uz compinit
 setopt INC_APPEND_HISTORY
@@ -42,19 +41,6 @@ zsh_add_plugin "hlissner/zsh-autopair"
 compinit
 
 source $ZDOTDIR/zsh-alias
-
-# keybindings
-noop () { }
-zle -N noop
-bindkey '^ ' autosuggest-accept
-bindkey '^H' backward-kill-word
-bindkey '^K' kill-line
-bindkey '^[[3~' delete-char
-bindkey '^[[3;5~' kill-word
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey '\e' noop
-bindkey '\e[[3;5~' noop
 [[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
