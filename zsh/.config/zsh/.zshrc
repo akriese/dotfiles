@@ -1,19 +1,14 @@
 #!/bin/sh
 source "$DOTFILES/shell_settings.sh"
+source "$ZDOTDIR/zsh-options"
 
 HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
 SAVEHIST=10000
-setopt notify
-unsetopt extendedglob
 
 autoload -Uz compinit
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-unsetopt EXTENDED_HISTORY
 stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
-unsetopt BEEP
 
 zstyle ':completion:*' menu select
 zmodload zsh/complist

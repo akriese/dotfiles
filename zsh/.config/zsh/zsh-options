@@ -1,0 +1,6 @@
+setopt notify
+unsetopt extendedglob
+setopt inc_append_history
+setopt share_history
+unsetopt extended_history
+unsetopt beep
