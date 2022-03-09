@@ -1,6 +1,5 @@
 #!/bin/sh
 source "$DOTFILES/shell_settings.sh"
-[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
@@ -56,5 +55,6 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '\e' noop
 bindkey '\e[[3;5~' noop
+[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
