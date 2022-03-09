@@ -12,15 +12,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias wcl='wc -l'
 
-case "$SHELL" in
-    *zsh*)
-        export RC=$HOME/.zshrc
-        alias history='fc -l 1'
-        ;;
-    *bash*)
-        export RC=$HOME/.bashrc
-        ;;
-esac
+[[ "$SHELL" == *zsh* ]] && alias history='fc -l 1'
 
 alias rcsrc="source $RC"
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'

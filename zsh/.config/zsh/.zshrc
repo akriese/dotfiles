@@ -1,6 +1,4 @@
 #!/bin/sh
-export SHELL=$(which zsh)
-export ZDOTDIR=${ZDOTDIR:-"$HOME/.config/zsh"}
 source "$DOTFILES/shell_settings.sh"
 HISTFILE=~/.histfile
 HISTSIZE=20000

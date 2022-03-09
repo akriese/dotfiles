@@ -5,6 +5,15 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
 
+case "$SHELL" in
+    *zsh*)
+        export RC=$HOME/.zshrc
+        ;;
+    *bash*)
+        export RC=$HOME/.bashrc
+        ;;
+esac
+
 if [[ -n $CODING ]]
 then
         SCRIPTS=$CODING/Scripts
