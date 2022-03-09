@@ -1,3 +1,4 @@
+[[ -n $(command -v nvim) ]] && export MY_EDITOR='nvim' || export MY_EDITOR="vi -S $HOME/.vimrc"
 export EDITOR=${MY_EDITOR:-vi}
 
 [[ "$PATH" == *$HOME/.local/bin* ]] || export PATH="$HOME/.local/bin:$PATH"
@@ -7,7 +8,7 @@ grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
 
 case "$SHELL" in
     *zsh*)
-        export RC=$HOME/.zshrc
+        export RC=$ZDOTDIR/.zshrc
         ;;
     *bash*)
         export RC=$HOME/.bashrc
