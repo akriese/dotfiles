@@ -50,8 +50,11 @@ zle -N noop
 bindkey '^ ' autosuggest-accept
 bindkey '^H' backward-kill-word
 bindkey '^K' kill-line
+bindkey '^[[3~' delete-char
 bindkey '^[[3;5~' kill-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey '\e' noop
 bindkey '\e[[3;5~' noop
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
