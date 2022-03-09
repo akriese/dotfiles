@@ -27,7 +27,12 @@ source "$ZDOTDIR/zsh-keybinds"
 # Normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-aliases"
-[[ -x $(which oh-my-posh) ]] || zsh_add_file "zsh-prompt"
+if [[ -x $(which oh-my-posh) ]]
+then
+    eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
+else
+    zsh_add_file "zsh-prompt"
+fi
 #zsh_add_file "zsh-vim-mode"
 
 # Plugins
