@@ -1,4 +1,6 @@
-echo "sourced versioned zshenv"
-export SHELL="$(which zsh)"
+SHELL="$(which zsh)"
+[[ -f "$HOME/.zshenv" ]] && [[ -z "$ZDOTDIR" ]] && source "$HOME/.zshenv"
 
-[[ -f "$HOME/.zshenv" ]] && source "$HOME/.zshenv"
+ZDOTDIR="${ZDOTDIR:-$(basename $(print -P %N))}"
+
+
