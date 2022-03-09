@@ -1,5 +1,6 @@
 #!/bin/sh
 source "$DOTFILES/shell_settings.sh"
+[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
