@@ -63,6 +63,7 @@ Plug 'mhinz/vim-startify'
 " Syntax plugins
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
+Plug 'nathom/filetype.nvim' " for faster startup time
 " Plug 'vim-python/python-syntax'
 " Plug 'vim-syntastic/syntastic'
 
@@ -329,3 +330,4 @@ lua require("akriese.telescope")
 lua require("akriese.symbols")
 lua require("akriese.comment")
 lua require("akriese.better-escape")
+lua require("akriese.filetype")
