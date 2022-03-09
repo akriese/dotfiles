@@ -1,6 +1,7 @@
 #!/bin/sh
 source "$DOTFILES/shell_settings.sh"
-HISTFILE=~/.histfile
+
+HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
 SAVEHIST=10000
 setopt notify
