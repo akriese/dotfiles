@@ -1,7 +1,7 @@
 [[ -n $(command -v nvim) ]] && export MY_EDITOR='nvim' || export MY_EDITOR="vi -S $HOME/.vimrc"
 export EDITOR=${MY_EDITOR:-vi}
 
-[[ "$PATH" == *$HOME/.local/bin* ]] || export PATH="$HOME/.local/bin:$PATH"
+add_to_path "$HOME/.local/bin"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
@@ -18,7 +18,7 @@ esac
 if [[ -n $CODING ]]
 then
         SCRIPTS=$CODING/Scripts
-        [[ "$PATH" == *$SCRIPTS* ]] || export PATH="$SCRIPTS:$PATH"
+        add_to_path "$SCRIPTS"
 fi
 
 if [[ -x "$(command -v rg)" ]]

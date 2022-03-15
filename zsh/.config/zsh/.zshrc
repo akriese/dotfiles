@@ -1,10 +1,13 @@
 #!/bin/sh
+source "$DOTFILES/shell_functions.sh"
 source "$DOTFILES/shell_settings.sh"
 source "$ZDOTDIR/zsh-options"
 
 HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
 SAVEHIST=10000
+
+[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 autoload -Uz compinit
 stty stop undef         # Disable ctrl-s to freeze terminal.
@@ -41,7 +44,5 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 compinit
-
-[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
