@@ -29,7 +29,21 @@ then
 fi
 
 echo "Installing oh-my-posh to $INSTALL_DIR..."
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O "$INSTALL_DIR/oh-my-posh"
+case $(uname -m) in
+    armv7l)
+        link="https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-arm"
+        ;;
+    x86_64)
+        link="https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64"
+        ;;
+    *)
+        echo "Your architecture ($(uname -m)) has not yet been handled by this script. Please visit the page"
+        echo "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/ to find your version."
+        exit 1
+        ;;
+esac
+
+wget "$link" -O "$INSTALL_DIR/oh-my-posh"
 chmod +x "$INSTALL_DIR/oh-my-posh"
 
 echo "Adding eval command to shell config ($RC)..."
