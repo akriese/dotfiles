@@ -21,6 +21,10 @@ else
     echo "You might want to install 'stow' (e.g. sudo apt install stow)"
 fi
 
+verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
+
+[[ -x tmux ]] && verlte "$(tmux -V)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
+
 
 source "$local_bashrc"
 
