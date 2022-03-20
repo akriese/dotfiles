@@ -1,8 +1,8 @@
 #!/bin/bash
 
-OHMYPOSH_THEME=${OHMYPOSH_THEME:-$DOTFILES/oh-my-posh/.oh-my-posh_theme.json}
+OHMYPOSH_THEME=${OHMYPOSH_THEME:-"$DOTFILES/oh-my-posh/.oh-my-posh_theme.json"}
 INSTALL_DIR="$HOME/.local/bin"
-RC=${RC:-"$HOME/.bashrc"}
+local_rc=${LOCAL_RC:-"$HOME/.bashrc"}
 
 if [[ ! -e "$OHMYPOSH_THEME" ]];
 then
@@ -56,7 +56,7 @@ case "$SHELL" in
         ;;
 esac
 
-! grep -q "$CONFIG_COMMAND" "$RC" && echo "$CONFIG_COMMAND" >> "$RC"
+! grep -q "$CONFIG_COMMAND" "$local_rc" && echo "$CONFIG_COMMAND" >> "$local_rc"
 
 echo "Adding $INSTALL_DIR to PATH..."
 SHELL_EXPORTS="$DOTFILES/shell_settings.sh"

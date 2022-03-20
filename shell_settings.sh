@@ -8,16 +8,18 @@ grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
 
 case "$SHELL" in
     *zsh*)
-        export RC=$ZDOTDIR/.zshrc
+        VERSIONED_RC="$ZDOTDIR/.zshrc"
+        LOCAL_RC="$HOME/.zshrc"
         ;;
     *bash*)
-        export RC=$HOME/.bashrc
+        VERSIONED_RC="$HOME/.allbashrc"
+        LOCAL_RC="$HOME/.bashrc"
         ;;
 esac
 
 if [[ -n $CODING ]]
 then
-        SCRIPTS=$CODING/Scripts
+        SCRIPTS="$CODING/Scripts"
         add_to_path "$SCRIPTS"
 fi
 
