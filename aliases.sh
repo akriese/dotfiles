@@ -23,8 +23,8 @@ alias agi='sudo apt-get install'
 alias lsS='ls -Shal'
 alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"'
 alias hsghci="cd $CODING/Haskell && ghci"
-alias vim=$MY_EDITOR
-alias v=$MY_EDITOR
+alias vim="$MY_EDITOR"
+alias v="$MY_EDITOR"
 alias open_rc="$MY_EDITOR $RC"
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
