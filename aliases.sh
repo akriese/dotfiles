@@ -14,7 +14,7 @@ alias wcl='wc -l'
 
 [[ "$SHELL" == *zsh* ]] && alias history='fc -l 1'
 
-alias rcsrc="source $RC"
+alias rcsrc="source $VERSIONED_RC"
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
 #alias python='python3'
 alias cod='cd $CODING'
@@ -25,7 +25,7 @@ alias gandalf='firefox -new-window "https://www.youtube.com/watch?v=G1IbRujko-A"
 alias hsghci="cd $CODING/Haskell && ghci"
 alias vim="$MY_EDITOR"
 alias v="$MY_EDITOR"
-alias open_rc="$MY_EDITOR $RC"
+alias open_rc="$MY_EDITOR $VERSIONED_RC"
 alias temp='vcgencmd measure_temp'
 alias rotate='xrandr -o'
 alias pdf='evince'
