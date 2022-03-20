@@ -26,7 +26,6 @@ zle -N down-line-or-beginning-search
 autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
 source "$ZDOTDIR/zsh-alias"
-source "$ZDOTDIR/zsh-keybinds"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
@@ -45,5 +44,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 compinit
+
+source "$ZDOTDIR/zsh-keybinds"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
