@@ -1,13 +1,14 @@
 #!/bin/sh
 source "$DOTFILES/shell_functions.sh"
+
+[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
+
 source "$DOTFILES/shell_settings.sh"
 source "$ZDOTDIR/zsh-options"
 
 HISTFILE="$HOME/.histfile"
 HISTSIZE=20000
 SAVEHIST=10000
-
-[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 
 autoload -Uz compinit
 stty stop undef         # Disable ctrl-s to freeze terminal.
