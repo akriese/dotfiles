@@ -50,7 +50,8 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/sideways.vim' " Swap function arguments
 
 " Color scheme
-Plug 'gruvbox-community/gruvbox'
+" Plug 'gruvbox-community/gruvbox'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'guns/xterm-color-table.vim'
 
 " Language sepcifics
@@ -101,7 +102,7 @@ Plug 'simrat39/symbols-outline.nvim'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme kanagawa
 set background=dark
 
 set hlsearch
