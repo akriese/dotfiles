@@ -249,6 +249,9 @@ augroup END
 " Disable character forwarding for shell (removes weird character bug)
 let &t_TI = ""
 let &t_TE = ""
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[2 q"
 
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
