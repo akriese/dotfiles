@@ -251,6 +251,13 @@ augroup END
 let &t_TI = ""
 let &t_TE = ""
 
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
+endif
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
