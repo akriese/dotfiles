@@ -35,7 +35,7 @@ alias pubip='curl https://ipinfo.io/ip'
 alias lesss='less -S'
 alias htopu='htop --user $(whoami)'
 alias open='xdg-open'
-alias tmux='TERM="screen-256color" tmux'
+alias tmux='TERM=xterm-256color tmux'
 
 
 export MY_EDITOR
