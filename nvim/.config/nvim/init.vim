@@ -153,6 +153,7 @@ if has('wsl')
 endif
 set clipboard=unnamedplus
 set completeopt=menu,menuone,noselect
+set termguicolors
 
 " set color of colorcolumn
 highlight ColorColumn ctermbg=52
@@ -317,7 +318,6 @@ set diffopt+=vertical
 autocmd FileType python,sh,zsh,Rust,cpp,lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType vim setlocal sw=2 ts=2 sts=2
 
-set termguicolors
 "autocmd BufEnter term://* setlocal termguicolors
 "autocmd BufLeave term://* setlocal notermguicolors
 
