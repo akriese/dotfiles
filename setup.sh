@@ -1,12 +1,4 @@
-#!/bin/bash
-
-source_cmd="source $(readlink -e .allbashrc)"
-local_bashrc="$HOME/.bashrc"
-echo $source_cmd
-if ! grep -q "$source_cmd" "$local_bashrc";
-then
-	echo "$source_cmd" >> "$local_bashrc"
-fi
+# Execute this with zsh
 
 if [[ -x $(command -v stow) ]]
 then
@@ -32,7 +24,5 @@ verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
 
 [[ -x "tmux" ]] && verlte "$(tmux -V | cut -d' ' -f2)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
 
+echo "Reload your shell config now please!"
 
-source "$local_bashrc"
-
-command -v oh-my-posh || bash "$DOTFILES/omp_setup.sh"
