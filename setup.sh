@@ -12,9 +12,16 @@ if [[ -x $(command -v stow) ]]
 then
     for ELEMENT in *
     do
-        if [[ -d $ELEMENT ]]
+        if [[ -d "$ELEMENT" ]]
         then
-            stow -R $ELEMENT
+            case "$ELEMENT" in
+                zsh | oh-my-posh)
+                    echo "Not stowing $ELEMENT"
+                    ;;
+                *)
+                    stow -R "$ELEMENT"
+                    ;;
+            esac
         fi
     done
 else
