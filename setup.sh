@@ -1,20 +1,19 @@
-#!/bin/bash
-
-source_cmd="source $(readlink -e .allbashrc)"
-local_bashrc="$HOME/.bashrc"
-echo $source_cmd
-if ! grep -q "$source_cmd" "$local_bashrc";
-then
-	echo "$source_cmd" >> "$local_bashrc"
-fi
+# Execute this with zsh
 
 if [[ -x $(command -v stow) ]]
 then
     for ELEMENT in *
     do
-        if [[ -d $ELEMENT ]]
+        if [[ -d "$ELEMENT" ]]
         then
-            stow -R $ELEMENT
+            case "$ELEMENT" in
+                zsh | oh-my-posh)
+                    echo "Not stowing $ELEMENT"
+                    ;;
+                *)
+                    stow -R "$ELEMENT"
+                    ;;
+            esac
         fi
     done
 else
@@ -23,9 +22,7 @@ fi
 
 verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
 
-[[ -x tmux ]] && verlte "$(tmux -V)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
+[[ -x "tmux" ]] && verlte "$(tmux -V | cut -d' ' -f2)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
 
+echo "Reload your shell config now please!"
 
-source "$local_bashrc"
-
-command -v oh-my-posh || bash "$DOTFILES/omp_setup.sh"
