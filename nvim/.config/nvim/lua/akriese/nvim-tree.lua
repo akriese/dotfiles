@@ -48,7 +48,9 @@ require'nvim-tree'.setup {
     auto_resize = false,
     mappings = {
       custom_only = false,
-      list = {}
+      list = {
+        {key = "+", action = "cd"},
+      },
     },
     number = false,
     relativenumber = false,
