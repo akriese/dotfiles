@@ -57,6 +57,7 @@ Plug 'guns/xterm-color-table.vim'
 " Language sepcifics
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'pprovost/vim-ps1'
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 
 " Startup panel
 Plug 'mhinz/vim-startify'
