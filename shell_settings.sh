@@ -1,7 +1,6 @@
 [[ -n $(command -v nvim) ]] && export MY_EDITOR='nvim' || export MY_EDITOR="vi -S $HOME/.vimrc"
 export EDITOR=${MY_EDITOR:-vi}
 
-add_to_path "$HOME/.local/bin"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
