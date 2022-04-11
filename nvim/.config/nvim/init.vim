@@ -57,6 +57,7 @@ Plug 'guns/xterm-color-table.vim'
 " Language sepcifics
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'pprovost/vim-ps1'
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 
 " Startup panel
 Plug 'mhinz/vim-startify'
@@ -167,15 +168,16 @@ let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  <cmd>NvimTreeToggle<CR>
+nnoremap <leader>fb <cmd>Telescope git_branches<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
+nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
-nnoremap <leader>fb <cmd>Telescope git_branches<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
-nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
-nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>G <cmd>Git<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
