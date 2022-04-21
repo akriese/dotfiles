@@ -179,6 +179,9 @@ nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>G <cmd>Git<CR>
+nnoremap <leader>gg <cmd>Git<CR>
+nnoremap <leader>gp <cmd>Git push<CR>
+nnoremap <leader>gl <cmd>Git pull<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
 nnoremap <leader>, <cmd>SidewaysLeft<cr>
