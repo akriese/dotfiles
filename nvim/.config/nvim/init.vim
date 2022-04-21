@@ -327,7 +327,7 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-autocmd FileType python,sh,zsh,Rust,cpp,lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType python,sh,zsh,Rust,cpp,lua,snakemake setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType vim setlocal sw=2 ts=2 sts=2
 
 "autocmd BufEnter term://* setlocal termguicolors
@@ -344,3 +344,5 @@ lua require("akriese.symbols")
 lua require("akriese.comment")
 lua require("akriese.better-escape")
 lua require("akriese.filetype")
+
+au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
