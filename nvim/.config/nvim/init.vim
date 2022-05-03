@@ -38,7 +38,7 @@ Plug 'numToStr/Comment.nvim' " comments
 Plug 'max397574/better-escape.nvim' " Escape with ii without delay
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'mg979/vim-visual-multi' " Multiple Cursors
-Plug 'psliwka/vim-smoothie' " Smooth scrolling
+Plug 'karb94/neoscroll.nvim' " Smooth scrolling
 
 " Git plugins
 Plug 'airblade/vim-gitgutter'
@@ -350,5 +350,6 @@ lua require("akriese.symbols")
 lua require("akriese.comment")
 lua require("akriese.better-escape")
 lua require("akriese.filetype")
+lua require('neoscroll').setup()
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
