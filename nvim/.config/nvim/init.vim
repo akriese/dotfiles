@@ -333,8 +333,8 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-autocmd FileType python,sh,zsh,Rust,cpp,lua,snakemake setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType vim setlocal sw=2 ts=2 sts=2
+autocmd FileType python,sh,zsh,Rust,cpp,lua,snakemake,javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType vim,html setlocal sw=2 ts=2 sts=2
 
 "autocmd BufEnter term://* setlocal termguicolors
 "autocmd BufLeave term://* setlocal notermguicolors
