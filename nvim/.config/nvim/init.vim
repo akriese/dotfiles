@@ -55,7 +55,8 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'guns/xterm-color-table.vim'
 
 " Language sepcifics
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
+" Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
+Plug 'mfussenegger/nvim-dap'
 Plug 'pprovost/vim-ps1'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 
@@ -188,6 +189,12 @@ nnoremap <leader>, <cmd>SidewaysLeft<cr>
 nnoremap <leader>. <cmd>SidewaysRight<cr>
 nnoremap <leader>st <cmd>SymbolsOutline<cr>
 
+" Debug commands
+nnoremap <leader>db <cmd>lua require'dap'.toggle_breakpoint()<cr>
+nnoremap <leader>di <cmd>lua require'dap'.step_into()<cr>
+nnoremap <leader>do <cmd>lua require'dap'.step_over()<cr>
+nnoremap <leader>dc <cmd>lua require'dap'.continue()<cr>
+nnoremap <leader>dr <cmd>lua require'dap'.repl.open()<cr>
 
 " useful commands
 nnoremap <leader>shl <cmd>set hlsearch!<CR>
@@ -350,5 +357,6 @@ lua require("akriese.comment")
 lua require("akriese.better-escape")
 lua require("akriese.filetype")
 lua require('neoscroll').setup()
+lua require("akriese.dap")
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
