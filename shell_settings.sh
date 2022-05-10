@@ -11,7 +11,7 @@ case "$SHELL" in
         LOCAL_RC="$HOME/.zshrc"
         ;;
     *bash*)
-        VERSIONED_RC="$HOME/.allbashrc"
+        VERSIONED_RC="$DOTFILES/.allbashrc"
         LOCAL_RC="$HOME/.bashrc"
         ;;
 esac
