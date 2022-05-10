@@ -184,8 +184,6 @@ nnoremap <leader>gg <cmd>Git<CR>
 nnoremap <leader>gp <cmd>Git push<CR>
 nnoremap <leader>gl <cmd>Git pull<CR>
 nnoremap <leader>gb <cmd>Git blame<CR>
-nmap <C-d> <Plug>(SmoothieDownwards)zz
-nmap <C-u> <Plug>(SmoothieUpwards)zz
 nnoremap <leader>, <cmd>SidewaysLeft<cr>
 nnoremap <leader>. <cmd>SidewaysRight<cr>
 nnoremap <leader>st <cmd>SymbolsOutline<cr>
