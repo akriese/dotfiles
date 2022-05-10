@@ -229,7 +229,7 @@ nnoremap <leader>Y "*y
 nnoremap <leader>y "+y
 vnoremap <leader>Y "*y
 vnoremap <leader>y "+y
-nnoremap <leader>P "*p
+nnoremap <leader>P o<esc>"+p
 nnoremap <leader>p "+p
 
 " disable Background Color Erase (BCE)
