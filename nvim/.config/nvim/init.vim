@@ -38,7 +38,7 @@ Plug 'numToStr/Comment.nvim' " comments
 Plug 'max397574/better-escape.nvim' " Escape with ii without delay
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'mg979/vim-visual-multi' " Multiple Cursors
-Plug 'psliwka/vim-smoothie' " Smooth scrolling
+Plug 'karb94/neoscroll.nvim' " Smooth scrolling
 
 " Git plugins
 Plug 'airblade/vim-gitgutter'
@@ -183,6 +183,7 @@ nnoremap <leader>G <cmd>Git<CR>
 nnoremap <leader>gg <cmd>Git<CR>
 nnoremap <leader>gp <cmd>Git push<CR>
 nnoremap <leader>gl <cmd>Git pull<CR>
+nnoremap <leader>gb <cmd>Git blame<CR>
 nmap <C-d> <Plug>(SmoothieDownwards)zz
 nmap <C-u> <Plug>(SmoothieUpwards)zz
 nnoremap <leader>, <cmd>SidewaysLeft<cr>
@@ -333,8 +334,8 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-autocmd FileType python,sh,zsh,Rust,cpp,lua,snakemake setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType vim setlocal sw=2 ts=2 sts=2
+autocmd FileType python,sh,zsh,Rust,cpp,lua,snakemake,javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType vim,html setlocal sw=2 ts=2 sts=2
 
 "autocmd BufEnter term://* setlocal termguicolors
 "autocmd BufLeave term://* setlocal notermguicolors
@@ -350,5 +351,6 @@ lua require("akriese.symbols")
 lua require("akriese.comment")
 lua require("akriese.better-escape")
 lua require("akriese.filetype")
+lua require('neoscroll').setup()
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
