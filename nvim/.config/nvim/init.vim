@@ -181,11 +181,15 @@ nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>fw <cmd>Telescope grep_string<cr>
+" Git stuff
 nnoremap <leader>G <cmd>Git<CR>
-nnoremap <leader>gg <cmd>Git<CR>
-nnoremap <leader>gp <cmd>Git push<CR>
-nnoremap <leader>gl <cmd>Git pull<CR>
 nnoremap <leader>gb <cmd>Git blame<CR>
+nnoremap <leader>gc <cmd>Telescope git_commits<cr>
+nnoremap <leader>gg <cmd>Git<CR>
+nnoremap <leader>gl <cmd>Git pull<CR>
+nnoremap <leader>gP <cmd>Git push<CR>
+nnoremap <leader>gp <cmd>Git pull<CR>
+" Sideways stuff
 nnoremap <leader>, <cmd>SidewaysLeft<cr>
 nnoremap <leader>. <cmd>SidewaysRight<cr>
 nnoremap <leader>st <cmd>SymbolsOutline<cr>
