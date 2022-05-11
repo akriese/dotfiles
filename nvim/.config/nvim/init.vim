@@ -169,13 +169,14 @@ let g:vifm_embed_split=1
 
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  <cmd>NvimTreeToggle<CR>
+" Telescope stuff
 nnoremap <leader>fb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+nnoremap <leader>fm <cmd>Telescope keymaps<cr>
 nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
