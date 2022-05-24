@@ -7,12 +7,12 @@ grep -iq microsoft /proc/version && export WINUSR="/mnt/c/Users/Anton"
 
 case "$SHELL" in
     *zsh*)
-        VERSIONED_RC="$ZDOTDIR/.zshrc"
-        LOCAL_RC="$HOME/.zshrc"
+        export VERSIONED_RC="$ZDOTDIR/.zshrc"
+        export LOCAL_RC="$HOME/.zshrc"
         ;;
     *bash*)
-        VERSIONED_RC="$DOTFILES/.allbashrc"
-        LOCAL_RC="$HOME/.bashrc"
+        export VERSIONED_RC="$DOTFILES/.allbashrc"
+        export LOCAL_RC="$HOME/.bashrc"
         ;;
 esac
 
