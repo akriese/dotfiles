@@ -30,13 +30,10 @@ source "$ZDOTDIR/zsh-alias"
 # Normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-aliases"
-if [[ -x $(which oh-my-posh) ]]
+if [[ ! -x $(which oh-my-posh) ]]
 then
-    eval "$(oh-my-posh --init --shell zsh --config "$DOTFILES/oh-my-posh/.oh-my-posh_theme.json")"
-else
     zsh_add_file "zsh-prompt"
 fi
-#zsh_add_file "zsh-vim-mode"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
