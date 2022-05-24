@@ -52,3 +52,21 @@ bash "$DOTFILES/setup.sh"
 Firstly, neovim must be installed. Visit [neovim's](https://github.com/neovim/neovim) page to find help on that.
 After installing Neovim, run it. There will be errors on the first couple of starts, complaining about missing Plugins etc.
 Run `:PlugInstall` to install all configured plugins. Also run `:TSUpdate` to get the latest syntax files for treesitter.
+
+### Oh My Posh setup
+[oh-my-posh](https://ohmyposh.dev/) is a tool that beautifies the command prompt. This config includes a theme which shows
+- distro pictogram
+- current path (shortened or displayed as some emoji)
+- git status
+- python env and version
+- node version
+- last command's execution status (fail or success)
+- time (the last command ended on)
+- execution time (of the last command)
+- battery status
+
+I have chosen oh-my-posh as it also works on powershell. If you have a better alternative, feel free to contact me :)
+
+Install the tool into `~/.local/bin/` with the script [omp\_setup.sh](omp_setup.sh) by running `bash omp_setup.sh`. This automatically adds the
+installation path to PATH and the `oh-my-posh` eval command in either your local `~/.bashrc` or `~/.zshrc`.
+
