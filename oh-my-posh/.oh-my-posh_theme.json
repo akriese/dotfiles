@@ -178,7 +178,6 @@
           "type": "text"
         },
         {
-          "foreground": "#ecf7fa",
           "properties": {
             "always_enabled": true
           },
