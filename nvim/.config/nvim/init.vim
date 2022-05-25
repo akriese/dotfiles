@@ -186,7 +186,7 @@ nnoremap <leader>G <cmd>Git<CR>
 nnoremap <leader>gb <cmd>Git blame<CR>
 nnoremap <leader>gc <cmd>Telescope git_commits<cr>
 nnoremap <leader>gg <cmd>Git<CR>
-nnoremap <leader>gl <cmd>Git pull<CR>
+nnoremap <leader>gl <cmd>Telescope git_commits<CR>
 nnoremap <leader>gP <cmd>Git push<CR>
 nnoremap <leader>gp <cmd>Git pull<CR>
 " Sideways stuff
