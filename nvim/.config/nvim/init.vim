@@ -209,6 +209,8 @@ nnoremap <silent> <leader>dc <cmd>lua require'dap'.continue()<cr>
 nnoremap <silent> <leader>dr <cmd>lua require'dap'.repl.open()<cr>
 nnoremap <silent> <leader>dv <cmd>lua require'dap.ui.widgets'.sidebar(require'dap.ui.widgets'.scopes).open()<cr>
 nnoremap <silent> <leader>K <cmd>lua require'dap.ui.widgets'.hover()<cr>
+autocmd FileType dap-float nnoremap <buffer><silent> q <cmd>close!<CR>
+autocmd FileType dap-float nnoremap <buffer><silent> <esc> <cmd>close!<CR>
 
 " useful commands
 nnoremap <leader>shl <cmd>set hlsearch!<CR>
