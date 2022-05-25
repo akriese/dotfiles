@@ -116,6 +116,7 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
       "segments": [
         {
           "background": "#0077c2",
@@ -125,7 +126,7 @@
             "always_enabled": true
           },
           "style": "diamond",
-          "template": " \ufbab{{ .FormattedMs }}\u2800",
+          "template": " {{ .FormattedMs }}\ufbab\u2800",
           "type": "executiontime"
         },
         {
