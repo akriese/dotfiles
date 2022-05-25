@@ -46,7 +46,7 @@ esac
 wget "$link" -O "$INSTALL_DIR/oh-my-posh"
 chmod +x "$INSTALL_DIR/oh-my-posh"
 
-echo "Adding eval command to shell config ($RC)..."
+echo "Adding eval command to shell config ($local_rc)..."
 case "$SHELL" in
     *zsh*)
         CONFIG_COMMAND='eval "$(oh-my-posh --init --shell zsh --config "'$OHMYPOSH_THEME'")"'
