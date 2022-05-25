@@ -5,6 +5,11 @@
       "alignment": "left",
       "segments": [
         {
+          "style": "plain",
+          "template": "\u256d\u2500",
+          "type": "text"
+        },
+        {
           "background": "#fbfbfb",
           "foreground": "#0077c2",
           "leading_diamond": "\ue0b6",
@@ -161,7 +166,28 @@
           "type": "time"
         }
       ],
-      "type": "rprompt"
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "template": "\u2570\u2500",
+          "type": "text"
+        },
+        {
+          "foreground": "#ecf7fa",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\ue285",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
     }
   ],
   "console_title_template": "{{ .Shell }} in {{ .Folder }}",
