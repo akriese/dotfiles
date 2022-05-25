@@ -56,9 +56,12 @@ Plug 'guns/xterm-color-table.vim'
 
 " Language sepcifics
 " Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
-Plug 'mfussenegger/nvim-dap'
 Plug 'pprovost/vim-ps1'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
+
+" Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 
 " Startup panel
 Plug 'mhinz/vim-startify'
@@ -195,11 +198,17 @@ nnoremap <leader>. <cmd>SidewaysRight<cr>
 nnoremap <leader>st <cmd>SymbolsOutline<cr>
 
 " Debug commands
-nnoremap <leader>db <cmd>lua require'dap'.toggle_breakpoint()<cr>
-nnoremap <leader>di <cmd>lua require'dap'.step_into()<cr>
-nnoremap <leader>do <cmd>lua require'dap'.step_over()<cr>
-nnoremap <leader>dc <cmd>lua require'dap'.continue()<cr>
-nnoremap <leader>dr <cmd>lua require'dap'.repl.open()<cr>
+nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> <Cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>db <cmd>lua require'dap'.toggle_breakpoint()<cr>
+nnoremap <silent> <leader>di <cmd>lua require'dap'.step_into()<cr>
+nnoremap <silent> <leader>do <cmd>lua require'dap'.step_over()<cr>
+nnoremap <silent> <leader>dc <cmd>lua require'dap'.continue()<cr>
+nnoremap <silent> <leader>dr <cmd>lua require'dap'.repl.open()<cr>
+nnoremap <silent> <leader>dv <cmd>lua require'dap.ui.widgets'.sidebar(require'dap.ui.widgets'.scopes).open()<cr>
+nnoremap <silent> <leader>K <cmd>lua require'dap.ui.widgets'.hover()<cr>
 
 " useful commands
 nnoremap <leader>shl <cmd>set hlsearch!<CR>
@@ -363,5 +372,6 @@ lua require("akriese.better-escape")
 lua require("akriese.filetype")
 lua require('neoscroll').setup()
 lua require("akriese.dap")
+lua require('dap-python').setup('~/anaconda3/envs/debugpy/bin/python')
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
