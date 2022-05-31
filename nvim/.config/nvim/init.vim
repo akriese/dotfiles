@@ -173,8 +173,6 @@ let g:vifm_embed_split=1
 " ALL PLUGIN RELATED mappings
 nnoremap <leader>n  <cmd>NvimTreeToggle<CR>
 " Telescope stuff
-nnoremap <leader>fb <cmd>Telescope git_branches<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
@@ -185,9 +183,9 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>fw <cmd>Telescope grep_string<cr>
 " Git stuff
-nnoremap <leader>G <cmd>Git<CR>
-nnoremap <leader>gb <cmd>Git blame<CR>
-nnoremap <leader>gc <cmd>Telescope git_commits<cr>
+nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+nnoremap <leader>gB <cmd>Git blame<CR>
+nnoremap <leader>gc :Git cherry-pick
 nnoremap <leader>gg <cmd>Git<CR>
 nnoremap <leader>gl <cmd>Telescope git_commits<CR>
 nnoremap <leader>gP <cmd>Git push<CR>
