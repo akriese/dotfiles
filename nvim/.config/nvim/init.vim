@@ -333,20 +333,6 @@ else
   nnoremap <leader>t <cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>
 endif
 
-
-" new operators for 'inside' next/last parens, braces etc.
-function! s:Pair_mappings()
-  let l:pair_dict = { ')':'(', ']':'[', '}':'{', 'b':')',
-      \ '(':'(', '[':'[', '{':'{', '<':'<', '>':'<', '''': '''', '"': '\"' }
-  for [key, val] in items(l:pair_dict)
-    execute 'onoremap in'.key.' :execute "keeppatterns normal! /'.val.'\rvi'.val.'"<cr>'
-    execute 'onoremap il'.key.' :execute "keeppatterns normal! ?'.val.'\rvi'.val.'"<cr>'
-    execute 'onoremap an'.key.' :execute "keeppatterns normal! /'.val.'\rva'.val.'"<cr>'
-    execute 'onoremap al'.key.' :execute "keeppatterns normal! ?'.val.'\rva'.val.'"<cr>'
-  endfor
-endfunction
-call s:Pair_mappings()
-
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
