@@ -372,6 +372,5 @@ lua require("akriese.better-escape")
 lua require("akriese.filetype")
 lua require('neoscroll').setup()
 lua require("akriese.dap")
-lua require('dap-python').setup('~/anaconda3/envs/debugpy/bin/python')
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
