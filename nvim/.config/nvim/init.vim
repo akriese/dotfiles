@@ -204,6 +204,7 @@ nnoremap <silent> <leader>db <cmd>lua require'dap'.toggle_breakpoint()<cr>
 nnoremap <silent> <leader>di <cmd>lua require'dap'.step_into()<cr>
 nnoremap <silent> <leader>do <cmd>lua require'dap'.step_over()<cr>
 nnoremap <silent> <leader>dc <cmd>lua require'dap'.continue()<cr>
+nnoremap <silent> <leader>dC <cmd>lua require'dap'.close()<cr>
 nnoremap <silent> <leader>dr <cmd>lua require'dap'.repl.open()<cr>
 nnoremap <silent> <leader>dv <cmd>lua require'dap.ui.widgets'.sidebar(require'dap.ui.widgets'.scopes).open()<cr>
 nnoremap <silent> <leader>K <cmd>lua require'dap.ui.widgets'.hover()<cr>
