@@ -210,6 +210,7 @@ nnoremap <silent> <leader>dv <cmd>lua require'dap.ui.widgets'.sidebar(require'da
 nnoremap <silent> <leader>K <cmd>lua require'dap.ui.widgets'.hover()<cr>
 autocmd FileType dap-float nnoremap <buffer><silent> q <cmd>close!<CR>
 autocmd FileType dap-float nnoremap <buffer><silent> <esc> <cmd>close!<CR>
+nnoremap <silent> <leader>D <cmd>lua vim.diagnostic.open_float()<CR>
 
 " useful commands
 nnoremap <leader>shl <cmd>set hlsearch!<CR>
