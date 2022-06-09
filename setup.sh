@@ -22,7 +22,7 @@ fi
 
 verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
 
-[[ -x "tmux" ]] && verlte "$(tmux -V | cut -d' ' -f2)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
+command -v tmux &> /dev/null && verlte "$(tmux -V | cut -d' ' -f2)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 echo "Reload your shell config now please!"
 
