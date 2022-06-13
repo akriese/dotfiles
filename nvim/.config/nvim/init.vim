@@ -295,7 +295,7 @@ endif
 let g:is_posix = 1
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:·,eol:↲
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
