@@ -62,6 +62,7 @@ Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
+Plug 'rcarriga/nvim-dap-ui'
 
 " Startup panel
 Plug 'mhinz/vim-startify'
