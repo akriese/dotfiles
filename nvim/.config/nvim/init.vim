@@ -33,7 +33,8 @@ Plug 'junegunn/vim-plug'
 
 " Miscellaneous Plugins
 Plug 'tmhedberg/SimpylFold' " Folds
-"Plug 'preservim/nerdcommenter' " Comments
+Plug 'nvim-lua/plenary.nvim' " General utility
+
 Plug 'numToStr/Comment.nvim' " comments
 Plug 'max397574/better-escape.nvim' " Escape with ii without delay
 Plug 'itchyny/lightline.vim' " Status line
@@ -50,12 +51,10 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/sideways.vim' " Swap function arguments
 
 " Color scheme
-" Plug 'gruvbox-community/gruvbox'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'guns/xterm-color-table.vim'
 
 " Language sepcifics
-" Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'pprovost/vim-ps1'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 
@@ -71,8 +70,6 @@ Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nathom/filetype.nvim' " for faster startup time
-" Plug 'vim-python/python-syntax'
-" Plug 'vim-syntastic/syntastic'
 
 " LSP plugins
 Plug 'neovim/nvim-lspconfig'
