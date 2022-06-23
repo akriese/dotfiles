@@ -275,7 +275,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *bashrc set filetype=sh
 
   " remove trailing whitespace on saving
-  autocmd BufWritePre * %s/\s\+$//e
+  autocmd BufWritePre * lua Remove_trailing_spaces()
 augroup END
 
 " Disable character forwarding for shell (removes weird character bug)
@@ -361,5 +361,6 @@ lua require("akriese.better-escape")
 lua require("akriese.filetype")
 lua require('neoscroll').setup()
 lua require("akriese.dap")
+lua require("akriese.functions")
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
