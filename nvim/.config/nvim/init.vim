@@ -184,6 +184,7 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>fw <cmd>Telescope grep_string<cr>
 " Git stuff
+nnoremap <leader>ga <cmd>Git commit --amend<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 nnoremap <leader>gB <cmd>Git blame<CR>
 nnoremap <leader>gc :Git cherry-pick
