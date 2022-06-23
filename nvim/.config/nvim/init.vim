@@ -243,7 +243,7 @@ nnoremap gp '[v']
 nnoremap gP '[V']
 
 " vimrc loading and saving
-nnoremap <leader>sv <cmd>source $MYVIMRC<CR>
+nnoremap <leader>sv <cmd>lua Source_local_config()<CR>
 nnoremap <leader>ev <cmd>vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts

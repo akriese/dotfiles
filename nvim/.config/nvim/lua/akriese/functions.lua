@@ -8,3 +8,8 @@ function Remove_trailing_spaces()
         vim.api.nvim_win_set_cursor(0, cursor)
     end
 end
+
+function Source_local_config()
+    vim.api.nvim_command("source $MYVIMRC ")
+    require("plenary.reload").reload_module("akriese")
+end
