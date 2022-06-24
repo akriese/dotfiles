@@ -61,3 +61,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+
+-- TODO: Floating dapui window when doing <space>K
+-- buf_set_keymap()
