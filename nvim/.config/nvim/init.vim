@@ -33,7 +33,8 @@ Plug 'junegunn/vim-plug'
 
 " Miscellaneous Plugins
 Plug 'tmhedberg/SimpylFold' " Folds
-"Plug 'preservim/nerdcommenter' " Comments
+Plug 'nvim-lua/plenary.nvim' " General utility
+
 Plug 'numToStr/Comment.nvim' " comments
 Plug 'max397574/better-escape.nvim' " Escape with ii without delay
 Plug 'itchyny/lightline.vim' " Status line
@@ -50,12 +51,10 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/sideways.vim' " Swap function arguments
 
 " Color scheme
-" Plug 'gruvbox-community/gruvbox'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'guns/xterm-color-table.vim'
 
 " Language sepcifics
-" Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' } " :UpdateRemotePlugins
 Plug 'pprovost/vim-ps1'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim/'}
 
@@ -71,8 +70,6 @@ Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'nathom/filetype.nvim' " for faster startup time
-" Plug 'vim-python/python-syntax'
-" Plug 'vim-syntastic/syntastic'
 
 " LSP plugins
 Plug 'neovim/nvim-lspconfig'
@@ -184,6 +181,7 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>ft <cmd>Telescope live_grep<cr>
 nnoremap <leader>fw <cmd>Telescope grep_string<cr>
 " Git stuff
+nnoremap <leader>ga <cmd>Git commit --amend<CR>
 nnoremap <leader>gb <cmd>Telescope git_branches<cr>
 nnoremap <leader>gB <cmd>Git blame<CR>
 nnoremap <leader>gc :Git cherry-pick
@@ -246,7 +244,7 @@ nnoremap gp '[v']
 nnoremap gP '[V']
 
 " vimrc loading and saving
-nnoremap <leader>sv <cmd>source $MYVIMRC<CR>
+nnoremap <leader>sv <cmd>lua Source_local_config()<CR>
 nnoremap <leader>ev <cmd>vsplit $MYVIMRC<CR>
 
 " clipboard shortcuts
@@ -276,7 +274,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *bashrc set filetype=sh
 
   " remove trailing whitespace on saving
-  autocmd BufWritePre * %s/\s\+$//e
+  autocmd BufWritePre * lua Remove_trailing_spaces()
 augroup END
 
 " Disable character forwarding for shell (removes weird character bug)
@@ -362,5 +360,6 @@ lua require("akriese.better-escape")
 lua require("akriese.filetype")
 lua require('neoscroll').setup()
 lua require("akriese.dap")
+lua require("akriese.functions")
 
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
