@@ -223,7 +223,7 @@ nnoremap Q <Nop>
 nnoremap Y y$
 inoremap <C-BS> <C-W>
 inoremap <C-h> <C-W>
-nnoremap <leader>[ <cmd>clast<cr>
+nnoremap <leader>[ <cmd>cprevious<cr>
 nnoremap <leader>] <cmd>cnext<cr>
 
 " recenter after search
