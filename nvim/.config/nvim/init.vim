@@ -189,6 +189,7 @@ nnoremap <leader>gB <cmd>Git blame<CR>
 nnoremap <leader>gc :Git cherry-pick
 nnoremap <leader>gg <cmd>Git<CR>
 nnoremap <leader>gl <cmd>Telescope git_commits<CR>
+nnoremap <leader>gL <cmd>Gclog<CR>
 nnoremap <leader>gP <cmd>Git push<CR>
 nnoremap <leader>gp <cmd>Git pull<CR>
 " Sideways stuff
