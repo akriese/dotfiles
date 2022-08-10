@@ -62,7 +62,7 @@ plug("'mg979/vim-visual-multi'") -- Multiple Cursors
 plug("'karb94/neoscroll.nvim'") -- Smooth scrolling
 
 -- Git plugins
-plug("'airblade/vim-gitgutter'")
+plug("'lewis6991/gitsigns.nvim'")
 plug("'tpope/vim-fugitive'")
 
 -- Bracket / pair plugins
