@@ -45,14 +45,17 @@ local opts = {
   capabilities = capabilities,
 }
 
---local servers = { 'pyright' }
---for _, lsp in ipairs(servers) do
-  --nvim_lsp[lsp].setup { opts }
---end
-
 lsp_installer.on_server_ready(
   function(server)
+    if server.name == "ltex" then
+        opts.settings = {
+            ltex = {
+                language = 'de-DE'
+                -- language = 'en-US'
+            }
+        }
+    end
+
     server:setup(opts)
   end
 )
-
