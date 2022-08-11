@@ -336,7 +336,7 @@ map("t", "ii", [[<C-\><C-n>]])
 if string.find(vim.o.shell, "zsh") then
     map("n", "<leader>t", "<cmd>split term://export THIS=%; unset ZDOTDIR; zsh<CR><cmd>resize12<cr>")
 else
-  map("n", "<leader>t", "<cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>")
+    map("n", "<leader>t", "<cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>")
 end
 
 vim.cmd([[filetype plugin indent on]])
