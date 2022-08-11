@@ -94,6 +94,7 @@ plug("'nathom/filetype.nvim'") -- for faster startup time
 -- LSP plugins
 plug("'neovim/nvim-lspconfig'")
 plug("'williamboman/nvim-lsp-installer'")
+plug("'folke/lua-dev.nvim'")
 
 -- Completion plugins
 plug("'hrsh7th/nvim-cmp'")
@@ -350,7 +351,6 @@ local set_autocmd = function(event, pattern, cmd)
         vim.api.nvim_create_autocmd(event, {group="vimrcEx", pattern=pattern, callback=cmd})
     end
 end
-
 
 --autocmd!
 -- Set syntax highlighting for specific file types

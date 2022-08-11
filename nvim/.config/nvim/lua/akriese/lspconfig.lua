@@ -57,6 +57,11 @@ lsp_installer.on_server_ready(
             opts.filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
         end
 
-        server:setup(opts)
+        if server.name == "sumneko_lua" then
+            local luadev = require("lua-dev").setup()
+            server:setup(luadev, opts)
+        else
+            server:setup(opts)
+        end
     end
 )
