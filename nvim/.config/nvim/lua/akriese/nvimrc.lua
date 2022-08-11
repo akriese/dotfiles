@@ -165,16 +165,16 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.termguicolors = true
 
 if has('wsl') then
-    vim.command([[
+    vim.cmd([[
         let g:clipboard = {
-        \   'name' = 'wslclipboard',
-        \   'copy' = {
-        \       '+' = '/usr/local/bin/win32yank.exe -i --crlf',
-        \       '*' = '/usr/local/bin/win32yank.exe -i --crlf',
+        \   'name': 'wslclipboard',
+        \   'copy': {
+        \       '+': '/usr/local/bin/win32yank.exe -i --crlf',
+        \       '*': '/usr/local/bin/win32yank.exe -i --crlf',
         \   },
-        \   'paste' = {
-        \       '+' = '/usr/local/bin/win32yank.exe -o --lf',
-        \       '*' = '/usr/local/bin/win32yank.exe -o --lf',
+        \   'paste': {
+        \       '+': '/usr/local/bin/win32yank.exe -o --lf',
+        \       '*': '/usr/local/bin/win32yank.exe -o --lf',
         \   },
         \   'cache_enabled': 1,
         \}
