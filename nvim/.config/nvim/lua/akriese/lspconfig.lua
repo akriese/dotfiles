@@ -54,6 +54,7 @@ lsp_installer.on_server_ready(
                     -- language = 'en-US'
                 }
             }
+            opts.filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
         end
 
         server:setup(opts)
