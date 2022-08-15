@@ -211,29 +211,12 @@ vim.cmd("highlight ColorColumn ctermbg=52")
 
 -- ALL PLUGIN RELATED mappings
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>")
--- Telescope stuff
-map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
-map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>")
-map("n", "<leader>fg", "<cmd>Telescope git_files<cr>")
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
-map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
-map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
-map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
-map("n", "<leader>fT", function() -- same but includes search in hidden and ignored files
-    require("telescope.builtin").live_grep({additional_args = function(_)
-        return {"-uu"} -- pass flag to search in hidden and ignored files too
-    end})
-end)
-map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 
 -- Git stuff
 map("n", "<leader>ga", "<cmd>Git commit --amend<CR>")
-map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 map("n", "<leader>gB", "<cmd>Git blame<CR>")
 map("n", "<leader>gc", ":Git cherry-pick")
 map("n", "<leader>gg", "<cmd>Git<CR>")
-map("n", "<leader>gl", "<cmd>Telescope git_commits<CR>")
 map("n", "<leader>gL", "<cmd>Gclog<CR>")
 map("n", "<leader>gP", "<cmd>Git push<CR>")
 map("n", "<leader>gp", "<cmd>Git pull<CR>")
