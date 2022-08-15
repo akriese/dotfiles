@@ -230,7 +230,12 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
-map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>")
+map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
+map("n", "<leader>fT", function() -- same but includes search in hidden and ignored files
+    require("telescope.builtin").live_grep({additional_args = function(_)
+        return {"-uu"} -- pass flag to search in hidden and ignored files too
+    end})
+end)
 map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 
 -- Git stuff
