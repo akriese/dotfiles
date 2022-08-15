@@ -1,19 +1,8 @@
-local has = function(option)
-    return vim.fn.has(option) == 1
-end
+local F = require("akriese.functions")
 
-local plug = function(plugin)
-    vim.cmd("Plug " .. plugin)
-end
-
--- Functional wrapper for mapping custom keybindings
-local map = function(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
-end
+local map = F.map
+local has = F.has
+local plug = F.plug
 
 vim.opt.encoding = "utf-8"
 vim.g.mapleader = " "
@@ -305,7 +294,7 @@ map("n", "gp", "'[v']")
 map("n", "gP", "'[V']")
 
 -- vimrc loading and saving
-map("n", "<leader>sv", Source_local_config)
+map("n", "<leader>sv", F.source_local_config)
 map("n", "<leader>ev", "<cmd>vsplit $MYVIMRC<CR>")
 
 -- clipboard shortcuts
@@ -368,7 +357,7 @@ set_autocmd({ "BufRead", "BufNewFile" }, "vimrc.local", "set filetype=vim")
 set_autocmd({ "BufRead", "BufNewFile" }, "*bashrc", "set filetype=sh")
 
 -- remove trailing whitespace on saving
-set_autocmd("BufWritePre", "*", Remove_trailing_spaces)
+set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
 local langs_with_2_spaces = { "vim", "html" }

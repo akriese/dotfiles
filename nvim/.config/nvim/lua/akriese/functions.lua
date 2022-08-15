@@ -1,4 +1,6 @@
-function Remove_trailing_spaces()
+local _M = {}
+
+function _M.remove_trailing_spaces()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local ok, _ = pcall(vim.cmd, "keeppatterns %s/\\s\\+$//gn")
     -- only remove, if trailing spaces were found
@@ -9,7 +11,26 @@ function Remove_trailing_spaces()
     end
 end
 
-function Source_local_config()
+function _M.source_local_config()
     vim.cmd("source $MYVIMRC")
     require("plenary.reload").reload_module("akriese")
 end
+
+function _M.has(option)
+    return vim.fn.has(option) == 1
+end
+
+function _M.plug(plugin)
+    vim.cmd("Plug " .. plugin)
+end
+
+-- Functional wrapper for mapping custom keybindings
+function _M.map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.keymap.set(mode, lhs, rhs, options)
+end
+
+return _M
