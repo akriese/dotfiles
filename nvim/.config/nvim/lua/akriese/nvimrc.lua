@@ -317,6 +317,8 @@ else
     map("n", "<leader>t", "<cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>")
 end
 
+map("n", "<leader>cd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>")
+
 vim.cmd([[filetype plugin indent on]])
 
 vim.api.nvim_create_augroup("vimrcEx", { clear = true })
