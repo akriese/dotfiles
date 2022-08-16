@@ -36,7 +36,7 @@ telescope.setup {
 }
 
 local live_grep_with_hidden_ignored = function()
-    telescope.builtin.live_grep({ additional_args = function(_)
+    require("telescope.builtin").live_grep({ additional_args = function(_)
         return {"-uu"} -- pass flag to search in hidden and ignored files too
     end })
 end
