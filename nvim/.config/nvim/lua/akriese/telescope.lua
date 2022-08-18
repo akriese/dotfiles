@@ -43,6 +43,7 @@ end
 
 map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>")
+map("n", "<leader>fF", "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<cr>")
 map("n", "<leader>fg", "<cmd>Telescope git_files<cr>")
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
