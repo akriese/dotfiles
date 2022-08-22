@@ -41,6 +41,12 @@ local live_grep_with_hidden_ignored = function()
     end })
 end
 
+local grep_string_with_hidden_ignored = function()
+    require("telescope.builtin").grep_string({ additional_args = function(_)
+        return {"-uu"} -- pass flag to search in hidden and ignored files too
+    end })
+end
+
 map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>")
 map("n", "<leader>fF", "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<cr>")
@@ -52,6 +58,7 @@ map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
 map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
 map("n", "<leader>fT", live_grep_with_hidden_ignored) -- same but includes search in hidden and ignored files
 map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
+map("n", "<leader>fW", grep_string_with_hidden_ignored)
 
 map("n", "<leader>gl", "<cmd>Telescope git_commits<CR>")
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
