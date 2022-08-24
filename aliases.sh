@@ -37,6 +37,7 @@ alias htopu='htop --user $(whoami)'
 alias open='xdg-open'
 alias tmux='TERM=xterm-256color tmux'
 
+alias zrg="rg -z"
 
 export MY_EDITOR
 
