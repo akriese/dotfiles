@@ -38,6 +38,7 @@ alias open='xdg-open'
 alias tmux='TERM=xterm-256color tmux'
 
 alias zrg="rg -z"
+alias findn="find . -name"
 
 export MY_EDITOR
 
