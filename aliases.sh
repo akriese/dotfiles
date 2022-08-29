@@ -15,6 +15,7 @@ alias wcl='wc -l'
 [[ "$SHELL" == *zsh* ]] && alias history='fc -l 1'
 
 alias rcsrc="source $VERSIONED_RC"
+alias tsrc="tmux source-file $DOTFILES/tmux/.config/tmux/tmux.conf"
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
 #alias python='python3'
 alias cod='cd $CODING'
