@@ -41,6 +41,8 @@ alias tmux='TERM=xterm-256color tmux'
 alias zrg="rg -z"
 alias findn="find . -name"
 
+command -v rg &>/dev/null && rgl() { rg --color ansi "$@" | less -R }
+
 export MY_EDITOR
 
 [[ -n "$TMUX" ]] && tmux_update_display
