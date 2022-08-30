@@ -1,7 +1,6 @@
 # Execute this with zsh
 
-if [[ -x $(command -v stow) ]]
-then
+command -v stow &> /dev/null && {
     for ELEMENT in *
     do
         if [[ -d "$ELEMENT" ]]
@@ -16,9 +15,9 @@ then
             esac
         fi
     done
-else
+} || {
     echo "You might want to install 'stow' (e.g. sudo apt install stow)"
-fi
+}
 
 verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
 
