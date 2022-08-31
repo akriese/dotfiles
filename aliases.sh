@@ -15,6 +15,7 @@ alias wcl='wc -l'
 [[ "$SHELL" == *zsh* ]] && alias history='fc -l 1'
 
 alias rcsrc="source $VERSIONED_RC"
+alias tsrc="tmux source-file $DOTFILES/tmux/.config/tmux/tmux.conf"
 #[[ -x /usr/bin/python3.8 ]] && alias python3='/usr/bin/python3.8'
 #alias python='python3'
 alias cod='cd $CODING'
@@ -37,6 +38,10 @@ alias htopu='htop --user $(whoami)'
 alias open='xdg-open'
 alias tmux='TERM=xterm-256color tmux'
 
+alias zrg="rg -z"
+alias findn="find . -name"
+
+command -v rg &>/dev/null && rgl() { rg --color ansi "$@" | less -R }
 
 export MY_EDITOR
 

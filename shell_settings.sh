@@ -1,4 +1,4 @@
-[[ -n $(command -v nvim) ]] && export MY_EDITOR='nvim' || export MY_EDITOR="vi -S $HOME/.vimrc"
+command -v nvim &> /dev/null && export MY_EDITOR='nvim' || export MY_EDITOR="vi -S $HOME/.vimrc"
 export EDITOR=${MY_EDITOR:-vi}
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -22,18 +22,17 @@ then
         add_to_path "$SCRIPTS"
 fi
 
-if [[ -x "$(command -v rg)" ]]
-then
-        export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
-        export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
-        export FZF_ALT_C_COMMAND="rg --files --hidden --follow --sort-files --null 2> /dev/null | xargs -0 dirname | uniq"
-elif [[ -x "$(command -v ack)" ]]
-then
+command -v rg &> /dev/null && {
+    export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
+    export FZF_CTRL_T_COMMAND="rg --files --hidden --follow --sort-files 2> /dev/null "
+    export FZF_ALT_C_COMMAND="rg --files --hidden --follow --sort-files --null 2> /dev/null | xargs -0 dirname | uniq"
+} || {
+    command -v ack &> /dev/null && {
         export FZF_DEFAULT_COMMAND="ack -f -s"
         export FZF_CTRL_T_COMMAND="ack -f -s"
-else
+    } || {
         export FZF_DEFAULT_COMMAND=""
         export FZF_CTRL_T_COMMAND=""
-fi
-
+    }
+}
 

@@ -17,8 +17,7 @@ then
 fi
 
 
-if [[ -n $(command -v oh-my-posh) ]];
-then
+command -v oh-my-posh &> /dev/null && {
     echo "Programm already installed... Want to reinstall / update? [y/N]"
     read answer
     case $answer in
@@ -26,7 +25,7 @@ then
             exit 0
             ;;
     esac
-fi
+}
 
 echo "Installing oh-my-posh to $INSTALL_DIR..."
 case $(uname -m) in
