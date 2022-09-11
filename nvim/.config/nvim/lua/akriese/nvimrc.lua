@@ -80,6 +80,7 @@ plug "'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}"
 plug("'p00f/nvim-ts-rainbow'")
 plug("'nathom/filetype.nvim'") -- for faster startup time
 plug("'nvim-treesitter/playground'")
+plug("'nvim-treesitter/nvim-treesitter-context'")
 
 -- LSP plugins
 plug("'neovim/nvim-lspconfig'")
