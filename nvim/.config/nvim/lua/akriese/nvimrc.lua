@@ -158,6 +158,7 @@ vim.opt.inccommand = "nosplit"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.termguicolors = true
+vim.opt.cursorline = true
 
 if has('wsl') then
     vim.cmd([[
