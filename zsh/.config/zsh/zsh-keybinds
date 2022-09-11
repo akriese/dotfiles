@@ -13,3 +13,4 @@ bindkey '\e' noop
 bindkey '\e[[3;5~' noop
 bindkey '[H' beginning-of-line
 bindkey '[F' end-of-line
+bindkey "^X^E" edit-command-line

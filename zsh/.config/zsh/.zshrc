@@ -20,8 +20,10 @@ _comp_options+=(globdots)
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
+autoload -z edit-command-line
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+zle -N edit-command-line
 
 autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
