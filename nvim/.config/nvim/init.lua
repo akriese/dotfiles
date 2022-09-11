@@ -14,6 +14,9 @@ require("akriese.symbols")
 require("akriese.comment")
 require("akriese.better-escape")
 require("akriese.filetype")
-require('neoscroll').setup()
-require('gitsigns').setup()
+require("akriese.bufferline")
+require("akriese.lualine")
 require("akriese.dap")
+
+require('neoscroll').setup{}
+require('gitsigns').setup{}

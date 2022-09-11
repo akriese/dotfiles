@@ -46,7 +46,7 @@ plug("'nvim-lua/plenary.nvim'") -- General utility
 
 plug("'numToStr/Comment.nvim'") -- comments
 plug("'max397574/better-escape.nvim'") -- Escape with ii without delay
-plug("'itchyny/lightline.vim'") -- Status line
+plug("'nvim-lualine/lualine.nvim'") -- Status line
 plug("'mg979/vim-visual-multi'") -- Multiple Cursors
 plug("'karb94/neoscroll.nvim'") -- Smooth scrolling
 
@@ -100,6 +100,9 @@ plug("'hrsh7th/vim-vsnip-integ'")
 -- file tree
 plug("'kyazdani42/nvim-web-devicons'") -- for file icons
 plug("'kyazdani42/nvim-tree.lua'")
+
+-- buffer line
+plug("'akinsho/bufferline.nvim', { 'tag': 'v2.*' }")
 
 -- Indentation marker
 plug("'lukas-reineke/indent-blankline.nvim'")
