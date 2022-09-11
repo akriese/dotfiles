@@ -29,7 +29,7 @@ command -v oh-my-posh &> /dev/null && {
 
 echo "Installing oh-my-posh to $INSTALL_DIR..."
 case $(uname -m) in
-    armv7l)
+    armv7l | aarch64)
         link="https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-arm"
         ;;
     x86_64)
