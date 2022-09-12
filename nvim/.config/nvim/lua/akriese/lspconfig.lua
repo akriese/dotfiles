@@ -1,4 +1,15 @@
-require("nvim-lsp-installer").setup{}
+require("mason").setup {}
+require("mason-lspconfig").setup {
+    ensure_installed = {
+        "sumneko_lua",
+        "ltex",
+        "bashls",
+        "clangd",
+        "pyright",
+        "rust_analyzer",
+    }
+}
+
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -71,5 +82,5 @@ nvim_lsp.sumneko_lua.setup(
 
 local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
 for _, server in ipairs(default_config_servers) do
-    nvim_lsp[server].setup{}
+    nvim_lsp[server].setup {}
 end

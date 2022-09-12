@@ -84,7 +84,8 @@ plug("'nvim-treesitter/nvim-treesitter-context'")
 
 -- LSP plugins
 plug("'neovim/nvim-lspconfig'")
-plug("'williamboman/nvim-lsp-installer'")
+plug("'williamboman/mason.nvim'")
+plug("'williamboman/mason-lspconfig.nvim'")
 plug("'folke/lua-dev.nvim'")
 
 -- Completion plugins
