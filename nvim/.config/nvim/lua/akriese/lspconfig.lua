@@ -1,5 +1,5 @@
+require("nvim-lsp-installer").setup{}
 local nvim_lsp = require('lspconfig')
-local lsp_installer = require("nvim-lsp-installer")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -45,33 +45,31 @@ local opts = {
     capabilities = capabilities,
 }
 
-lsp_installer.on_server_ready(
-    function(server)
-        if server.name == "ltex" then
-            opts.settings = {
-                ltex = {
-                    language = 'de-DE'
-                    -- language = 'en-US'
-                }
-            }
-            opts.filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
-        end
+nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
+    settings = {
+        ltex = {
+            language = 'de-DE'
+            -- language = 'en-US'
+        }
+    },
+    filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
+}))
 
-        if server.name == "sumneko_lua" then
-            opts = vim.tbl_deep_extend("force", require("lua-dev").setup({
-                library = {
-                    vimruntime = true, -- runtime path
-                    types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-                    plugins = true, -- installed opt or start plugins in packpath
-                    -- you can also specify the list of plugins to make available as a workspace library
-                    -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-                },
-                runtime_path = true, -- enable this to get completion in require strings. Slow!
-                -- pass any additional options that will be merged in the final lsp config
-            }), opts)
-            server:setup(opts)
-        else
-            server:setup(opts)
-        end
-    end
+nvim_lsp.sumneko_lua.setup(
+    vim.tbl_deep_extend("force", require("lua-dev").setup({
+        library = {
+            vimruntime = true, -- runtime path
+            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+            plugins = true, -- installed opt or start plugins in packpath
+            -- you can also specify the list of plugins to make available as a workspace library
+            -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+        },
+        runtime_path = true, -- enable this to get completion in require strings. Slow!
+        -- pass any additional options that will be merged in the final lsp config
+    }), opts)
 )
+
+local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
+for _, server in ipairs(default_config_servers) do
+    nvim_lsp[server].setup{}
+end
