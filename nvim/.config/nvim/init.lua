@@ -18,5 +18,6 @@ require("akriese.bufferline")
 require("akriese.lualine")
 require("akriese.dap")
 require("akriese.scroll")
+require("akriese.harpoon")
 
 require('gitsigns').setup{}

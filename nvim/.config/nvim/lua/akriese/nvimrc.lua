@@ -102,8 +102,9 @@ plug("'hrsh7th/vim-vsnip-integ'")
 plug("'kyazdani42/nvim-web-devicons'") -- for file icons
 plug("'kyazdani42/nvim-tree.lua'")
 
--- buffer line
+-- buffer plugins
 plug("'akinsho/bufferline.nvim', { 'tag': 'v2.*' }")
+plug("'ThePrimeagen/harpoon'")
 
 -- Indentation marker
 plug("'lukas-reineke/indent-blankline.nvim'")
