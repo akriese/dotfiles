@@ -17,6 +17,6 @@ require("akriese.filetype")
 require("akriese.bufferline")
 require("akriese.lualine")
 require("akriese.dap")
+require("akriese.scroll")
 
-require('neoscroll').setup{}
 require('gitsigns').setup{}
