@@ -12,8 +12,12 @@ function _M.remove_trailing_spaces()
 end
 
 function _M.source_local_config()
-    vim.cmd("source $MYVIMRC")
-    require("plenary.reload").reload_module("akriese")
+    for name, _ in pairs(package.loaded) do
+        if name:match('^akriese') then
+            package.loaded[name] = nil
+        end
+    end
+    dofile(vim.env.MYVIMRC)
 end
 
 function _M.has(option)
