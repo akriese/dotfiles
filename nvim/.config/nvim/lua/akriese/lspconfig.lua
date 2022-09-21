@@ -82,5 +82,5 @@ nvim_lsp.sumneko_lua.setup(
 
 local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
 for _, server in ipairs(default_config_servers) do
-    nvim_lsp[server].setup {}
+    nvim_lsp[server].setup(opts)
 end
