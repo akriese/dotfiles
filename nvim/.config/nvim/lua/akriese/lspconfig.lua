@@ -11,6 +11,7 @@ require("mason-lspconfig").setup {
 }
 
 local nvim_lsp = require('lspconfig')
+local F = require"akriese.functions"
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -84,3 +85,6 @@ local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
 end
+
+F.map("n", "<leader>lr", "<cmd>LspRestart<cr>")
+

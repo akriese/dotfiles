@@ -1,3 +1,4 @@
+local F = require"akriese.functions"
 require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = { "c", "cpp", "rust", "python", "css", "html", "bash",
@@ -49,3 +50,4 @@ require'nvim-treesitter.configs'.setup {
 
 require('treesitter-context').setup()
 
+F.map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>")
