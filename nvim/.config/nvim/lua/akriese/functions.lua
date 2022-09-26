@@ -12,6 +12,7 @@ function _M.remove_trailing_spaces()
 end
 
 function _M.source_local_config()
+    vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
     for name, _ in pairs(package.loaded) do
         if name:match('^akriese') then
             package.loaded[name] = nil
