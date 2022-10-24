@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
     sync_install = true,
 
     -- List of parsers to ignore installing
-    ignore_install = { "javascript" },
+    -- ignore_install = { "javascript" },
 
     highlight = {
         enable = true,

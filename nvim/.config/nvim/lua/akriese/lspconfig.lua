@@ -7,6 +7,7 @@ require("mason-lspconfig").setup {
         "clangd",
         "pyright",
         "rust_analyzer",
+        "tsserver",
     }
 }
 
@@ -81,7 +82,7 @@ nvim_lsp.sumneko_lua.setup(
     }), opts)
 )
 
-local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
+local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer", "tsserver"}
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
 end
