@@ -1,4 +1,6 @@
 local F = require"akriese.functions"
+
+require'nvim-treesitter.install'.compilers = { "gcc", "clang", "cc" }
 require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = { "c", "cpp", "rust", "python", "css", "html", "bash",
