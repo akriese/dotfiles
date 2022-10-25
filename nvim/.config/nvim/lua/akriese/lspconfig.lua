@@ -11,6 +11,9 @@ require("mason-lspconfig").setup {
     }
 }
 
+
+require("neodev").setup({})
+
 local nvim_lsp = require('lspconfig')
 local F = require"akriese.functions"
 
@@ -68,19 +71,15 @@ nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
     filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
 }))
 
-nvim_lsp.sumneko_lua.setup(
-    vim.tbl_deep_extend("force", require("lua-dev").setup({
-        library = {
-            vimruntime = true, -- runtime path
-            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = true, -- installed opt or start plugins in packpath
-            -- you can also specify the list of plugins to make available as a workspace library
-            -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-        },
-        runtime_path = true, -- enable this to get completion in require strings. Slow!
-        -- pass any additional options that will be merged in the final lsp config
-    }), opts)
-)
+nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
+    settings = {
+        Lua = {
+            completion = {
+                callSnippets = "Replace"
+            }
+        }
+    }
+}))
 
 local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer", "tsserver"}
 for _, server in ipairs(default_config_servers) do

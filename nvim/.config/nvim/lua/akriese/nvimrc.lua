@@ -88,7 +88,7 @@ plug("'nvim-treesitter/nvim-treesitter-context'")
 plug("'neovim/nvim-lspconfig'")
 plug("'williamboman/mason.nvim'")
 plug("'williamboman/mason-lspconfig.nvim'")
-plug("'folke/lua-dev.nvim'")
+plug("'folke/neodev.nvim'")
 
 -- Completion plugins
 plug("'hrsh7th/nvim-cmp'")
