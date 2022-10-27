@@ -1,14 +1,16 @@
+local mason_installed = {
+    "sumneko_lua",
+    "ltex",
+    "bashls",
+    "clangd",
+    "pyright",
+    "rust_analyzer",
+    "tsserver",
+}
+
 require("mason").setup {}
 require("mason-lspconfig").setup {
-    ensure_installed = {
-        "sumneko_lua",
-        "ltex",
-        "bashls",
-        "clangd",
-        "pyright",
-        "rust_analyzer",
-        "tsserver",
-    }
+    ensure_installed = mason_installed
 }
 
 
@@ -51,7 +53,8 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Use a loop to conveniently call 'setup' on multiple servers and
+local non_default_servers = {}
+
 -- map buffer local keybindings when the language server attaches
 local opts = {
     on_attach = on_attach,
@@ -70,6 +73,7 @@ nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
     },
     filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
 }))
+table.insert(non_default_servers, "ltex")
 
 nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
     settings = {
@@ -80,8 +84,13 @@ nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
         }
     }
 }))
+table.insert(non_default_servers, "sumneko_lua")
 
-local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer", "tsserver"}
+local default_config_servers = vim.tbl_filter(function (x)
+    return vim.tbl_contains(non_default_servers, x)
+end, mason_installed)
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
 end
