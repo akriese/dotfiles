@@ -90,6 +90,10 @@ local default_config_servers = vim.tbl_filter(function (x)
     return vim.tbl_contains(non_default_servers, x)
 end, mason_installed)
 
+if vim.fn.executable("dart") then
+    table.insert(default_config_servers, "dartls")
+end
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
