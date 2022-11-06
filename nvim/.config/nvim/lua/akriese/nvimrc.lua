@@ -360,7 +360,7 @@ set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
 set_autocmd("BufWritePre", "*", vim.lsp.buf.formatting_sync)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
-local langs_with_2_spaces = { "vim", "html" }
+local langs_with_2_spaces = { "vim", "html", "dart" }
 set_autocmd("FileType", langs_with_4_spaces, "setlocal shiftwidth=4 tabstop=4 softtabstop=4")
 set_autocmd("FileType", langs_with_2_spaces, "setlocal sw=2 ts=2 sts=2")
 
