@@ -230,6 +230,8 @@ map("n", "<leader>gg", "<cmd>Git<CR>")
 map("n", "<leader>gL", "<cmd>Gclog<CR>")
 map("n", "<leader>gP", "<cmd>Git push<CR>")
 map("n", "<leader>gp", "<cmd>Git pull<CR>")
+map("n", "<leader><", "<cmd>diffget //3<CR>")
+map("n", "<leader>>", "<cmd>diffget //2<CR>")
 -- Sideways stuff
 map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
