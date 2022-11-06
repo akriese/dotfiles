@@ -266,15 +266,17 @@ map("n", "Q", "<Nop>")
 map("n", "Y", "y$")
 map("i", "<C-BS>", '<C-W>')
 map("i", "<C-h>", '<C-W>')
-map("n", "<leader>[", '<cmd>cprevious<cr>')
-map("n", "<leader>]", '<cmd>cnext<cr>')
 
--- recenter after search
+-- recenter after search or jump
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "*", "*zz")
 map("n", "#", "#zz")
 map("n", "J", "mzJ`z")
+map("n", "<C-o>", "<C-o>zz")
+map("n", "<C-i>", "<C-i>zz")
+map("n", "<leader>[", '<cmd>cprevious<cr>zz')
+map("n", "<leader>]", '<cmd>cnext<cr>zz')
 
 -- moving text
 map("i", "<C-k>", "<ESC><cmd>m .-2<CR>==i")
