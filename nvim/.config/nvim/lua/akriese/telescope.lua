@@ -26,10 +26,10 @@ telescope.setup {
     },
     extensions = {
         fzf = {
-            fuzzy = true,                    -- false will only do exact matching
-            override_generic_sorter = true,  -- override the generic sorter
-            override_file_sorter = true,     -- override the file sorter
-            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
         }
     }
@@ -37,13 +37,13 @@ telescope.setup {
 
 local live_grep_with_hidden_ignored = function()
     require("telescope.builtin").live_grep({ additional_args = function(_)
-        return {"-uu"} -- pass flag to search in hidden and ignored files too
+        return { "-uu" } -- pass flag to search in hidden and ignored files too
     end })
 end
 
 local grep_string_with_hidden_ignored = function()
     require("telescope.builtin").grep_string({ additional_args = function(_)
-        return {"-uu"} -- pass flag to search in hidden and ignored files too
+        return { "-uu" } -- pass flag to search in hidden and ignored files too
     end })
 end
 

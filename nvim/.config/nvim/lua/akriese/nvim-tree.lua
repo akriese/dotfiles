@@ -1,4 +1,4 @@
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
     disable_netrw       = true,
     hijack_netrw        = true,
     open_on_setup       = false,
@@ -10,7 +10,7 @@ require'nvim-tree'.setup {
         enable = true,
         auto_open = true
     },
-    diagnostics = {
+    diagnostics         = {
         enable = false,
         icons = {
             hint = "",
@@ -24,34 +24,34 @@ require'nvim-tree'.setup {
         update_cwd  = true,
         ignore_list = {}
     },
-    system_open = {
+    system_open         = {
         cmd  = nil,
         args = {}
     },
-    filters = {
+    filters             = {
         dotfiles = false,
         custom = {}
     },
-    git = {
+    git                 = {
         enable = true,
         ignore = true,
         timeout = 500,
     },
-    view = {
+    view                = {
         width = 30,
         hide_root_folder = false,
         side = 'left',
         mappings = {
             custom_only = false,
             list = {
-                {key = "+", action = "cd"},
+                { key = "+", action = "cd" },
             },
         },
         number = false,
         relativenumber = false,
         signcolumn = "yes"
     },
-    trash = {
+    trash               = {
         cmd = "trash",
         require_confirm = true
     }

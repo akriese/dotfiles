@@ -33,7 +33,7 @@ if vim.fn.empty("glob('~/.vim/autoload/plug.vim')") == 1 then
         ]])
     end
 
-    vim.api.nvim_create_autocmd("VimEnter", { pattern = "*", command = "PlugInstall --sync | source $MYVIMRC"})
+    vim.api.nvim_create_autocmd("VimEnter", { pattern = "*", command = "PlugInstall --sync | source $MYVIMRC" })
 end
 
 vim.opt.rtp:append("~/.vim/")
@@ -128,20 +128,20 @@ vim.cmd("colorscheme kanagawa")
 vim.opt.background = "dark"
 
 vim.opt.hlsearch = true
-vim.opt.backspace = "2"   -- Backspace deletes like most programs in insert mode
+vim.opt.backspace = "2" -- Backspace deletes like most programs in insert mode
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.showmode = false
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.swapfile = false    -- http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+vim.opt.swapfile = false -- http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 vim.opt.history = 50
-vim.opt.ruler = true         -- show the cursor position all the time
-vim.opt.showcmd = true       -- display incomplete commands
-vim.opt.incsearch = true    -- do incremental searching
-vim.opt.laststatus = 2  -- Always display the status line
-vim.opt.autowrite = true     -- Automatically :write before running commands
+vim.opt.ruler = true -- show the cursor position all the time
+vim.opt.showcmd = true -- display incomplete commands
+vim.opt.incsearch = true -- do incremental searching
+vim.opt.laststatus = 2 -- Always display the status line
+vim.opt.autowrite = true -- Automatically :write before running commands
 
 vim.opt.mouse = "a"
 if not has('nvim') then
@@ -238,24 +238,26 @@ map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
 map("n", "<leader>st", "<cmd>SymbolsOutline<cr>")
 
 -- Debug commands
-local dap = require'dap'
-local widgets = require'dap.ui.widgets'
-map("n", "<F5>", dap.continue, {silent = true})
-map("n", "<F10>", dap.step_over, {silent = true})
-map("n", "<F11>", dap.step_into, {silent = true})
-map("n", "<F12>", dap.step_out, {silent = true})
-map("n", "<leader>db", dap.toggle_breakpoint, {silent = true})
-map("n", "<leader>di", dap.step_into, {silent = true})
-map("n", "<leader>do", dap.step_over, {silent = true})
-map("n", "<leader>dc", dap.continue, {silent = true})
-map("n", "<leader>dt", dap.terminate, {silent = true})
-map("n", "<leader>dr", dap.repl.open, {silent = true})
-map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, {silent = true})
-map("n", "<leader>K", widgets.hover, {silent = true})
+local dap = require 'dap'
+local widgets = require 'dap.ui.widgets'
+map("n", "<F5>", dap.continue, { silent = true })
+map("n", "<F10>", dap.step_over, { silent = true })
+map("n", "<F11>", dap.step_into, { silent = true })
+map("n", "<F12>", dap.step_out, { silent = true })
+map("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
+map("n", "<leader>di", dap.step_into, { silent = true })
+map("n", "<leader>do", dap.step_over, { silent = true })
+map("n", "<leader>dc", dap.continue, { silent = true })
+map("n", "<leader>dt", dap.terminate, { silent = true })
+map("n", "<leader>dr", dap.repl.open, { silent = true })
+map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, { silent = true })
+map("n", "<leader>K", widgets.hover, { silent = true })
 map("n", "<leader>D", vim.diagnostic.open_float, { silent = true })
 
-vim.api.nvim_create_autocmd("FileType", { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
-vim.api.nvim_create_autocmd("FileType", { pattern = "dap-float", command = "nnoremap <buffer><silent> <esc> <cmd>close!<CR>" })
+vim.api.nvim_create_autocmd("FileType",
+    { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
+vim.api.nvim_create_autocmd("FileType",
+    { pattern = "dap-float", command = "nnoremap <buffer><silent> <esc> <cmd>close!<CR>" })
 
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
@@ -303,7 +305,7 @@ map("n", "<leader>P", 'o<esc>"+p')
 map("n", "<leader>p", '"+p')
 
 -- Switch between the last two files
-map("n", "<Leader><Leader>",  "<C-^>")
+map("n", "<Leader><Leader>", "<C-^>")
 
 -- Keymaps to keep me from using arrow keys to navigate
 map("n", "<Left>", "<cmd>echoe 'Use h'<CR>")
@@ -339,9 +341,9 @@ vim.api.nvim_create_augroup("vimrcEx", { clear = true })
 
 local set_autocmd = function(event, pattern, cmd)
     if type(cmd) == "string" then
-        vim.api.nvim_create_autocmd(event, {group="vimrcEx", pattern=pattern, command=cmd})
+        vim.api.nvim_create_autocmd(event, { group = "vimrcEx", pattern = pattern, command = cmd })
     else
-        vim.api.nvim_create_autocmd(event, {group="vimrcEx", pattern=pattern, callback=cmd})
+        vim.api.nvim_create_autocmd(event, { group = "vimrcEx", pattern = pattern, callback = cmd })
     end
 end
 

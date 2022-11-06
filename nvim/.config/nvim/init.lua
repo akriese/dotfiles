@@ -20,4 +20,4 @@ require("akriese.dap")
 require("akriese.scroll")
 require("akriese.harpoon")
 
-require('gitsigns').setup{}
+require('gitsigns').setup {}

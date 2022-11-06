@@ -27,7 +27,7 @@ local kind_icons = {
     TypeParameter = "",
 }
 
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
     snippet = {
