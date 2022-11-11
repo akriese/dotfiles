@@ -357,4 +357,4 @@ local langs_with_2_spaces = { "vim", "html" }
 set_autocmd("FileType", langs_with_4_spaces, "setlocal shiftwidth=4 tabstop=4 softtabstop=4")
 set_autocmd("FileType", langs_with_2_spaces, "setlocal sw=2 ts=2 sts=2")
 
-set_autocmd({ "BufRead", "BufNewFile" }, { "Snakefile", "*.smk*" }, "set filetype=snakemake commentstring=#%s")
+set_autocmd({ "BufRead", "BufNewFile" }, { "Snakefile", "*.smk", "*.smk.py" }, "set filetype=snakemake commentstring=#%s")
