@@ -1,14 +1,20 @@
+local mason_installed = {
+    "sumneko_lua",
+    "ltex",
+    "bashls",
+    "clangd",
+    "pyright",
+    "rust_analyzer",
+    "tsserver",
+}
+
 require("mason").setup {}
 require("mason-lspconfig").setup {
-    ensure_installed = {
-        "sumneko_lua",
-        "ltex",
-        "bashls",
-        "clangd",
-        "pyright",
-        "rust_analyzer",
-    }
+    ensure_installed = mason_installed
 }
+
+
+require("neodev").setup({})
 
 local nvim_lsp = require('lspconfig')
 local F = require"akriese.functions"
@@ -45,9 +51,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Use a loop to conveniently call 'setup' on multiple servers and
+local non_default_servers = {}
+
 -- map buffer local keybindings when the language server attaches
 local opts = {
     on_attach = on_attach,
@@ -66,22 +73,28 @@ nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
     },
     filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
 }))
+table.insert(non_default_servers, "ltex")
 
-nvim_lsp.sumneko_lua.setup(
-    vim.tbl_deep_extend("force", require("lua-dev").setup({
-        library = {
-            vimruntime = true, -- runtime path
-            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = true, -- installed opt or start plugins in packpath
-            -- you can also specify the list of plugins to make available as a workspace library
-            -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-        },
-        runtime_path = true, -- enable this to get completion in require strings. Slow!
-        -- pass any additional options that will be merged in the final lsp config
-    }), opts)
-)
+nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
+    settings = {
+        Lua = {
+            completion = {
+                callSnippets = "Replace"
+            }
+        }
+    }
+}))
+table.insert(non_default_servers, "sumneko_lua")
 
-local default_config_servers = {"pyright", "bashls", "clangd", "rust_analyzer"}
+local default_config_servers = vim.tbl_filter(function (x)
+    return vim.tbl_contains(non_default_servers, x)
+end, mason_installed)
+
+if vim.fn.executable("dart") then
+    table.insert(default_config_servers, "dartls")
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
 end

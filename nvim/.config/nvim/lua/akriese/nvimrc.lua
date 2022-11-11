@@ -9,11 +9,13 @@ vim.g.mapleader = " "
 -- vim.opt.nocompatible = true
 vim.cmd("filetype off")
 
-if has('win32') or has('win64') then
+if has('win32') then
     vim.cmd([[
-        set shell=powershell shellquote= shellpipe=\| shellxquote=
-        set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-        set shellredir=\|\ Out-File\ -Encoding\ UTF8
+        let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+        let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+        let &shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
+        let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+        set shellquote= shellxquote=
     ]])
 end
 
@@ -86,7 +88,7 @@ plug("'nvim-treesitter/nvim-treesitter-context'")
 plug("'neovim/nvim-lspconfig'")
 plug("'williamboman/mason.nvim'")
 plug("'williamboman/mason-lspconfig.nvim'")
-plug("'folke/lua-dev.nvim'")
+plug("'folke/neodev.nvim'")
 
 -- Completion plugins
 plug("'hrsh7th/nvim-cmp'")
