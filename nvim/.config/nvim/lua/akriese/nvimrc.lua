@@ -252,7 +252,6 @@ map("n", "<leader>dt", dap.terminate, { silent = true })
 map("n", "<leader>dr", dap.repl.open, { silent = true })
 map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, { silent = true })
 map("n", "<leader>K", widgets.hover, { silent = true })
-map("n", "<leader>D", vim.diagnostic.open_float, { silent = true })
 
 vim.api.nvim_create_autocmd("FileType",
     { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
