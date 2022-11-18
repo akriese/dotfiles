@@ -239,27 +239,6 @@ map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
 map("n", "<leader>st", "<cmd>SymbolsOutline<cr>")
 
--- Debug commands
-local dap = require 'dap'
-local widgets = require 'dap.ui.widgets'
-map("n", "<F5>", dap.continue, { silent = true })
-map("n", "<F10>", dap.step_over, { silent = true })
-map("n", "<F11>", dap.step_into, { silent = true })
-map("n", "<F12>", dap.step_out, { silent = true })
-map("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
-map("n", "<leader>di", dap.step_into, { silent = true })
-map("n", "<leader>do", dap.step_over, { silent = true })
-map("n", "<leader>dc", dap.continue, { silent = true })
-map("n", "<leader>dt", dap.terminate, { silent = true })
-map("n", "<leader>dr", dap.repl.open, { silent = true })
-map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, { silent = true })
-map("n", "<leader>K", widgets.hover, { silent = true })
-
-vim.api.nvim_create_autocmd("FileType",
-    { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
-vim.api.nvim_create_autocmd("FileType",
-    { pattern = "dap-float", command = "nnoremap <buffer><silent> <esc> <cmd>close!<CR>" })
-
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
 map("n", "<leader>w", "<cmd>w<CR>")
