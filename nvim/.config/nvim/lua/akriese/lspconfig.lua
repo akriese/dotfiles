@@ -88,7 +88,7 @@ nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
 table.insert(non_default_servers, "sumneko_lua")
 
 local default_config_servers = vim.tbl_filter(function(x)
-    return vim.tbl_contains(non_default_servers, x)
+    return not vim.tbl_contains(non_default_servers, x)
 end, mason_installed)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
