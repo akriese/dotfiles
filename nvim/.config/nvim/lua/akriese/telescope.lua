@@ -35,6 +35,8 @@ telescope.setup {
     }
 }
 
+telescope.load_extension("flutter")
+
 local live_grep_with_hidden_ignored = function()
     require("telescope.builtin").live_grep({ additional_args = function(_)
         return { "-uu" } -- pass flag to search in hidden and ignored files too
@@ -62,6 +64,8 @@ map("n", "<leader>fW", grep_string_with_hidden_ignored)
 
 map("n", "<leader>gl", "<cmd>Telescope git_commits<CR>")
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
+map("n", "<leader>fl", "<cmd>Telescope flutter commands<cr>")
+
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:

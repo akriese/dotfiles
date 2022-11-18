@@ -68,6 +68,7 @@ plug("'guns/xterm-color-table.vim'")
 -- Language sepcifics
 plug("'pprovost/vim-ps1'")
 plug("'snakemake/snakemake', {'rtp': 'misc/vim/'}")
+plug("'akinsho/flutter-tools.nvim'")
 
 -- Debugging
 plug("'mfussenegger/nvim-dap'")
@@ -366,3 +367,12 @@ set_autocmd("FileType", langs_with_4_spaces, "setlocal shiftwidth=4 tabstop=4 so
 set_autocmd("FileType", langs_with_2_spaces, "setlocal sw=2 ts=2 sts=2")
 
 set_autocmd({ "BufRead", "BufNewFile" }, { "Snakefile", "*.smk*" }, "set filetype=snakemake commentstring=#%s")
+
+set_autocmd({ "BufEnter" }, { "__FLUTTER_DEV_LOG__" }, function()
+    local opts = { buffer = true }
+    map("n", "r", ":FlutterReload<cr>", opts)
+    map("n", "R", ":FlutterRestart<cr>", opts)
+    map("n", "q", ":FlutterQuit<cr>", opts)
+    map("n", "c", ":FlutterLogClear<cr>", opts)
+    map("n", "d", ":FlutterDetach<cr>", opts)
+end)

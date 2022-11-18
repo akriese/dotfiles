@@ -91,10 +91,6 @@ local default_config_servers = vim.tbl_filter(function(x)
     return vim.tbl_contains(non_default_servers, x)
 end, mason_installed)
 
-if vim.fn.executable("dart") then
-    table.insert(default_config_servers, "dartls")
-end
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
@@ -102,3 +98,24 @@ end
 
 F.map("n", "<leader>lr", "<cmd>LspRestart<cr>")
 
+
+local function flutter_path()
+    local cmd = (vim.fn.has('win32') == 1) and "flutter.bat" or "flutter"
+    return vim.fn.exepath(cmd)
+end
+
+-- flutter setup
+require("flutter-tools").setup {
+    flutter_path = flutter_path(),
+    debugger = { -- integrate with nvim dap + install dart code debugger
+        enabled = true,
+        run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
+        -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
+        -- see |:help dap.set_exception_breakpoints()| for more info
+        exception_breakpoints = {},
+    },
+    lsp = {
+        on_attach = on_attach,
+        capabilities = capabilities
+    }
+}
