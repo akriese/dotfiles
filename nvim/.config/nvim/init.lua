@@ -21,3 +21,4 @@ require("akriese.scroll")
 require("akriese.harpoon")
 
 require('gitsigns').setup {}
+require('project_nvim').setup {}

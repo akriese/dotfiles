@@ -51,6 +51,7 @@ plug("'max397574/better-escape.nvim'") -- Escape with ii without delay
 plug("'nvim-lualine/lualine.nvim'") -- Status line
 plug("'mg979/vim-visual-multi'") -- Multiple Cursors
 plug("'karb94/neoscroll.nvim'") -- Smooth scrolling
+plug("'ahmedkhalf/project.nvim'") -- project root cd
 
 -- Git plugins
 plug("'lewis6991/gitsigns.nvim'")
