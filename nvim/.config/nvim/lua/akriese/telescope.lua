@@ -61,6 +61,7 @@ map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 map("n", "<leader>fW", grep_string_with_hidden_ignored)
 
 map("n", "<leader>gl", "<cmd>Telescope git_commits<CR>")
+map("n", "<leader>gL", "<cmd>Telescope git_bcommits<CR>")
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 map("n", "<leader>fl", "<cmd>Telescope flutter commands<cr>")
 map("n", "<leader>fp", "<cmd>Telescope projects<cr>")
