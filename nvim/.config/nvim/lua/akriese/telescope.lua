@@ -26,6 +26,12 @@ local git_diff_single = function(prompt_bufnr)
     vim.cmd("Git show " .. selection.value)
 end
 
+local git_yank_hash = function(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    actions.close(prompt_bufnr)
+    vim.fn.setreg('"', selection.value)
+end
+
 -- view diff between two selected commits
 -- the diff is from the first selected to the second
 -- exactly two commits have to be selected to perform the diff
@@ -79,7 +85,8 @@ telescope.setup {
                     ["<C-b>i"] = git_rebase_interactive,
                     ["<C-d>s"] = git_diff_since,
                     ["<C-d>o"] = git_diff_single,
-                    ["<C-d>b"] = git_diff_between
+                    ["<C-d>b"] = git_diff_between,
+                    ["<C-y>"]  = git_yank_hash,
                 },
             }
         }
