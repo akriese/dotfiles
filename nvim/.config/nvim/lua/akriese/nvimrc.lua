@@ -307,14 +307,18 @@ map("n", "<C-l>", "<C-w>l")
 
 -- Terminal
 map("t", "ii", [[<C-\><C-n>]])
+
+local term_cmd = ""
 if string.find(vim.o.shell, "zsh") then
-    map("n", "<leader>t", "<cmd>split term://export THIS=%; unset ZDOTDIR; zsh<CR><cmd>resize12<cr>")
+    term_cmd = "export THIS='%'; unset ZDOTDIR; zsh"
 elseif string.find(vim.o.shell, "bash") then
-    map("n", "<leader>t", "<cmd>split term://export THIS=%; bash<CR><cmd>resize12<cr>")
+    term_cmd = "export THIS='%'; bash"
 elseif string.find(vim.o.shell, "pwsh") then
     -- $THIS is a reserved name in powershell, thus we cannot use it here
-    map("n", "<leader>t", "<cmd>split term://pwsh<CR><cmd>resize12<cr>")
+    term_cmd = 'pwsh'
 end
+
+map("n", "<leader>t", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>")
 
 map("n", "<leader>cd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>")
 
