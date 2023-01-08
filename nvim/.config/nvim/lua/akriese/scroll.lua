@@ -10,11 +10,11 @@ require('neoscroll').setup {
     easing_function = "cubic", -- Default easing function
     pre_hook = function() -- Function to run before the scrolling animation starts
         ts_ctx.disable()
-        vim.cmd [[TSBufToggle highlight]]
+        -- vim.cmd [[TSBufToggle highlight]]
     end,
     post_hook = function() -- Function to run after the scrolling animation ends
         ts_ctx.enable()
-        vim.cmd [[TSBufToggle highlight]]
+        -- vim.cmd [[TSBufToggle highlight]]
     end,
     performance_mode = false, -- Disable "Performance Mode" on all buffers.
 }
