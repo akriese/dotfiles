@@ -99,8 +99,9 @@ plug("'hrsh7th/cmp-path'")
 plug("'hrsh7th/cmp-cmdline'")
 plug("'hrsh7th/cmp-nvim-lsp'")
 plug("'hrsh7th/cmp-nvim-lua'")
-plug("'hrsh7th/vim-vsnip'")
-plug("'hrsh7th/vim-vsnip-integ'")
+plug("'L3MON4D3/LuaSnip'")
+plug("'saadparwaiz1/cmp_luasnip'")
+plug("'rafamadriz/friendly-snippets'")
 
 -- file tree
 plug("'kyazdani42/nvim-web-devicons'") -- for file icons
