@@ -66,7 +66,7 @@ plug("'AndrewRadev/sideways.vim'") -- Swap function arguments
 plug("'rebelot/kanagawa.nvim'")
 plug("'guns/xterm-color-table.vim'")
 
--- Language sepcifics
+-- Language specifics
 plug("'pprovost/vim-ps1'")
 plug("'snakemake/snakemake', {'rtp': 'misc/vim/'}")
 plug("'akinsho/flutter-tools.nvim'")
@@ -124,6 +124,9 @@ plug("'junegunn/fzf.vim'")
 
 -- Sidebar
 plug("'simrat39/symbols-outline.nvim'")
+
+-- github integration
+plug "'pwntester/octo.nvim'"
 
 vim.cmd("call plug#end()")
 
