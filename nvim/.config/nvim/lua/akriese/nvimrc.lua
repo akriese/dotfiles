@@ -238,6 +238,12 @@ map("n", "<leader>gP", "<cmd>Git push<CR>")
 map("n", "<leader>gp", "<cmd>Git pull<CR>")
 map("n", "<leader><", "<cmd>diffget //3<CR>")
 map("n", "<leader>>", "<cmd>diffget //2<CR>")
+
+-- Octo (GitHub integration) commands
+map("n", "<leader>opl", "<cmd>Octo pr list<cr>")
+map("n", "<leader>opc", ":Octo pr checkout")
+map("n", "<leader>orl", "<cmd>Octo repo list<cr>")
+
 -- Sideways stuff
 map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
