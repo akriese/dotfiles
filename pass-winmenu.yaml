@@ -61,7 +61,7 @@ password-store:
         #  - $date     (The current date, formatted as yyyy-MM-dd)
         #  - $time     (The current time, formatted as HH:mm:ss)
         default-content: |
-            Username:
+            login:
         # Example configuration (uncomment to enable):
 #        default-content: |
 #            Username: $filename
