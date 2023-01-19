@@ -252,6 +252,7 @@ map("n", "<leader>st", "<cmd>SymbolsOutline<cr>")
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
 map("n", "<leader>w", "<cmd>w<CR>")
+map("n", "<leader>W", "<cmd>noautocmd w<CR>")
 map("n", "<leader>q", "<cmd>q<CR>")
 map("n", "<leader>Q", "<cmd>qa<CR>")
 map("n", "Q", "<Nop>")
