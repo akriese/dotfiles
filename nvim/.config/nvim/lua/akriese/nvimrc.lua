@@ -357,7 +357,7 @@ set_autocmd({ "BufRead", "BufNewFile" }, "*bashrc", "set filetype=sh")
 
 -- remove trailing whitespace on saving
 set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
-set_autocmd("BufWritePre", "*", vim.lsp.buf.formatting_sync)
+set_autocmd("BufWritePre", "*", function() vim.lsp.buf.format() end)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
 local langs_with_2_spaces = { "vim", "html", "dart" }
