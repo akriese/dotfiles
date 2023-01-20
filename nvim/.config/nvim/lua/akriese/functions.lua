@@ -2,11 +2,11 @@ local _M = {}
 
 function _M.remove_trailing_spaces()
     local cursor = vim.api.nvim_win_get_cursor(0)
-    local ok, _ = pcall(vim.cmd, "keeppatterns %s/\\s\\+$//gn")
+    local ok, _ = pcall(vim.cmd, "silent keeppatterns %s/\\s\\+$//gn")
     -- only remove, if trailing spaces were found
     -- also jump back to where the cursor was before
     if ok then
-        vim.cmd("keeppatterns %s/\\s\\+$//g")
+        vim.cmd("silent keeppatterns %s/\\s\\+$//g")
         vim.api.nvim_win_set_cursor(0, cursor)
     end
 end
