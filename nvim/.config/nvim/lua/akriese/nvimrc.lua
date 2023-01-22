@@ -325,9 +325,12 @@ if string.find(vim.o.shell, "zsh") then
     term_cmd = "export THIS='%'; unset ZDOTDIR; zsh"
 elseif string.find(vim.o.shell, "bash") then
     term_cmd = "export THIS='%'; bash"
-elseif string.find(vim.o.shell, "pwsh") then
-    -- $THIS is a reserved name in powershell, thus we cannot use it here
-    term_cmd = 'pwsh'
+else
+    -- we assume that this can only be powershell / pwsh
+    -- If you want your shell to have access to $THIS, you have to set it explicitly
+    -- in another case.
+    -- $THIS is a reserved name in powershell / pwsh, thus we cannot use it here
+    term_cmd = vim.o.shell
 end
 
 map("n", "<leader>t", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>")
