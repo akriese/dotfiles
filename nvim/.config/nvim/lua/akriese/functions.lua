@@ -38,4 +38,13 @@ function _M.map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+function _M.current_branch()
+    local output = vim.fn.system("git branch --show-current"):gsub("\n", "")
+    if output ~= "" then
+        return output
+    else
+        return ""
+    end
+end
+
 return _M
