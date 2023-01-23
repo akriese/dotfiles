@@ -66,7 +66,7 @@ plug("'AndrewRadev/sideways.vim'") -- Swap function arguments
 plug("'rebelot/kanagawa.nvim'")
 plug("'guns/xterm-color-table.vim'")
 
--- Language sepcifics
+-- Language specifics
 plug("'pprovost/vim-ps1'")
 plug("'snakemake/snakemake', {'rtp': 'misc/vim/'}")
 plug("'akinsho/flutter-tools.nvim'")
@@ -99,8 +99,8 @@ plug("'hrsh7th/cmp-path'")
 plug("'hrsh7th/cmp-cmdline'")
 plug("'hrsh7th/cmp-nvim-lsp'")
 plug("'hrsh7th/cmp-nvim-lua'")
-plug("'hrsh7th/vim-vsnip'")
-plug("'hrsh7th/vim-vsnip-integ'")
+plug("'L3MON4D3/LuaSnip'")
+plug("'saadparwaiz1/cmp_luasnip'")
 plug("'rafamadriz/friendly-snippets'")
 
 -- file tree
@@ -124,6 +124,9 @@ plug("'junegunn/fzf.vim'")
 
 -- Sidebar
 plug("'simrat39/symbols-outline.nvim'")
+
+-- github integration
+plug "'pwntester/octo.nvim'"
 
 vim.cmd("call plug#end()")
 
@@ -232,9 +235,16 @@ map("n", "<leader>gc", ":Git cherry-pick")
 map("n", "<leader>gg", "<cmd>Git<CR>")
 map("n", "<leader>gL", "<cmd>Gclog<CR>")
 map("n", "<leader>gP", "<cmd>Git push<CR>")
+map("n", "<leader>guP", function() vim.cmd("Git push --set-upstream origin " .. F.current_branch()) end)
 map("n", "<leader>gp", "<cmd>Git pull<CR>")
 map("n", "<leader><", "<cmd>diffget //3<CR>")
 map("n", "<leader>>", "<cmd>diffget //2<CR>")
+
+-- Octo (GitHub integration) commands
+map("n", "<leader>opl", "<cmd>Octo pr list<cr>")
+map("n", "<leader>opc", ":Octo pr checkout")
+map("n", "<leader>orl", "<cmd>Octo repo list<cr>")
+
 -- Sideways stuff
 map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
@@ -243,6 +253,7 @@ map("n", "<leader>st", "<cmd>SymbolsOutline<cr>")
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
 map("n", "<leader>w", "<cmd>w<CR>")
+map("n", "<leader>W", "<cmd>noautocmd w<CR>")
 map("n", "<leader>q", "<cmd>q<CR>")
 map("n", "<leader>Q", "<cmd>qa<CR>")
 map("n", "Q", "<Nop>")
@@ -314,9 +325,12 @@ if string.find(vim.o.shell, "zsh") then
     term_cmd = "export THIS='%'; unset ZDOTDIR; zsh"
 elseif string.find(vim.o.shell, "bash") then
     term_cmd = "export THIS='%'; bash"
-elseif string.find(vim.o.shell, "pwsh") then
-    -- $THIS is a reserved name in powershell, thus we cannot use it here
-    term_cmd = 'pwsh'
+else
+    -- we assume that this can only be powershell / pwsh
+    -- If you want your shell to have access to $THIS, you have to set it explicitly
+    -- in another case.
+    -- $THIS is a reserved name in powershell / pwsh, thus we cannot use it here
+    term_cmd = vim.o.shell
 end
 
 map("n", "<leader>t", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>")
@@ -347,7 +361,7 @@ set_autocmd({ "BufRead", "BufNewFile" }, "*bashrc", "set filetype=sh")
 
 -- remove trailing whitespace on saving
 set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
-set_autocmd("BufWritePre", "*", vim.lsp.buf.formatting_sync)
+set_autocmd("BufWritePre", "*", function() vim.lsp.buf.format() end)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
 local langs_with_2_spaces = { "vim", "html", "dart" }

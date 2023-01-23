@@ -2,11 +2,11 @@ local _M = {}
 
 function _M.remove_trailing_spaces()
     local cursor = vim.api.nvim_win_get_cursor(0)
-    local ok, _ = pcall(vim.cmd, "keeppatterns %s/\\s\\+$//gn")
+    local ok, _ = pcall(vim.cmd, "silent keeppatterns %s/\\s\\+$//gn")
     -- only remove, if trailing spaces were found
     -- also jump back to where the cursor was before
     if ok then
-        vim.cmd("keeppatterns %s/\\s\\+$//g")
+        vim.cmd("silent keeppatterns %s/\\s\\+$//g")
         vim.api.nvim_win_set_cursor(0, cursor)
     end
 end
@@ -36,6 +36,15 @@ function _M.map(mode, lhs, rhs, opts)
         options = vim.tbl_extend("force", options, opts)
     end
     vim.keymap.set(mode, lhs, rhs, options)
+end
+
+function _M.current_branch()
+    local output = vim.fn.system("git branch --show-current"):gsub("\n", "")
+    if output ~= "" then
+        return output
+    else
+        return ""
+    end
 end
 
 return _M
