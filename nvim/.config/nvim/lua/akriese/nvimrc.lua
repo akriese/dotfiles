@@ -101,6 +101,7 @@ plug("'hrsh7th/cmp-nvim-lsp'")
 plug("'hrsh7th/cmp-nvim-lua'")
 plug("'hrsh7th/vim-vsnip'")
 plug("'hrsh7th/vim-vsnip-integ'")
+plug("'rafamadriz/friendly-snippets'")
 
 -- file tree
 plug("'kyazdani42/nvim-web-devicons'") -- for file icons
