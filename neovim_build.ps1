@@ -13,7 +13,7 @@ $install_dir="C:\tools\nvim_build\"
 
 $build_dir=".\build\debug"
 
-# load vscode env variables
+# load visual studio env variables
 vsdevcmd.bat -arch=x64 -no_logo
 
 # create dependency dir
