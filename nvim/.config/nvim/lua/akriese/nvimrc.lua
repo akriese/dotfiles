@@ -102,6 +102,7 @@ plug("'hrsh7th/cmp-nvim-lua'")
 plug("'L3MON4D3/LuaSnip'")
 plug("'saadparwaiz1/cmp_luasnip'")
 plug("'rafamadriz/friendly-snippets'")
+plug("'danymat/neogen'")
 
 -- file tree
 plug("'kyazdani42/nvim-web-devicons'") -- for file icons
@@ -227,6 +228,7 @@ vim.cmd("highlight ColorColumn ctermbg=52")
 
 -- ALL PLUGIN RELATED mappings
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>")
+map("n", "<leader>k", require('neogen').generate)
 
 -- Git stuff
 map("n", "<leader>ga", "<cmd>Git commit --amend<CR>")
