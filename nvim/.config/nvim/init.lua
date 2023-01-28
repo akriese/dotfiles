@@ -2,7 +2,6 @@
 require("akriese.functions")
 -- load most of the general config (keymaps, globals, Plug, etc)
 require("akriese.nvimrc")
-
 -- Plugin setups
 require("akriese.nvim-cmp")
 require("akriese.treesitter")
