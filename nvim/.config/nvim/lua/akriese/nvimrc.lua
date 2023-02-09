@@ -2,7 +2,6 @@ local F = require("akriese.functions")
 
 local map = F.map
 local has = F.has
-local plug = F.plug
 
 vim.opt.encoding = "utf-8"
 vim.g.mapleader = " "
@@ -19,117 +18,119 @@ if has('win32') then
     ]])
 end
 
-if vim.fn.empty("glob('~/.vim/autoload/plug.vim')") == 1 then
-    if has('win32') or has('win64') then
-        vim.cmd([[
-            !New-Item -Path ~/.vim/autoload/ -ItemType Directory -ea 0
-            !Invoke-WebRequest -OutFile ~/.vim/autoload/plug.vim
-          \ -Uri https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        ]])
-    else
-        vim.cmd([[
-            silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        ]])
-    end
-
-    vim.api.nvim_create_autocmd("VimEnter", { pattern = "*", command = "PlugInstall --sync | source $MYVIMRC" })
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.opt.rtp:append("~/.vim/")
-vim.cmd([[ call plug#begin('~/.vim/plugged') ]])
+local plugins = {
+    -- Miscellaneous plugins
+    -- "tmhedberg/SimpylFold", -- Folds
+    "nvim-lua/plenary.nvim", -- General utility
+    "numToStr/Comment.nvim", -- comments
+    "max397574/better-escape.nvim", -- Escape with ii without delay
+    "nvim-lualine/lualine.nvim", -- Status line
+    "mg979/vim-visual-multi", -- Multiple Cursors
+    "karb94/neoscroll.nvim", -- Smooth scrolling
+    "ahmedkhalf/project.nvim", -- project root cd
 
--- plugin Manager
-plug("'junegunn/vim-plug'")
+    -- Git plugins
+    "lewis6991/gitsigns.nvim",
+    "tpope/vim-fugitive",
 
--- Miscellaneous plugins
-plug("'tmhedberg/SimpylFold'") -- Folds
-plug("'nvim-lua/plenary.nvim'") -- General utility
+    -- Bracket / pair plugins
+    "jiangmiao/auto-pairs",
+    "tpope/vim-surround",
+    "AndrewRadev/sideways.vim", -- Swap function arguments
 
-plug("'numToStr/Comment.nvim'") -- comments
-plug("'max397574/better-escape.nvim'") -- Escape with ii without delay
-plug("'nvim-lualine/lualine.nvim'") -- Status line
-plug("'mg979/vim-visual-multi'") -- Multiple Cursors
-plug("'karb94/neoscroll.nvim'") -- Smooth scrolling
-plug("'ahmedkhalf/project.nvim'") -- project root cd
+    -- Color scheme
+    "rebelot/kanagawa.nvim",
+    "guns/xterm-color-table.vim",
 
--- Git plugins
-plug("'lewis6991/gitsigns.nvim'")
-plug("'tpope/vim-fugitive'")
+    -- Language specifics
+    "pprovost/vim-ps1",
+    {
+        "snakemake/snakemake",
+        config = function(plugin)
+            local plugin_dir = plugin.dir .. '/misc/vim/'
+            vim.opt.rtp:append(plugin_dir)
+        end
+    },
+    "akinsho/flutter-tools.nvim",
 
--- Bracket / pair plugins
-plug("'jiangmiao/auto-pairs'")
-plug("'tpope/vim-surround'")
-plug("'AndrewRadev/sideways.vim'") -- Swap function arguments
+    -- Debugging
+    "mfussenegger/nvim-dap",
+    "mfussenegger/nvim-dap-python",
+    "rcarriga/nvim-dap-ui",
 
--- Color scheme
-plug("'rebelot/kanagawa.nvim'")
-plug("'guns/xterm-color-table.vim'")
+    -- Startup panel
+    "mhinz/vim-startify",
 
--- Language specifics
-plug("'pprovost/vim-ps1'")
-plug("'snakemake/snakemake', {'rtp': 'misc/vim/'}")
-plug("'akinsho/flutter-tools.nvim'")
+    -- Syntax plugins
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    "p00f/nvim-ts-rainbow",
+    "nathom/filetype.nvim", -- for faster startup time
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-context",
 
--- Debugging
-plug("'mfussenegger/nvim-dap'")
-plug("'mfussenegger/nvim-dap-python'")
-plug("'rcarriga/nvim-dap-ui'")
+    -- LSP plugins
+    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "folke/neodev.nvim",
 
--- Startup panel
-plug("'mhinz/vim-startify'")
+    -- Completion plugins
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+    "danymat/neogen",
 
--- Syntax plugins
-plug "'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}"
-plug("'p00f/nvim-ts-rainbow'")
-plug("'nathom/filetype.nvim'") -- for faster startup time
-plug("'nvim-treesitter/playground'")
-plug("'nvim-treesitter/nvim-treesitter-context'")
+    -- file tree
+    "kyazdani42/nvim-web-devicons", -- for file icons
+    "kyazdani42/nvim-tree.lua",
 
--- LSP plugins
-plug("'neovim/nvim-lspconfig'")
-plug("'williamboman/mason.nvim'")
-plug("'williamboman/mason-lspconfig.nvim'")
-plug("'folke/neodev.nvim'")
+    -- buffer plugins
+    { "akinsho/bufferline.nvim", tag = "v2.*" },
+    "ThePrimeagen/harpoon",
 
--- Completion plugins
-plug("'hrsh7th/nvim-cmp'")
-plug("'hrsh7th/cmp-buffer'")
-plug("'hrsh7th/cmp-path'")
-plug("'hrsh7th/cmp-cmdline'")
-plug("'hrsh7th/cmp-nvim-lsp'")
-plug("'hrsh7th/cmp-nvim-lua'")
-plug("'L3MON4D3/LuaSnip'")
-plug("'saadparwaiz1/cmp_luasnip'")
-plug("'rafamadriz/friendly-snippets'")
-plug("'danymat/neogen'")
+    -- Indentation marker
+    "lukas-reineke/indent-blankline.nvim",
 
--- file tree
-plug("'kyazdani42/nvim-web-devicons'") -- for file icons
-plug("'kyazdani42/nvim-tree.lua'")
+    -- Telescope
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        }
+    },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
 
--- buffer plugins
-plug("'akinsho/bufferline.nvim', { 'tag': 'v2.*' }")
-plug("'ThePrimeagen/harpoon'")
+    { "junegunn/fzf", build = './install --all' },
+    "junegunn/fzf.vim",
 
--- Indentation marker
-plug("'lukas-reineke/indent-blankline.nvim'")
+    -- Sidebar
+    "simrat39/symbols-outline.nvim",
 
--- Telescope
-plug("'nvim-lua/plenary.nvim'") -- dependency of Telescope
-plug("'nvim-telescope/telescope.nvim'")
-plug "'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }"
+    -- github integration
+    "pwntester/octo.nvim"
+}
 
-plug "'junegunn/fzf', { 'do': './install --all' }"
-plug("'junegunn/fzf.vim'")
+require("lazy").setup(plugins)
 
--- Sidebar
-plug("'simrat39/symbols-outline.nvim'")
-
--- github integration
-plug "'pwntester/octo.nvim'"
-
-vim.cmd("call plug#end()")
 
 vim.cmd("colorscheme kanagawa")
 vim.opt.background = "dark"
