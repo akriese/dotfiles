@@ -99,15 +99,8 @@ end
 
 F.map("n", "<leader>lr", "<cmd>LspRestart<cr>")
 
-
-local function flutter_path()
-    local cmd = (vim.fn.has('win32') == 1) and "flutter.bat" or "flutter"
-    return vim.fn.exepath(cmd)
-end
-
 -- flutter setup
 require("flutter-tools").setup {
-    flutter_path = flutter_path(),
     debugger = { -- integrate with nvim dap + install dart code debugger
         enabled = true,
         run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
