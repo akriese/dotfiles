@@ -6,20 +6,11 @@ require("akriese.nvimrc")
 require("akriese.nvim-cmp")
 require("akriese.treesitter")
 require("akriese.nvim-tree")
-require("akriese.indent")
 require("akriese.lspconfig")
 require("akriese.telescope")
 require("akriese.symbols")
 require("akriese.comment")
-require("akriese.better-escape")
-require("akriese.filetype")
 require("akriese.bufferline")
-require("akriese.lualine")
 require("akriese.dap")
 require("akriese.scroll")
 require("akriese.harpoon")
-
-require('gitsigns').setup {}
-require('project_nvim').setup {}
-require('octo').setup {}
-require('neogen').setup { snippet_engine = "luasnip" }

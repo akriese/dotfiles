@@ -36,14 +36,31 @@ local plugins = {
     -- "tmhedberg/SimpylFold", -- Folds
     "nvim-lua/plenary.nvim", -- General utility
     "numToStr/Comment.nvim", -- comments
-    "max397574/better-escape.nvim", -- Escape with ii without delay
-    "nvim-lualine/lualine.nvim", -- Status line
+    {
+        "max397574/better-escape.nvim", -- Escape with ii without delay
+        config = function(plugin)
+            require("better_escape").setup {
+                mapping = { "ii" }, -- a table with mappings to use
+                timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+                clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+                keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+            }
+        end
+    },
+    {
+        "nvim-lualine/lualine.nvim", -- status line
+        config = true,
+        dependencies = { "kyazdani42/nvim-web-devicons" }
+    },
     "mg979/vim-visual-multi", -- Multiple Cursors
     "karb94/neoscroll.nvim", -- Smooth scrolling
-    "ahmedkhalf/project.nvim", -- project root cd
+    {
+        "ahmedkhalf/project.nvim", -- project root cd
+        config = function() require('project_nvim').setup {} end
+    },
 
     -- Git plugins
-    "lewis6991/gitsigns.nvim",
+    { "lewis6991/gitsigns.nvim", config = true },
     "tpope/vim-fugitive",
 
     -- Bracket / pair plugins
@@ -60,16 +77,18 @@ local plugins = {
     {
         "snakemake/snakemake",
         config = function(plugin)
-            local plugin_dir = plugin.dir .. '/misc/vim/'
-            vim.opt.rtp:append(plugin_dir)
+            vim.opt.rtp:append(plugin.dir .. '/misc/vim/')
         end
     },
-    "akinsho/flutter-tools.nvim",
+    {
+        "akinsho/flutter-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
     -- Debugging
     "mfussenegger/nvim-dap",
     "mfussenegger/nvim-dap-python",
-    "rcarriga/nvim-dap-ui",
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 
     -- Startup panel
     "mhinz/vim-startify",
@@ -77,9 +96,12 @@ local plugins = {
     -- Syntax plugins
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "p00f/nvim-ts-rainbow",
-    "nathom/filetype.nvim", -- for faster startup time
     "nvim-treesitter/playground",
     "nvim-treesitter/nvim-treesitter-context",
+    {
+        "nathom/filetype.nvim", -- for faster startup time
+        config = function() require("filetype").setup({}) end
+    },
 
     -- LSP plugins
     "neovim/nvim-lspconfig",
@@ -97,26 +119,37 @@ local plugins = {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
-    "danymat/neogen",
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = function() require('neogen').setup { snippet_engine = "luasnip" } end
+    },
 
     -- file tree
-    "kyazdani42/nvim-web-devicons", -- for file icons
-    "kyazdani42/nvim-tree.lua",
+    { "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
 
     -- buffer plugins
-    { "akinsho/bufferline.nvim", tag = "v2.*" },
+    {
+        "akinsho/bufferline.nvim",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        version = "v3.*"
+    },
     "ThePrimeagen/harpoon",
 
     -- Indentation marker
-    "lukas-reineke/indent-blankline.nvim",
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup {
+                -- for example, context is off by default, use this to turn it on
+                show_current_context = true,
+                show_current_context_start = false,
+            }
+        end
+    },
 
     -- Telescope
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        }
-    },
+    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
 
     { "junegunn/fzf", build = './install --all' },
@@ -126,7 +159,7 @@ local plugins = {
     "simrat39/symbols-outline.nvim",
 
     -- github integration
-    "pwntester/octo.nvim"
+    { "pwntester/octo.nvim", config = true }
 }
 
 require("lazy").setup(plugins)
