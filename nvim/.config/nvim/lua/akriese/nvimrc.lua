@@ -70,7 +70,6 @@ local plugins = {
 
     -- Color scheme
     "rebelot/kanagawa.nvim",
-    "guns/xterm-color-table.vim",
 
     -- Language specifics
     "pprovost/vim-ps1",
@@ -154,9 +153,6 @@ local plugins = {
 
     { "junegunn/fzf", build = './install --all' },
     "junegunn/fzf.vim",
-
-    -- Sidebar
-    "simrat39/symbols-outline.nvim",
 
     -- github integration
     { "pwntester/octo.nvim", config = true }
