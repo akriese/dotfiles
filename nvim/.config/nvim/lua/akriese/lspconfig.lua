@@ -6,6 +6,7 @@ local mason_installed = {
     "pyright",
     "rust_analyzer",
     "tsserver",
+    "emmet_ls"
 }
 
 require("mason").setup {}
