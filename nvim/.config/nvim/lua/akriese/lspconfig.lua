@@ -1,5 +1,5 @@
 local mason_installed = {
-    "sumneko_lua",
+    "lua_ls",
     "ltex",
     "bashls",
     "clangd",
@@ -78,7 +78,7 @@ nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
 }))
 table.insert(non_default_servers, "ltex")
 
-nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
+nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
     settings = {
         Lua = {
             completion = {
@@ -87,7 +87,7 @@ nvim_lsp.sumneko_lua.setup(vim.tbl_extend("force", opts, {
         }
     }
 }))
-table.insert(non_default_servers, "sumneko_lua")
+table.insert(non_default_servers, "lua_ls")
 
 local default_config_servers = vim.tbl_filter(function(x)
     return not vim.tbl_contains(non_default_servers, x)
