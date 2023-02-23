@@ -93,10 +93,19 @@ local plugins = {
     "mhinz/vim-startify",
 
     -- Syntax plugins
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("akriese.treesitter")
+        end
+    },
     "p00f/nvim-ts-rainbow",
     "nvim-treesitter/playground",
-    "nvim-treesitter/nvim-treesitter-context",
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function() require('treesitter-context').setup() end,
+    },
     {
         "nathom/filetype.nvim", -- for faster startup time
         config = function() require("filetype").setup({}) end

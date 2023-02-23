@@ -50,6 +50,4 @@ require 'nvim-treesitter.configs'.setup {
     }
 }
 
-require('treesitter-context').setup()
-
 F.map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>")

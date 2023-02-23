@@ -4,7 +4,6 @@ require("akriese.functions")
 require("akriese.nvimrc")
 -- Plugin setups
 require("akriese.nvim-cmp")
-require("akriese.treesitter")
 require("akriese.nvim-tree")
 require("akriese.lspconfig")
 require("akriese.telescope")
