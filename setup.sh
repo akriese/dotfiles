@@ -6,7 +6,7 @@ command -v stow &> /dev/null && {
         if [[ -d "$ELEMENT" ]]
         then
             case "$ELEMENT" in
-                zsh | oh-my-posh)
+                zsh | oh-my-posh | powershell)
                     echo "Not stowing $ELEMENT"
                     ;;
                 *)
