@@ -1,17 +1,19 @@
 # in VS Dev Powershell
 
 # Make sure to be in the correct directory
-#cd C:\Users\Anton\Documents\neovim
+#cd $HOME\Documents\neovim
 # and execute this script from there
 # To make it executable, do something like
 # $env:PSExecutionPolicyPreference="Bypass"
 
-$env:DEPS_BUILD_DIR="C:\Users\Anton\Documents\neovim\.deps\"
-$env:LUAJIT_LIBRARY="${env:DEPS_BUILD_DIR}usr\lib\luajit.lib"
-$install_dir="C:\tools\nvim_build\"
+$neovim_dir = $pwd
+
+$env:DEPS_BUILD_DIR = "$neovim_dir\.deps\"
+$env:LUAJIT_LIBRARY = "${env:DEPS_BUILD_DIR}usr\lib\luajit.lib"
+$install_dir = "C:\tools\nvim_build\"
 # echo $env:LUAJIT_LIBRARY $env:CMAKE_INSTALL_PREFIX
 
-$build_dir=".\build\debug"
+$build_dir="$neovim_dir\build\debug"
 
 # load visual studio env variables
 vsdevcmd.bat -arch=x64 -no_logo
@@ -32,5 +34,5 @@ cmake --build $build_dir -DCMAKE_C_COMPILER=clang
 cmake --install $build_dir
 
 # test some test file
-# cmake -E env TEST_FILE=.\test\functional\vimscript\exepath_spec.lua cmake --build .\build\debug --target functionaltest
+# cmake -E env TEST_FILE=.\test\functional\vimscript\exepath_spec.lua cmake --build $build_dir --target functionaltest
 
