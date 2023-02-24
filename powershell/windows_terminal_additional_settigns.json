@@ -1,4 +1,20 @@
+"actions": [
+    {
+        "command": "unbound",
+        "keys": "f11"
+    },
+    {
+        "command": "paste",
+        "keys": "ctrl+shift+v"
+    }
+],
 "launchMode": "maximized",
+"profiles": {
+    "defaults": {
+        "cursorShape": "filledBox",
+        "useAcrylic": false
+    }
+}
 "schemes": {
     "background": "#1F1F28",
     "black": "#090618",
@@ -21,4 +37,4 @@
     "selectionBackground": "#2D4F67",
     "white": "#C8C093",
     "yellow": "#C0A36E"
-},
+}
