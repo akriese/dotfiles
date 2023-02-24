@@ -6,7 +6,7 @@ winget install JanDeDobbeleer.OhMyPosh -s winget
 
 # install fzf
 choco install fzf
-Install-Module PSFzf
+Install-Module PSFzf -Scope CurrentUser
 
 # install things for nvim
 choco install make llvm git ripgrep
