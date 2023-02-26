@@ -111,6 +111,7 @@ map("n", "<leader>fF", "<cmd>Telescope find_files find_command=rg,--no-ignore,--
 map("n", "<leader>fg", "<cmd>Telescope git_files<cr>")
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
+map("n", "<leader>fM", "<cmd>Telescope noice<cr>")
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
 map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
@@ -130,3 +131,4 @@ map("n", "<leader>fp", "<cmd>Telescope projects<cr>")
 telescope.load_extension('fzf')
 telescope.load_extension('flutter')
 telescope.load_extension('projects')
+telescope.load_extension('noice')
