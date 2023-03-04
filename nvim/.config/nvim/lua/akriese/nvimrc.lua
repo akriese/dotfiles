@@ -431,6 +431,15 @@ set_autocmd({ "BufRead", "BufNewFile" }, "*bashrc", "set filetype=sh")
 set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
 set_autocmd("BufWritePre", "*", function() vim.lsp.buf.format() end)
 
+set_autocmd("WinEnter", "*", function()
+    vim.opt.cursorline = true
+    vim.opt.relativenumber = true
+end)
+set_autocmd("WinLeave", "*", function()
+    vim.opt.cursorline = false
+    vim.opt.relativenumber = false
+end)
+
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
 local langs_with_2_spaces = { "vim", "html", "dart" }
 set_autocmd("FileType", langs_with_4_spaces, "setlocal shiftwidth=4 tabstop=4 softtabstop=4")
