@@ -196,8 +196,7 @@ local plugins = {
         config = function()
             require("colorful-winsep").setup({
                 highlight = {
-                    bg = "#1a3b4c",
-                    fg = "Magenta"
+                    fg = "#957fb8"
                 }
             })
         end,
