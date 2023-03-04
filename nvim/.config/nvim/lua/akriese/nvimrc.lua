@@ -162,6 +162,8 @@ local plugins = {
 
     { "junegunn/fzf", build = './install --all' },
     "junegunn/fzf.vim",
+
+    -- UI sugar
     {
         "folke/noice.nvim",
         config = function()
@@ -188,6 +190,18 @@ local plugins = {
             })
         end,
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    },
+    {
+        "nvim-zh/colorful-winsep.nvim",
+        config = function()
+            require("colorful-winsep").setup({
+                highlight = {
+                    bg = "#1a3b4c",
+                    fg = "Magenta"
+                }
+            })
+        end,
+        event = { "WinNew" }
     },
 
     -- github integration
