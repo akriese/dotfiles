@@ -238,7 +238,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.numberwidth = 5
+vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.wildmode = "list:longest,list:full"
@@ -446,12 +446,16 @@ set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
 set_autocmd("BufWritePre", "*", function() vim.lsp.buf.format() end)
 
 set_autocmd("WinEnter", "*", function()
-    vim.opt.cursorline = true
-    vim.opt.relativenumber = true
+    vim.o.cursorline = true
+    if vim.o.number == true then
+        vim.o.relativenumber = true
+    end
 end)
 set_autocmd("WinLeave", "*", function()
-    vim.opt.cursorline = false
-    vim.opt.relativenumber = false
+    vim.o.cursorline = false
+    if vim.o.number then
+        vim.o.relativenumber = false
+    end
 end)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
