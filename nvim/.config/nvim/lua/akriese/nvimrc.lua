@@ -213,7 +213,7 @@ vim.opt.history = 50
 vim.opt.ruler = true -- show the cursor position all the time
 vim.opt.showcmd = true -- display incomplete commands
 vim.opt.incsearch = true -- do incremental searching
-vim.opt.laststatus = 2 -- Always display the status line
+vim.opt.laststatus = 3 -- Always display the status line
 vim.opt.autowrite = true -- Automatically :write before running commands
 
 vim.opt.mouse = "a"
