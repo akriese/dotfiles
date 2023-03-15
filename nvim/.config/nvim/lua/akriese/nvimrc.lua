@@ -210,11 +210,11 @@ local plugins = {
     {
         "glacambre/firenvim",
         setup = function()
-            vim.cmd[[firenvim#install(0)]]
+            vim.cmd[[call firenvim#install(0)]]
         end,
         config = function()
             if vim.g.started_by_firenvim then
-                vim.opt.guifont = "JetBrainsMono Nerd Font:h8"
+                vim.opt.guifont = [[JetBrainsMono Nerd Font:h8,CaskaydiaCove Nerd Font:h8]]
             end
         end
     },
