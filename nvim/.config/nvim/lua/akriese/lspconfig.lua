@@ -67,17 +67,52 @@ local opts = {
     capabilities = capabilities,
 }
 
-nvim_lsp.ltex.setup(vim.tbl_extend("force", opts, {
+-- Latex setup
+local ltex_settings = vim.tbl_extend("force", opts, {
     settings = {
         ltex = {
-            language = 'de-DE'
             -- language = 'en-US'
         }
     },
     filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
-}))
+})
+
+local setup_latex = function(lang, settings)
+    print("Starting latex LSP with " .. lang .. " as language...")
+    settings.settings.ltex.language = lang
+    vim.lsp.stop_client(vim.lsp.get_active_clients())
+    nvim_lsp.ltex.setup(settings)
+end
+
+local choose_ltex_lang = function(settings)
+    local languages = { "en-US", "de-DE" }
+    local prompt = "Choose a language for the Latex LSP. Enter the corresponding number (q for quit):\n"
+    for index, lang in ipairs(languages) do
+        prompt = prompt .. index .. ": " .. lang .. "\n"
+    end
+    local result = vim.fn.input({ prompt = prompt, default = "", cancelreturn = "q" })
+    if result == "q" or result == "" then
+        print("Nothing chosen")
+        return
+    end
+    local idx = tonumber(result)
+    if idx == nil then
+        print("Invalid input! Choose a number!")
+        return
+    end
+    if idx > #languages or idx < 1 then
+        print("Number out of range!")
+        return
+    end
+    setup_latex(languages[idx], settings)
+end
+
+setup_latex("en-US", ltex_settings)
 table.insert(non_default_servers, "ltex")
 
+F.map("n", "<leader>lc", function() choose_ltex_lang(ltex_settings) end)
+
+-- Lua setup
 nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
     settings = {
         Lua = {
