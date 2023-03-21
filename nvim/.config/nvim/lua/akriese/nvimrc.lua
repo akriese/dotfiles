@@ -49,8 +49,9 @@ local plugins = {
     },
     {
         "nvim-lualine/lualine.nvim", -- status line
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        cond = not vim.g.started_by_firenvim,
         config = true,
-        dependencies = { "kyazdani42/nvim-web-devicons" }
     },
     "mg979/vim-visual-multi", -- Multiple Cursors
     "karb94/neoscroll.nvim", -- Smooth scrolling
@@ -140,7 +141,8 @@ local plugins = {
     {
         "akinsho/bufferline.nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
-        version = "v3.*"
+        version = "v3.*",
+        cond = not vim.g.started_by_firenvim,
     },
     "ThePrimeagen/harpoon",
 
