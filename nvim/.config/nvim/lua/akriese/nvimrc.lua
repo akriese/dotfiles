@@ -290,7 +290,12 @@ if has('wsl') then
         \}
     ]])
 end
-vim.opt.shada = "'100,n~/.local/share/nvim/shada/main.shada"
+
+if has('win32') then
+    vim.opt.shada = "'100,n~/AppData/Local/nvim-data/shada/main.shada"
+else
+    vim.opt.shada = "'100,n~/.local/share/nvim/shada/main.shada"
+end
 vim.opt.list = true
 vim.opt.listchars:append({ tab = "»·", trail = "·", nbsp = "·", eol = "↲" })
 
