@@ -78,7 +78,6 @@ local ltex_settings = vim.tbl_extend("force", opts, {
 })
 
 local setup_latex = function(lang, settings)
-    print("Starting latex LSP with " .. lang .. " as language...")
     settings.settings.ltex.language = lang
     vim.lsp.stop_client(vim.lsp.get_active_clients())
     nvim_lsp.ltex.setup(settings)
@@ -104,6 +103,7 @@ local choose_ltex_lang = function(settings)
         print("Number out of range!")
         return
     end
+    print("Starting latex LSP with " .. languages[idx] .. " as language...")
     setup_latex(languages[idx], settings)
 end
 
