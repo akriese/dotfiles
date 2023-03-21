@@ -209,13 +209,22 @@ local plugins = {
     -- Browser integration
     {
         "glacambre/firenvim",
-        setup = function()
-            vim.cmd[[call firenvim#install(0)]]
+        cond = not not vim.g.started_by_firenvim,
+        build = function()
+            require("lazy").load({ plugins = "firenvim", wait = true })
+            vim.fn["firenvim#install"](0)
         end,
         config = function()
-            if vim.g.started_by_firenvim then
-                vim.opt.guifont = [[JetBrainsMono Nerd Font:h8,CaskaydiaCove Nerd Font:h8]]
-            end
+            vim.opt.guifont = [[JetBrainsMono Nerd Font:h8,CaskaydiaCove Nerd Font:h8]]
+            vim.opt.laststatus = 0
+            vim.g.firenvim_config = {
+                localSettings = {
+                    [".*"] = {
+                        takeover = "never", -- by default never takeover a text field
+                        cmdline = "none", -- to avoid problems with noice.nvim
+                    }
+                }
+            }
         end
     },
 }
