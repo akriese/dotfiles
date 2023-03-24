@@ -1,5 +1,15 @@
 local _M = {}
 
+function _M.set_autocmd(event, cmd, opts)
+    local options = opts or {}
+    if type(cmd) == "string" then
+        options.command = cmd
+    else
+        options.callback = cmd
+    end
+    vim.api.nvim_create_autocmd(event, options)
+end
+
 function _M.remove_trailing_spaces()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local ok, _ = pcall(vim.cmd, "silent keeppatterns %s/\\s\\+$//gn")

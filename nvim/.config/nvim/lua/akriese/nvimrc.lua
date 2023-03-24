@@ -2,6 +2,7 @@ local F = require("akriese.functions")
 
 local map = F.map
 local has = F.has
+local set_autocmd = F.set_autocmd
 
 vim.opt.encoding = "utf-8"
 vim.g.mapleader = " "
@@ -453,35 +454,26 @@ vim.cmd([[filetype plugin indent on]])
 
 vim.api.nvim_create_augroup("vimrcEx", { clear = true })
 
-local set_autocmd = function(event, pattern, cmd)
-    if type(cmd) == "string" then
-        vim.api.nvim_create_autocmd(event, { group = "vimrcEx", pattern = pattern, command = cmd })
-    else
-        vim.api.nvim_create_autocmd(event, { group = "vimrcEx", pattern = pattern, callback = cmd })
-    end
-end
-
 --autocmd!
 -- Set syntax highlighting for specific file types
-set_autocmd({ "BufRead", "BufNewFile" }, "*.md", "set filetype=markdown")
-set_autocmd({ "BufRead", "BufNewFile" }, ".{jscs,jshint,eslint}rc", "set filetype=json")
-set_autocmd({ "BufRead", "BufNewFile" }, { "aliases.local", "zshrc.local", "*/zsh/configs/*" }, "set filetype=sh")
-set_autocmd({ "BufRead", "BufNewFile" }, "gitconfig.local", "set filetype=gitconfig")
-set_autocmd({ "BufRead", "BufNewFile" }, "tmux.conf.local", "set filetype=tmux")
-set_autocmd({ "BufRead", "BufNewFile" }, "vimrc.local", "set filetype=vim")
-set_autocmd({ "BufRead", "BufNewFile" }, "*bashrc", "set filetype=sh")
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=markdown", { pattern = "*.md" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=json", { pattern =  ".{jscs,jshint,eslint}rc" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=sh", { pattern =  { "aliases.local", "zshrc.local", "*/zsh/configs/*" } })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=gitconfig", { pattern = "gitconfig.local" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=tmux", { pattern = "tmux.conf.local" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=vim", { pattern = "vimrc.local" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=sh", { pattern = "*bashrc" })
 
 -- remove trailing whitespace on saving
-set_autocmd("BufWritePre", "*", F.remove_trailing_spaces)
-set_autocmd("BufWritePre", "*", function() vim.lsp.buf.format() end)
+set_autocmd("BufWritePre", F.remove_trailing_spaces)
 
-set_autocmd("WinEnter", "*", function()
+set_autocmd("WinEnter", function()
     vim.o.cursorline = true
     if vim.o.number == true then
         vim.o.relativenumber = true
     end
 end)
-set_autocmd("WinLeave", "*", function()
+set_autocmd("WinLeave", function()
     vim.o.cursorline = false
     if vim.o.number then
         vim.o.relativenumber = false
@@ -490,16 +482,16 @@ end)
 
 local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
 local langs_with_2_spaces = { "vim", "html", "dart" }
-set_autocmd("FileType", langs_with_4_spaces, "setlocal shiftwidth=4 tabstop=4 softtabstop=4")
-set_autocmd("FileType", langs_with_2_spaces, "setlocal sw=2 ts=2 sts=2")
+set_autocmd("FileType", "setlocal shiftwidth=4 tabstop=4 softtabstop=4", { pattern = langs_with_4_spaces })
+set_autocmd("FileType", "setlocal sw=2 ts=2 sts=2", { pattern = langs_with_2_spaces } )
 
-set_autocmd({ "BufRead", "BufNewFile" }, { "Snakefile", "*.smk", "*.smk.py" }, "set filetype=snakemake commentstring=#%s")
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=snakemake commentstring=#%s", { pattern = { "Snakefile", "*.smk", "*.smk.py" } })
 
-set_autocmd({ "BufEnter" }, { "__FLUTTER_DEV_LOG__" }, function()
+set_autocmd({ "BufEnter" }, function()
     local opts = { buffer = true }
     map("n", "r", ":FlutterReload<cr>", opts)
     map("n", "R", ":FlutterRestart<cr>", opts)
     map("n", "q", ":FlutterQuit<cr>", opts)
     map("n", "c", ":FlutterLogClear<cr>", opts)
     map("n", "d", ":FlutterDetach<cr>", opts)
-end)
+end, { pattern = "__FLUTTER_DEV_LOG__" })
