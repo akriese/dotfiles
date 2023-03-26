@@ -267,6 +267,7 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
+set_autocmd("BufEnter", function() vim.opt_local.colorcolumn = "72" end, { pattern = "COMMIT_EDITMSG" })
 vim.opt.wildmode = "list:longest,list:full"
 vim.opt.updatetime = 100 -- update time for git gutter
 vim.opt.timeout = true
