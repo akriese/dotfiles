@@ -93,16 +93,11 @@ local choose_ltex_lang = function(settings)
     for index, lang in ipairs(languages) do
         prompt = prompt .. index .. ": " .. lang .. "\n"
     end
-    local result = vim.fn.input({ prompt = prompt, default = "", cancelreturn = "q" })
-    if result == "q" or result == "" then
-        print("Nothing chosen")
+    local result = F.enter_number(prompt)
+    if result == nil then
         return
     end
-    local idx = tonumber(result)
-    if idx == nil then
-        print("Invalid input! Choose a number!")
-        return
-    end
+    local idx = result
     if idx > #languages or idx < 1 then
         print("Number out of range!")
         return
