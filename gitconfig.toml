@@ -1,0 +1,33 @@
+[user]
+    name = "Anton Kriese"
+
+[core]
+    editor = "nvim"
+
+[init]
+    defaultBranch = "main"
+
+[pull]
+    rebase = false
+
+[alias]
+    st = "status"
+    s = "status -s -b"
+    c = "commit"
+
+    # log
+    l = "log"
+    lp = "l --pretty=oneline --abbrev-commit --graph"
+    rl = "reflog"
+
+    # checking out
+    co = "checkout"
+    cb = "checkout -b"
+
+    # pushing
+    p = "push"
+    pushf = "push --force-with-lease"
+    pf = "pushf --no-verify"
+
+    # for executing commands in project root
+    exec = "! exec"

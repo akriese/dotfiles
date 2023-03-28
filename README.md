@@ -67,9 +67,15 @@ Run `:PlugInstall` to install all configured plugins. Also run `:TSUpdate` to ge
 
 I have chosen oh-my-posh as it also works on powershell. If you have a better alternative, feel free to contact me :)
 
-Install the tool into `~/.local/bin/` with the script [omp\_setup.sh](omp_setup.sh) by running 
+Install the tool into `~/.local/bin/` with the script [omp\_setup.sh](omp_setup.sh) by running
 ```sh
 bash "$DOTFILES/omp_setup.sh"
 ```
 This automatically adds the installation path to PATH and the `oh-my-posh` eval command in either your local `~/.bashrc` or `~/.zshrc`.
 
+### Git setup
+To make use of the git config in `gitconfig.toml`, include the following in your global git config file:
+```toml
+[include]
+    path = "~/path/to/dotfiles/gitconfig.toml"
+```
