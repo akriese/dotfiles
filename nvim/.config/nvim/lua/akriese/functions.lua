@@ -57,4 +57,33 @@ function _M.current_branch()
     end
 end
 
+function _M.enter_number(prompt)
+    local result = vim.fn.input({ prompt = prompt, default = "", cancelreturn = "q" })
+    if result == "q" or result == "" then
+        print("Nothing chosen")
+        return nil
+    end
+    local num = tonumber(result)
+    if num == nil then
+        print("Invalid input! Choose a number!")
+        return nil
+    end
+
+    return num
+end
+
+function _M.set_tab_width(width)
+    if width == nil then
+        local prompt = "Enter the number of spaces to represent a tab: "
+        local result = _M.enter_number(prompt)
+        if result == nil then
+            return
+        end
+        width = result
+    end
+    vim.o.tabstop = width
+    vim.o.shiftwidth = width
+    print("Tab width set to " .. width .. "!")
+end
+
 return _M
