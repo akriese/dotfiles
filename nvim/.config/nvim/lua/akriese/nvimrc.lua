@@ -362,7 +362,6 @@ map("n", "<leader>orl", "<cmd>Octo repo list<cr>")
 -- Sideways stuff
 map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
-map("n", "<leader>st", "<cmd>SymbolsOutline<cr>")
 
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
@@ -374,6 +373,7 @@ map("n", "Q", "<Nop>")
 map("n", "Y", "y$")
 map("i", "<C-BS>", '<C-W>')
 map("i", "<C-h>", '<C-W>')
+map("n", "<leader>st", function() F.set_tab_width() end)
 
 -- recenter after search or jump
 map("n", "n", "nzz")
