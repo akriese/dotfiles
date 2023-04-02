@@ -2,6 +2,9 @@ local F = require("akriese.functions")
 local has = F.has
 local set_autocmd = F.set_autocmd
 
+vim.opt.encoding = "utf-8"
+vim.g.mapleader = " "
+
 if has('win32') then
     vim.cmd([[
         let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
