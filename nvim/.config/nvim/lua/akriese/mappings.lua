@@ -4,7 +4,7 @@ local map = F.map
 -- PLUGIN RELATED mappings
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>")
 map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>")
-map("n", "<leader>k", require('neogen').generate)
+map("n", "<leader>k", function() require('neogen').generate() end)
 map("n", "<leader>lr", "<cmd>LspRestart<cr>")
 
 -- TELESCOPE

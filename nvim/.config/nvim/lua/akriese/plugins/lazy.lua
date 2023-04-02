@@ -72,9 +72,12 @@ local plugins = {
     },
 
     -- Debugging
-    "mfussenegger/nvim-dap",
-    "mfussenegger/nvim-dap-python",
-    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = { "mfussenegger/nvim-dap-python" },
+        lazy = true
+    },
+    { "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
 
     -- Startup panel
     "mhinz/vim-startify",
@@ -82,12 +85,11 @@ local plugins = {
     -- Syntax plugins
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-        end
+        build = ":TSUpdate"
     },
     "p00f/nvim-ts-rainbow",
-    "nvim-treesitter/playground",
+
+    { "nvim-treesitter/playground", lazy = true },
     {
         "nvim-treesitter/nvim-treesitter-context",
         config = function() require('treesitter-context').setup() end,
@@ -104,23 +106,32 @@ local plugins = {
     "folke/neodev.nvim",
 
     -- Completion plugins
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+        },
+    },
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function() require('neogen').setup { snippet_engine = "luasnip" } end
+        config = function() require('neogen').setup { snippet_engine = "luasnip" } end,
+        lazy = true
     },
 
     -- file tree
-    { "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" } },
+    {
+        "kyazdani42/nvim-tree.lua",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+        lazy = true
+    },
 
     -- buffer plugins
     {
@@ -129,7 +140,7 @@ local plugins = {
         version = "v3.*",
         cond = not vim.g.started_by_firenvim,
     },
-    "ThePrimeagen/harpoon",
+    { "ThePrimeagen/harpoon",       lazy = true },
 
     -- Indentation marker
     {
@@ -144,11 +155,18 @@ local plugins = {
     },
 
     -- Telescope
-    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true
+    },
     { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
-
-    { "junegunn/fzf", build = './install --all' },
-    "junegunn/fzf.vim",
+    {
+        "junegunn/fzf",
+        build = './install --all',
+        dependencies = { "junegunn/fzf.vim" },
+        lazy = true
+    },
 
     -- UI sugar
     {
@@ -191,7 +209,7 @@ local plugins = {
     },
 
     -- github integration
-    { "pwntester/octo.nvim", config = true },
+    { "pwntester/octo.nvim",                      config = true },
 
     -- Browser integration
     {
