@@ -1,9 +1,52 @@
 local F = require("akriese.functions")
 local map = F.map
 
--- ALL PLUGIN RELATED mappings
+-- PLUGIN RELATED mappings
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>")
+map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>")
 map("n", "<leader>k", require('neogen').generate)
+map("n", "<leader>lr", "<cmd>LspRestart<cr>")
+
+-- TELESCOPE
+map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
+map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>")
+map("n", "<leader>fF", "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<cr>")
+map("n", "<leader>fg", "<cmd>Telescope git_files<cr>")
+map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
+map("n", "<leader>fM", "<cmd>Telescope noice<cr>")
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
+map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
+map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
+-- includes search in hidden and ignored files
+map("n", "<leader>fT", function()
+    require("telescope.builtin").live_grep({ additional_args = { "-uu" } })
+end)
+map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
+-- search in hidden and ignored files too
+map("n", "<leader>fW", function()
+    require("telescope.builtin").grep_string({ additional_args = { "-uu" } })
+end)
+map("n", "<leader>gl", "<cmd>Telescope git_commits<CR>")
+map("n", "<leader>gL", "<cmd>Telescope git_bcommits<CR>")
+map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
+map("n", "<leader>fl", "<cmd>Telescope flutter commands<cr>")
+map("n", "<leader>fp", "<cmd>Telescope projects<cr>")
+
+-- DAP
+local dap, widgets = require('dap'), require 'dap.ui.widgets'
+map("n", "<F5>", dap.continue, { silent = true })
+map("n", "<F10>", dap.step_over, { silent = true })
+map("n", "<F11>", dap.step_into, { silent = true })
+map("n", "<F12>", dap.step_out, { silent = true })
+map("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
+map("n", "<leader>di", dap.step_into, { silent = true })
+map("n", "<leader>do", dap.step_over, { silent = true })
+map("n", "<leader>dc", dap.continue, { silent = true })
+map("n", "<leader>dt", dap.terminate, { silent = true })
+map("n", "<leader>dr", dap.repl.open, { silent = true })
+map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, { silent = true })
+map("n", "<leader>K", widgets.hover, { silent = true })
 
 -- Git stuff
 map("n", "<leader>ga", "<cmd>Git commit --amend<CR>")
@@ -26,6 +69,15 @@ map("n", "<leader>orl", "<cmd>Octo repo list<cr>")
 map("n", "<leader>,", "<cmd>SidewaysLeft<cr>")
 map("n", "<leader>.", "<cmd>SidewaysRight<cr>")
 
+-- BUFFERLINE
+map("n", "<leader>L", "<cmd>BufferLineCycleNext<cr>")
+map("n", "<leader>H", "<cmd>BufferLineCyclePrev<cr>")
+
+for buffer = 1, 9 do
+    map("n", "<leader>" .. buffer, "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>", { silent = true })
+end
+
+----- NON-PLUGIN keybinds
 -- useful commands
 map("n", "<leader>shl", "<cmd>set hlsearch!<CR>")
 map("n", "<leader>w", "<cmd>w<CR>")

@@ -63,20 +63,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
 
-local widgets = require 'dap.ui.widgets'
-F.map("n", "<F5>", dap.continue, { silent = true })
-F.map("n", "<F10>", dap.step_over, { silent = true })
-F.map("n", "<F11>", dap.step_into, { silent = true })
-F.map("n", "<F12>", dap.step_out, { silent = true })
-F.map("n", "<leader>db", dap.toggle_breakpoint, { silent = true })
-F.map("n", "<leader>di", dap.step_into, { silent = true })
-F.map("n", "<leader>do", dap.step_over, { silent = true })
-F.map("n", "<leader>dc", dap.continue, { silent = true })
-F.map("n", "<leader>dt", dap.terminate, { silent = true })
-F.map("n", "<leader>dr", dap.repl.open, { silent = true })
-F.map("n", "<leader>dv", widgets.sidebar(widgets.scopes).open, { silent = true })
-F.map("n", "<leader>K", widgets.hover, { silent = true })
-
 vim.api.nvim_create_autocmd("FileType",
     { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
 vim.api.nvim_create_autocmd("FileType",

@@ -161,10 +161,3 @@ bufferline.setup {
         },
     },
 }
-
-F.map("n", "<leader>L", "<cmd>BufferLineCycleNext<cr>")
-F.map("n", "<leader>H", "<cmd>BufferLineCyclePrev<cr>")
-
-for buffer = 1, 9 do
-    F.map("n", "<leader>" .. buffer, "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>", { silent = true })
-end

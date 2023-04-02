@@ -132,8 +132,6 @@ for _, server in ipairs(default_config_servers) do
     nvim_lsp[server].setup(opts)
 end
 
-F.map("n", "<leader>lr", "<cmd>LspRestart<cr>")
-
 -- flutter setup
 require("flutter-tools").setup {
     debugger = { -- integrate with nvim dap + install dart code debugger
