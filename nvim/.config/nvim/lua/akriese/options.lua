@@ -15,8 +15,6 @@ if has('win32') then
     ]])
 end
 
-vim.opt.background = "dark"
-
 vim.opt.hlsearch = true
 vim.opt.backspace = "2" -- Backspace deletes like most programs in insert mode
 vim.opt.backup = false
