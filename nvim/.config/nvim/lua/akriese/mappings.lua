@@ -125,8 +125,8 @@ map("n", "<Leader><Leader>", "<C-^>")
 -- pane resize commands; UP and RIGHT enlarge the pane, DOWN and LEFT decrease size
 map("n", "<M-Up>", "<cmd>resize +5<cr>")
 map("n", "<M-Down>", "<cmd>resize -5<cr>")
-map("n", "<M-Left>", "<cmd>vertical resize +5<cr>")
-map("n", "<M-Right>", "<cmd>vertical resize -5<cr>")
+map("n", "<M-Left>", "<cmd>vertical resize -5<cr>")
+map("n", "<M-Right>", "<cmd>vertical resize +5<cr>")
 
 -- Keymaps to keep me from using arrow keys to navigate
 map("n", "<Left>", "<cmd>echoe 'Use h'<CR>")
