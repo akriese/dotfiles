@@ -51,7 +51,8 @@ require 'nvim-tree'.setup {
         },
         number = false,
         relativenumber = false,
-        signcolumn = "yes"
+        signcolumn = "yes",
+        preserve_window_proportions = true
     },
     trash               = {
         cmd = "trash",
