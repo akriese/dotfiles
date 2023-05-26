@@ -17,6 +17,7 @@ map("n", "<leader>fm", "<cmd>Telescope keymaps<cr>")
 map("n", "<leader>fM", "<cmd>Telescope noice<cr>")
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
+map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>") -- live grep with respect to gitignore and hidden files
 -- includes search in hidden and ignored files
 map("n", "<leader>fT", function()
