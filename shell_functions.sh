@@ -21,3 +21,25 @@ add_to_path () {
     [[ "$PATH" == *$1* ]] || export PATH="${1}:${PATH}"
 }
 
+projects_file="$DOTFILES/projects.txt"
+name_dir_separator=" -> "
+fzf_projects_cd () {
+    directory=$(cat "${projects_file}" | fzf)
+    if [[ -z ${directory} ]] then
+        return # fzf was probably escaped
+    fi
+    dir=$(echo "${directory}" | awk -F"${name_dir_separator}" '{print $2}')
+    cd "${dir}"
+}
+
+fzf_projects_add () {
+    name=${1}
+    dir=${2}
+    if [[ -z ${dir} || ${dir} = "." ]] then
+        dir=$(pwd)
+    fi
+    if [[ -z ${name} ]] then
+        name="$(basename "$dir")"
+    fi
+    echo "${name}${name_dir_separator}${dir}" >> "${projects_file}"
+}

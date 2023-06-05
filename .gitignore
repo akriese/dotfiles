@@ -1,3 +1,4 @@
 zsh/.config/zsh/plugins/
 .zcomp*
 lazy-lock.json
+projects.txt

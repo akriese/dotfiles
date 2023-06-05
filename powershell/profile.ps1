@@ -32,3 +32,29 @@ Function online_manual { param ( $Command ) help $Command -Online }
 Set-Alias -Name mano -Value online_manual
 
 $env:PATHEXT = "$env:PATHEXT;.bat"
+
+$projects_file = "$DOTFILES/projects.txt"
+$name_dir_separator = " -> "
+Function fzf_projects_cd {
+    $directory = cat "$projects_file"  | fzf
+    if ("$directory" -match "^\$") {
+        $directory = Invoke-Expression -Command "`"$directory`""
+    }
+    if ($directory -eq $null) {
+        echo Nothing chosen.
+        return # fzf was probably escaped
+    }
+    cd $directory.split($name_dir_separator)[1]
+}
+Set-Alias -Name pcd -Value fzf_projects_cd
+
+Function fzf_projects_add { param ( $Name, $Dir )
+    if ($Dir -eq $null -or $Dir -eq "" -or $Dir -eq ".") {
+        $Dir = pwd
+    }
+    if ($Name -eq $null) {
+        $Name = Split-Path $Dir -Leaf # Assuming that a directory is given
+    }
+    "$Name$name_dir_separator$Dir" >> "$projects_file"
+}
+Set-Alias -Name padd -Value fzf_projects_add

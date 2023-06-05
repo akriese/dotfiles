@@ -38,6 +38,9 @@ alias htopu='htop --user $(whoami)'
 alias open='xdg-open'
 alias tmux='TERM=xterm-256color tmux'
 
+alias padd='fzf_projects_add'
+alias pcd='fzf_projects_cd'
+
 alias zrg="rg -z"
 alias findn="find . -name"
 
