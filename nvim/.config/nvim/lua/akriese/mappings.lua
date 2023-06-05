@@ -111,6 +111,7 @@ map("n", "gP", "'[V']")
 -- vimrc loading and saving
 map("n", "<leader>sv", F.source_local_config)
 map("n", "<leader>ev", "<cmd>vsplit $MYVIMRC<CR>")
+map("n", "<leader>E", function() vim.cmd.edit() end)
 
 -- clipboard shortcuts
 map("n", "<leader>Y", '"*y')
