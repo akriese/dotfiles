@@ -118,6 +118,13 @@ nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
         Lua = {
             completion = {
                 callSnippets = "Replace"
+            },
+            format = {
+                enable = false,
+                defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "4",
+                }
             }
         }
     }
@@ -147,3 +154,17 @@ require("flutter-tools").setup {
         capabilities = capabilities
     }
 }
+
+-- null-ls
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.code_actions.refactoring,
+    },
+    on_attach = on_attach,
+})

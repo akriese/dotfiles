@@ -1,9 +1,3 @@
-local F = require("akriese.functions")
-
-local map = F.map
-local has = F.has
-local set_autocmd = F.set_autocmd
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -104,6 +98,17 @@ local plugins = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = "nvim-lua/plenary.nvim"
+    },
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        }
+    },
 
     -- Completion plugins
     {
