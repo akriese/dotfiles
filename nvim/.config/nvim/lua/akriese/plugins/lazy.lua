@@ -181,7 +181,9 @@ local plugins = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     {
         "junegunn/fzf",
-        build = "./install --all",
+        build = function()
+            vim.cmd([[call fzf#install()]])
+        end,
         dependencies = { "junegunn/fzf.vim" },
         lazy = true,
     },
