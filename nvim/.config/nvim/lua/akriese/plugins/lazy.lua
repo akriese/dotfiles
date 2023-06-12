@@ -19,13 +19,13 @@ local plugins = {
     {
         "max397574/better-escape.nvim", -- Escape with ii without delay
         config = function()
-            require("better_escape").setup {
+            require("better_escape").setup({
                 mapping = { "ii" }, -- a table with mappings to use
                 timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
                 clear_empty_lines = false, -- clear line after escaping if there is only whitespace
                 keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
-            }
-        end
+            })
+        end,
     },
     {
         "nvim-lualine/lualine.nvim", -- status line
@@ -37,7 +37,9 @@ local plugins = {
     "karb94/neoscroll.nvim", -- Smooth scrolling
     {
         "ahmedkhalf/project.nvim", -- project root cd
-        config = function() require('project_nvim').setup {} end
+        config = function()
+            require("project_nvim").setup({})
+        end,
     },
 
     -- Git plugins
@@ -57,21 +59,21 @@ local plugins = {
     {
         "snakemake/snakemake",
         config = function(plugin)
-            vim.opt.rtp:append(plugin.dir .. '/misc/vim/')
-        end
+            vim.opt.rtp:append(plugin.dir .. "/misc/vim/")
+        end,
     },
     {
         "akinsho/flutter-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = { "nvim-lua/plenary.nvim" },
     },
 
     -- Debugging
     {
         "mfussenegger/nvim-dap",
         dependencies = { "mfussenegger/nvim-dap-python" },
-        lazy = true
+        lazy = true,
     },
-    { "rcarriga/nvim-dap-ui",    dependencies = { "mfussenegger/nvim-dap" } },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 
     -- Startup panel
     "mhinz/vim-startify",
@@ -79,18 +81,22 @@ local plugins = {
     -- Syntax plugins
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate"
+        build = ":TSUpdate",
     },
     "p00f/nvim-ts-rainbow",
 
     { "nvim-treesitter/playground", lazy = true },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        config = function() require('treesitter-context').setup() end,
+        config = function()
+            require("treesitter-context").setup()
+        end,
     },
     {
         "nathom/filetype.nvim", -- for faster startup time
-        config = function() require("filetype").setup({}) end
+        config = function()
+            require("filetype").setup({})
+        end,
     },
 
     -- LSP plugins
@@ -100,14 +106,14 @@ local plugins = {
     "folke/neodev.nvim",
     {
         "jose-elias-alvarez/null-ls.nvim",
-        dependencies = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim",
     },
     {
         "ThePrimeagen/refactoring.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter"
-        }
+            "nvim-treesitter/nvim-treesitter",
+        },
     },
 
     -- Completion plugins
@@ -128,21 +134,21 @@ local plugins = {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = function()
-            require('neogen').setup {
+            require("neogen").setup({
                 snippet_engine = "luasnip",
                 languages = {
-                    python = { template = { annotation_convention = "numpydoc" } }
-                }
-            }
+                    python = { template = { annotation_convention = "numpydoc" } },
+                },
+            })
         end,
-        lazy = true
+        lazy = true,
     },
 
     -- file tree
     {
         "kyazdani42/nvim-tree.lua",
         dependencies = { "kyazdani42/nvim-web-devicons" },
-        lazy = true
+        lazy = true,
     },
 
     -- buffer plugins
@@ -152,42 +158,43 @@ local plugins = {
         version = "v3.*",
         cond = not vim.g.started_by_firenvim,
     },
-    { "ThePrimeagen/harpoon",       lazy = true },
+    { "ThePrimeagen/harpoon", lazy = true },
 
     -- Indentation marker
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("indent_blankline").setup {
+            require("indent_blankline").setup({
                 -- for example, context is off by default, use this to turn it on
                 show_current_context = true,
                 show_current_context_start = false,
-            }
-        end
+            })
+        end,
     },
 
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = true
+        lazy = true,
     },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     {
         "junegunn/fzf",
-        build = './install --all',
+        build = "./install --all",
         dependencies = { "junegunn/fzf.vim" },
-        lazy = true
+        lazy = true,
     },
 
     -- UI sugar
+    --h
     {
         "folke/noice.nvim",
         config = function()
             require("noice").setup({
                 lsp = {
                     progress = {
-                        enabled = false
+                        enabled = false,
                     },
                     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                     override = {
@@ -206,23 +213,23 @@ local plugins = {
                 },
             })
         end,
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-    },
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    }, --
     {
         "nvim-zh/colorful-winsep.nvim",
         config = function()
             require("colorful-winsep").setup({
                 highlight = {
-                    fg = "#957fb8"
-                }
+                    fg = "#957fb8",
+                },
             })
         end,
-        event = { "WinNew" }
+        event = { "WinNew" },
     },
     "stevearc/dressing.nvim",
 
     -- github integration
-    { "pwntester/octo.nvim",                      config = true },
+    { "pwntester/octo.nvim", config = true },
 
     -- Browser integration
     {
@@ -240,10 +247,10 @@ local plugins = {
                     [".*"] = {
                         takeover = "never", -- by default never takeover a text field
                         cmdline = "none", -- to avoid problems with noice.nvim
-                    }
-                }
+                    },
+                },
             }
-        end
+        end,
     },
 }
 

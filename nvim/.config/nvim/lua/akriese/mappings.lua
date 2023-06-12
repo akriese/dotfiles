@@ -4,7 +4,9 @@ local map = F.map
 -- PLUGIN RELATED mappings
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>")
 map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>")
-map("n", "<leader>k", function() require('neogen').generate() end)
+map("n", "<leader>k", function()
+    require("neogen").generate()
+end)
 map("n", "<leader>lr", "<cmd>LspRestart<cr>")
 
 -- TELESCOPE
@@ -35,7 +37,7 @@ map("n", "<leader>fl", "<cmd>Telescope flutter commands<cr>")
 map("n", "<leader>fp", "<cmd>Telescope projects<cr>")
 
 -- DAP
-local dap, widgets = require('dap'), require 'dap.ui.widgets'
+local dap, widgets = require("dap"), require("dap.ui.widgets")
 map("n", "<F5>", dap.continue, { silent = true })
 map("n", "<F10>", dap.step_over, { silent = true })
 map("n", "<F11>", dap.step_into, { silent = true })
@@ -56,7 +58,9 @@ map("n", "<leader>gc", ":Git cherry-pick")
 map("n", "<leader>gg", "<cmd>Git<CR>")
 map("n", "<leader>gL", "<cmd>Gclog<CR>")
 map("n", "<leader>gP", "<cmd>Git push<CR>")
-map("n", "<leader>guP", function() vim.cmd("Git push --set-upstream origin " .. F.current_branch()) end)
+map("n", "<leader>guP", function()
+    vim.cmd("Git push --set-upstream origin " .. F.current_branch())
+end)
 map("n", "<leader>gp", "<cmd>Git pull<CR>")
 map("n", "<leader><", "<cmd>diffget //3<CR>")
 map("n", "<leader>>", "<cmd>diffget //2<CR>")
@@ -87,9 +91,11 @@ map("n", "<leader>q", "<cmd>q<CR>")
 map("n", "<leader>Q", "<cmd>qa<CR>")
 map("n", "Q", "<Nop>")
 map("n", "Y", "y$")
-map("i", "<C-BS>", '<C-W>')
-map("i", "<C-h>", '<C-W>')
-map("n", "<leader>st", function() F.set_tab_width() end)
+map("i", "<C-BS>", "<C-W>")
+map("i", "<C-h>", "<C-W>")
+map("n", "<leader>st", function()
+    F.set_tab_width()
+end)
 
 -- recenter after search or jump
 map("n", "n", "nzz")
@@ -99,8 +105,8 @@ map("n", "#", "#zz")
 map("n", "J", "mzJ`z")
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
-map("n", "<leader>[", '<cmd>cprevious<cr>zz')
-map("n", "<leader>]", '<cmd>cnext<cr>zz')
+map("n", "<leader>[", "<cmd>cprevious<cr>zz")
+map("n", "<leader>]", "<cmd>cnext<cr>zz")
 
 -- moving text
 map("v", "<", "<gv")
@@ -111,7 +117,9 @@ map("n", "gP", "'[V']")
 -- vimrc loading and saving
 map("n", "<leader>sv", F.source_local_config)
 map("n", "<leader>ev", "<cmd>vsplit $MYVIMRC<CR>")
-map("n", "<leader>E", function() vim.cmd.edit() end)
+map("n", "<leader>E", function()
+    vim.cmd.edit()
+end)
 
 -- clipboard shortcuts
 map("n", "<leader>Y", '"*y')

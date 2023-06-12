@@ -1,4 +1,4 @@
-local comment = require('Comment')
+local comment = require("Comment")
 local opts = {
     ---Add a space b/w comment and the line
     ---@type boolean
@@ -19,29 +19,29 @@ local opts = {
     ---@type table
     toggler = {
         ---Line-comment toggle keymap
-        line = 'gcc',
+        line = "gcc",
         ---Block-comment toggle keymap
-        block = 'gbc',
+        block = "gbc",
     },
 
     ---LHS of operator-pending mappings in NORMAL + VISUAL mode
     ---@type table
     opleader = {
         ---Line-comment keymap
-        line = 'gc',
+        line = "gc",
         ---Block-comment keymap
-        block = 'gb',
+        block = "gb",
     },
 
     ---LHS of extra mappings
     ---@type table
     extra = {
         ---Add comment on the line above
-        above = 'gcO',
+        above = "gcO",
         ---Add comment on the line below
-        below = 'gco',
+        below = "gco",
         ---Add comment at the end of line
-        eol = 'gcA',
+        eol = "gcA",
     },
 
     ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode

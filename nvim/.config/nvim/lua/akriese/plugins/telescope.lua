@@ -1,9 +1,9 @@
 local F = require("akriese.functions")
 local map = F.map
 
-local telescope = require('telescope')
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 -- rebase interactive, <C-r> already taken by reset default
 local git_rebase_interactive = function(prompt_bufnr)
@@ -39,7 +39,7 @@ local git_diff_between = function(prompt_bufnr)
     local current_picker = action_state.get_current_picker(prompt_bufnr)
     local selection = current_picker:get_multi_selection()
     if #selection ~= 2 then
-        print('Select exactly two commits, please!')
+        print("Select exactly two commits, please!")
         return
     end
     local first, second = selection[1], selection[2]
@@ -47,7 +47,7 @@ local git_diff_between = function(prompt_bufnr)
     vim.cmd("Git diff " .. first.value .. ".." .. second.value)
 end
 
-telescope.setup {
+telescope.setup({
     defaults = {
         i = {
             -- ["C-k"] = "which_key",
@@ -57,16 +57,16 @@ telescope.setup {
             "node_modules",
             "%.git/",
             "%.ipynb_checkpoints",
-            "%__pycache__"
+            "%__pycache__",
         },
         vimgrep_arguments = {
-            'rg',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
         },
     },
     extensions = {
@@ -76,7 +76,7 @@ telescope.setup {
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
-        }
+        },
     },
     pickers = {
         git_commits = {
@@ -86,16 +86,16 @@ telescope.setup {
                     ["<C-d>s"] = git_diff_since,
                     ["<C-d>o"] = git_diff_single,
                     ["<C-d>b"] = git_diff_between,
-                    ["<C-y>"]  = git_yank_hash,
+                    ["<C-y>"] = git_yank_hash,
                 },
-            }
-        }
-    }
-}
+            },
+        },
+    },
+})
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-telescope.load_extension('fzf')
-telescope.load_extension('flutter')
-telescope.load_extension('projects')
-telescope.load_extension('noice')
+telescope.load_extension("fzf")
+telescope.load_extension("flutter")
+telescope.load_extension("projects")
+telescope.load_extension("noice")

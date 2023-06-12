@@ -5,7 +5,7 @@ local set_autocmd = F.set_autocmd
 vim.opt.encoding = "utf-8"
 vim.g.mapleader = " "
 
-if has('win32') then
+if has("win32") then
     vim.cmd([[
         let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
         let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
@@ -32,7 +32,7 @@ vim.opt.autowrite = true -- Automatically :write before running commands
 vim.opt.laststatus = 3 -- Always display the status line
 
 vim.opt.mouse = "a"
-if not has('nvim') then
+if not has("nvim") then
     vim.opt.ttymouse = "xterm2"
 end
 vim.opt.foldmethod = "indent"
@@ -44,7 +44,9 @@ vim.opt.signcolumn = "yes"
 
 vim.cmd("highlight ColorColumn ctermbg=52")
 vim.opt.colorcolumn = "80"
-set_autocmd("BufEnter", function() vim.opt_local.colorcolumn = "72" end, { pattern = "COMMIT_EDITMSG" })
+set_autocmd("BufEnter", function()
+    vim.opt_local.colorcolumn = "72"
+end, { pattern = "COMMIT_EDITMSG" })
 
 vim.opt.wildmode = "list:longest,list:full"
 vim.opt.updatetime = 100 -- update time for git gutter
@@ -56,7 +58,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 
-if has('wsl') then
+if has("wsl") then
     vim.cmd([[
         let g:clipboard = {
         \   'name': 'wslclipboard',
@@ -73,7 +75,7 @@ if has('wsl') then
     ]])
 end
 
-if has('win32') then
+if has("win32") then
     vim.opt.shada = "'100,n~/AppData/Local/nvim-data/shada/main.shada"
 else
     vim.opt.shada = "'100,n~/.local/share/nvim/shada/main.shada"
@@ -95,7 +97,7 @@ vim.opt.complete:append("kspell")
 vim.opt.diffopt:append("vertical")
 
 -- disable Background Color Erase (BCE)
-if string.find(vim.o.term, '256color') then
+if string.find(vim.o.term, "256color") then
     vim.o.t_ut = ""
 end
 
@@ -106,7 +108,7 @@ vim.o.t_SI = [[\<Esc>[6 q]]
 vim.o.t_SR = [[\<Esc>[3 q]]
 vim.o.t_EI = [[\<Esc>[2 q]]
 
-if vim.fn.exists('$TMUX') == 1 then
+if vim.fn.exists("$TMUX") == 1 then
     vim.o.t_SI = [[\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\]]
     vim.o.t_EI = [[\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\]]
 else

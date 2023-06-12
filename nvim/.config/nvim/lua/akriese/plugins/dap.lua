@@ -1,29 +1,29 @@
-local F = require('akriese.functions')
-local dap, dapui = require('dap'), require('dapui')
-vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '🐢', texthl = '', linehl = '', numhl = '' })
+local F = require("akriese.functions")
+local dap, dapui = require("dap"), require("dapui")
+vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🐢", texthl = "", linehl = "", numhl = "" })
 
-require('dap-python').setup('~/anaconda3/envs/debugpy/bin/python')
+require("dap-python").setup("~/anaconda3/envs/debugpy/bin/python")
 
 dapui.setup({
     layouts = {
         {
             elements = {
-                'scopes',
-                'breakpoints',
-                'stacks',
-                'watches',
+                "scopes",
+                "breakpoints",
+                "stacks",
+                "watches",
             },
             size = 40,
-            position = 'left',
+            position = "left",
         },
         {
             elements = {
-                'repl',
-                'console',
+                "repl",
+                "console",
             },
             size = 10,
-            position = 'bottom',
+            position = "bottom",
         },
     },
     icons = { expanded = "▾", collapsed = "▸" },
@@ -50,7 +50,7 @@ dapui.setup({
     windows = { indent = 1 },
     render = {
         max_type_length = nil, -- Can be integer or nil.
-    }
+    },
 })
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -63,7 +63,11 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
 
-vim.api.nvim_create_autocmd("FileType",
-    { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" })
-vim.api.nvim_create_autocmd("FileType",
-    { pattern = "dap-float", command = "nnoremap <buffer><silent> <esc> <cmd>close!<CR>" })
+vim.api.nvim_create_autocmd(
+    "FileType",
+    { pattern = "dap-float", command = "nnoremap <buffer><silent> q <cmd>close!<CR>" }
+)
+vim.api.nvim_create_autocmd(
+    "FileType",
+    { pattern = "dap-float", command = "nnoremap <buffer><silent> <esc> <cmd>close!<CR>" }
+)

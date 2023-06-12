@@ -6,62 +6,67 @@ local mason_installed = {
     "pyright",
     "rust_analyzer",
     "tsserver",
-    "emmet_ls"
+    "emmet_ls",
 }
 
-require("mason").setup {}
-require("mason-lspconfig").setup {
-    ensure_installed = mason_installed
-}
-
+require("mason").setup({})
+require("mason-lspconfig").setup({
+    ensure_installed = mason_installed,
+})
 
 require("neodev").setup({})
 
-local nvim_lsp = require('lspconfig')
-local F = require "akriese.functions"
+local nvim_lsp = require("lspconfig")
+local F = require("akriese.functions")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
 
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
 
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
     local opts = { noremap = true, silent = true }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
     -- This is a weird fix for the visual selection not being used properly in the code_action() call
-    buf_set_keymap('v', '<leader>ca', "<Esc>gv<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap("v", "<leader>ca", "<Esc>gv<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
     if client.server_capabilities.documentFormattingProvider or client.server_capabilities.document_formatting then
-        F.set_autocmd("BufWritePre", function() vim.lsp.buf.format() end, { buffer = bufnr })
+        F.set_autocmd("BufWritePre", function()
+            vim.lsp.buf.format()
+        end, { buffer = bufnr })
     end
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local non_default_servers = {}
 
@@ -79,9 +84,9 @@ local ltex_settings = vim.tbl_extend("force", opts, {
     settings = {
         ltex = {
             -- language = 'en-US'
-        }
+        },
     },
-    filetypes = { "bib", "markdown", "plaintex", "rst", "tex" }
+    filetypes = { "bib", "markdown", "plaintex", "rst", "tex" },
 })
 
 local setup_latex = function(lang, settings)
@@ -112,24 +117,26 @@ end
 setup_latex("en-US", ltex_settings)
 table.insert(non_default_servers, "ltex")
 
-F.map("n", "<leader>lc", function() choose_ltex_lang(ltex_settings) end)
+F.map("n", "<leader>lc", function()
+    choose_ltex_lang(ltex_settings)
+end)
 
 -- Lua setup
 nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
     settings = {
         Lua = {
             completion = {
-                callSnippets = "Replace"
+                callSnippets = "Replace",
             },
             format = {
                 enable = false,
                 defaultConfig = {
                     indent_style = "space",
                     indent_size = "4",
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 }))
 table.insert(non_default_servers, "lua_ls")
 
@@ -143,7 +150,7 @@ for _, server in ipairs(default_config_servers) do
 end
 
 -- flutter setup
-require("flutter-tools").setup {
+require("flutter-tools").setup({
     debugger = { -- integrate with nvim dap + install dart code debugger
         enabled = true,
         run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
@@ -153,9 +160,9 @@ require("flutter-tools").setup {
     },
     lsp = {
         on_attach = on_attach,
-        capabilities = capabilities
-    }
-}
+        capabilities = capabilities,
+    },
+})
 
 -- null-ls
 local null_ls = require("null-ls")
