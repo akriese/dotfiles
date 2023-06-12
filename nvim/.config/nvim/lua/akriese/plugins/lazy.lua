@@ -219,6 +219,7 @@ local plugins = {
         end,
         event = { "WinNew" }
     },
+    "stevearc/dressing.nvim",
 
     -- github integration
     { "pwntester/octo.nvim",                      config = true },
