@@ -1,5 +1,4 @@
 local F = require("akriese.functions")
-local map = F.map
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")

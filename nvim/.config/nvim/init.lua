@@ -6,5 +6,5 @@ require("akriese.plugins")
 vim.cmd("colorscheme kanagawa")
 vim.opt.background = "dark"
 
-require("akriese.mappings")
+require("akriese.mappings").setup()
 require("akriese.autocmds")
