@@ -24,10 +24,24 @@ add_to_path () {
 projects_file="$DOTFILES/projects.txt"
 name_dir_separator=" -> "
 fzf_projects_cd () {
-    directory=$(cat "${projects_file}" | fzf)
+    if [[ -n "${1}" ]] then
+        result=$(rg "${1}.*${name_dir_separator}" "${projects_file}")
+
+        if [[ -z "${result}" ]] then
+            directory=$(cat "${projects_file}" | fzf -q "${1}")
+        else
+            directory="$result"
+        fi
+    else
+        directory=$(cat "${projects_file}" | fzf)
+    fi
+
     if [[ -z ${directory} ]] then
+        echo "Nothing chosen."
         return # fzf was probably escaped
     fi
+
+    echo "${directory}"
     dir=$(echo "${directory}" | awk -F"${name_dir_separator}" '{print $2}')
     cd "${dir}"
 }

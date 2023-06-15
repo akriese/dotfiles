@@ -35,15 +35,29 @@ $env:PATHEXT = "$env:PATHEXT;.bat"
 
 $projects_file = "$DOTFILES/projects.txt"
 $name_dir_separator = " -> "
-Function fzf_projects_cd {
-    $directory = cat "$projects_file"  | fzf
-    if ("$directory" -match "^\$") {
-        $directory = Invoke-Expression -Command "`"$directory`""
+Function fzf_projects_cd { param ( $Query )
+    if ($PSBoundParameters.ContainsKey('Query')) {
+        $result = rg "$Query\.*$name_dir_separator" $projects_file
+
+        if ("$result" -eq "") {
+            echo "rg didnt find"
+            $directory = cat "$projects_file" | fzf -q "$Query"
+        } else {
+            $directory = $result
+        }
+    } else {
+        $directory = cat "$projects_file" | fzf
+        if ("$directory" -match "^\$") {
+            $directory = Invoke-Expression -Command "`"$directory`""
+        }
     }
+
     if ($directory -eq $null) {
-        echo Nothing chosen.
+        echo "Nothing chosen."
         return # fzf was probably escaped
     }
+
+    echo $directory
     cd $directory.split($name_dir_separator)[1]
 }
 Set-Alias -Name pcd -Value fzf_projects_cd
