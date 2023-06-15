@@ -168,6 +168,16 @@ M.setup = function()
                 end,
                 "Tab width",
             },
+            s = {
+                function()
+                    vim.ui.input({ prompt = "Enter a syntax:" }, function(input)
+                        if input ~= nil then
+                            vim.opt_local.syntax = input
+                        end
+                    end)
+                end,
+                "Syntax",
+            },
         },
     }, { prefix = "<leader>" })
 
