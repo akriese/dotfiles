@@ -91,7 +91,7 @@ table.insert(non_default_servers, "ltex")
 
 F.map("n", "<leader>lc", function()
     choose_ltex_lang(ltex_settings)
-end, {desc =  "Switch latex language"})
+end, { desc = "Switch latex language" })
 
 -- Lua setup
 nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
@@ -141,11 +141,23 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.code_actions.refactoring,
+        null_ls.builtins.diagnostics.flake8, -- pip install flake8
+        -- null_ls.builtins.formatting.isort.with({
+        --     args = {
+        --         "--format",
+        --         "black",
+        --         "--stdout",
+        --         "--filename",
+        --         "$FILENAME",
+        --         "-",
+        --     },
+        -- }), -- pip install isort
+        null_ls.builtins.formatting.black.with({
+            extra_args = { "--fast" },
+        }), -- pip install black
+        null_ls.builtins.formatting.stylua, -- cargo install stylua
+        null_ls.builtins.code_actions.refactoring, -- install plugin
+        null_ls.builtins.formatting.prettier, -- npm install --global prettier
     },
     on_attach = on_attach,
 })
