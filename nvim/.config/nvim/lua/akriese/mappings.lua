@@ -5,6 +5,11 @@ if not success then
     return
 end
 
+local ok, t_builtins = pcall(require("telescope.builtin"))
+if not ok then
+    print("Telescope not installed! Mapping won't work!")
+end
+
 M = {}
 
 M.setup = function()
@@ -35,11 +40,17 @@ M.setup = function()
             o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
             r = { "<cmd>Telescope lsp_references<cr>", "LSP references" },
             b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
+            B = {
+                function()
+                    t_builtins.live_grep({ grep_open_files = true })
+                end,
+                "Text in open buffers",
+            },
             t = { "<cmd>Telescope live_grep<cr>", "Text" }, -- live grep with respect to gitignore and hidden files
             -- includes search in hidden and ignored files
             T = {
                 function()
-                    require("telescope.builtin").live_grep({ additional_args = { "-uu" } })
+                    t_builtins.live_grep({ additional_args = { "-uu" } })
                 end,
                 "Text including in ignored files",
             },
@@ -47,7 +58,7 @@ M.setup = function()
             -- search in hidden and ignored files too
             W = {
                 function()
-                    require("telescope.builtin").grep_string({ additional_args = { "-uu" } })
+                    t_builtins.grep_string({ additional_args = { "-uu" } })
                 end,
                 "String under cursor (also ignored)",
             },
