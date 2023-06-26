@@ -67,6 +67,35 @@ M.setup = function()
         },
     }, { prefix = "<leader>" })
 
+    -- Buffers
+    local goto_buffer = {}
+    for buffer = 1, 9 do
+        goto_buffer[tostring(buffer)] = { "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>", "Go to buffer " .. buffer }
+    end
+
+    wk.register({
+        b = vim.tbl_extend("force", goto_buffer, {
+            name = "Buffers",
+            c = {
+                name = "Close",
+                r = { "<cmd>BufferLineCloseRight<cr>", "to the right (bufferline)" },
+                l = { "<cmd>BufferLineCloseLeft<cr>", "to the left (bufferline)" },
+            },
+            C = {
+                function()
+                    local current_buf = vim.api.nvim_get_current_buf()
+                    vim.cmd([[BufferLineCycleNext]])
+                    vim.cmd("bdelete! " .. current_buf)
+                end,
+
+                -- "<cmd>bdelete! | bnext<cr>",
+                "Close buffer and next",
+            },
+            l = { "<cmd>BufferLineCycleNext<cr>", "Go buffer to right" },
+            r = { "<cmd>BufferLineCyclePrev<cr>", "Go buffer to left" },
+        }),
+    }, { prefix = "<leader>", silent = true })
+
     -- DAP
     local dap, widgets = require("dap"), require("dap.ui.widgets")
     map("n", "<F5>", dap.continue, { silent = true })
@@ -128,19 +157,6 @@ M.setup = function()
     -- Sideways stuff
     map("n", "<leader>,", "<cmd>SidewaysLeft<cr>", { desc = "Switch arguments to left" })
     map("n", "<leader>.", "<cmd>SidewaysRight<cr>", { desc = "Switch arguments to right" })
-
-    -- BUFFERLINE
-    map("n", "<leader>L", "<cmd>BufferLineCycleNext<cr>", { desc = "Go buffer to right" })
-    map("n", "<leader>H", "<cmd>BufferLineCyclePrev<cr>", { desc = "Go buffer to left" })
-
-    for buffer = 1, 9 do
-        map(
-            "n",
-            "<leader>" .. buffer,
-            "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>",
-            { silent = true, desc = "Go to buffer " .. buffer }
-        )
-    end
 
     -- Info commands
     wk.register({
