@@ -65,6 +65,10 @@ local plugins = {
     {
         "akinsho/flutter-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
+        config = true,
+    },
+    {
+        "Nash0x7E2/awesome-flutter-snippets",
     },
 
     -- Debugging
