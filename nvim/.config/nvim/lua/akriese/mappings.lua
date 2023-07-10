@@ -5,7 +5,7 @@ if not success then
     return
 end
 
-local ok, t_builtins = pcall(require("telescope.builtin"))
+local ok, t_builtins = pcall(require, "telescope.builtin")
 if not ok then
     print("Telescope not installed! Mapping won't work!")
 end
