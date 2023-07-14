@@ -5,6 +5,8 @@ vim.fn.sign_define("DapStopped", { text = "🐢", texthl = "", linehl = "", numh
 
 require("dap-python").setup("~/anaconda3/envs/debugpy/bin/python")
 
+dap.set_log_level("TRACE")
+
 dapui.setup({
     layouts = {
         {
