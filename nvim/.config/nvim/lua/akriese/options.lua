@@ -43,7 +43,7 @@ vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
 
 vim.cmd("highlight ColorColumn ctermbg=52")
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "88"
 set_autocmd("BufEnter", function()
     vim.opt_local.colorcolumn = "72"
 end, { pattern = "COMMIT_EDITMSG" })
