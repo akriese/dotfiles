@@ -78,8 +78,8 @@ M.setup = function()
             name = "Buffers",
             c = {
                 name = "Close",
-                r = { "<cmd>BufferLineCloseRight<cr>", "to the right (bufferline)" },
-                l = { "<cmd>BufferLineCloseLeft<cr>", "to the left (bufferline)" },
+                l = { "<cmd>BufferLineCloseRight<cr>", "to the right (bufferline)" },
+                h = { "<cmd>BufferLineCloseLeft<cr>", "to the left (bufferline)" },
             },
             C = {
                 function()
@@ -92,7 +92,7 @@ M.setup = function()
                 "Close buffer and next",
             },
             l = { "<cmd>BufferLineCycleNext<cr>", "Go buffer to right" },
-            r = { "<cmd>BufferLineCyclePrev<cr>", "Go buffer to left" },
+            h = { "<cmd>BufferLineCyclePrev<cr>", "Go buffer to left" },
         }),
     }, { prefix = "<leader>", silent = true })
 
