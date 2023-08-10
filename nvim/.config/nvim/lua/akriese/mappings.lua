@@ -15,7 +15,6 @@ M = {}
 M.setup = function()
     -- PLUGIN RELATED mappings
     map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
-    map("n", "<leader>T", "<cmd>TSBufToggle highlight<cr>", { desc = "Toggle TS highlight" })
     map("n", "<leader>k", function()
         require("neogen").generate()
     end, { desc = "Generate doc string" })
@@ -188,7 +187,6 @@ M.setup = function()
     wk.register({
         s = {
             name = "Set",
-            ["hl"] = { "<cmd>set hlsearch!<CR>", "Toggle search highlight" },
             t = {
                 function()
                     F.set_tab_width()
@@ -296,7 +294,15 @@ M.setup = function()
         term_cmd = vim.o.shell
     end
 
-    map("n", "<leader>t", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>", { desc = "Open terminal" })
+    -- TOGGLE stuff
+    wk.register({
+        t = {
+            h = { "<cmd>set hlsearch!<CR>", "Toggle search highlight" },
+            t = { "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>", "Open terminal" },
+            d = { require("dapui").toggle, "DAP UI" },
+            H = { "<cmd>TSBufToggle highlight<cr>", "Toggle TS highlight" },
+        },
+    }, { prefix = "<leader>" })
 
     wk.register({
         h = { name = "Harpoon" },
