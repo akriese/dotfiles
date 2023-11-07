@@ -95,18 +95,3 @@ vim.opt.complete:append("kspell")
 
 -- Always use vertical diffs
 vim.opt.diffopt:append("vertical")
-
--- Disable character forwarding for shell (removes weird character bug)
-vim.o.t_TI = ""
-vim.o.t_TE = ""
-vim.o.t_SI = [[\<Esc>[6 q]]
-vim.o.t_SR = [[\<Esc>[3 q]]
-vim.o.t_EI = [[\<Esc>[2 q]]
-
-if vim.fn.exists("$TMUX") == 1 then
-    vim.o.t_SI = [[\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\]]
-    vim.o.t_EI = [[\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\]]
-else
-    vim.o.t_SI = [[\e[5 q]]
-    vim.o.t_EI = [[\e[2 q]]
-end
