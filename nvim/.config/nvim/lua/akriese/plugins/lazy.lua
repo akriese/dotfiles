@@ -97,12 +97,6 @@ local plugins = {
             require("treesitter-context").setup()
         end,
     },
-    {
-        "nathom/filetype.nvim", -- for faster startup time
-        config = function()
-            require("filetype").setup({})
-        end,
-    },
 
     -- LSP plugins
     "neovim/nvim-lspconfig",
