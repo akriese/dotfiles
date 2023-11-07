@@ -96,11 +96,6 @@ vim.opt.complete:append("kspell")
 -- Always use vertical diffs
 vim.opt.diffopt:append("vertical")
 
--- disable Background Color Erase (BCE)
-if string.find(vim.o.term, "256color") then
-    vim.o.t_ut = ""
-end
-
 -- Disable character forwarding for shell (removes weird character bug)
 vim.o.t_TI = ""
 vim.o.t_TE = ""
