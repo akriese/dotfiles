@@ -25,6 +25,11 @@ projects_file="$DOTFILES/projects.txt"
 name_dir_separator=" -> "
 fzf_projects_cd () {
     if [[ -n "${1}" ]] then
+        if ! command -v rg &> /dev/null; then
+            echo "Install rg first please!"
+            return 1
+        fi
+
         result=$(rg "${1}.*${name_dir_separator}" "${projects_file}")
 
         if [[ -z "${result}" ]] then
