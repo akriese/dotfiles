@@ -53,12 +53,15 @@ require("nvim-tree").setup({
     },
     view = {
         width = 30,
-        hide_root_folder = false,
         side = "left",
         number = false,
         relativenumber = false,
         signcolumn = "yes",
         preserve_window_proportions = true,
+    },
+    renderer = {
+        root_folder_label = false,
+        indent_markers = { enable = true },
     },
     trash = {
         cmd = "trash",
