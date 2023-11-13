@@ -14,6 +14,9 @@
     st = "status"
     s = "status -s -b"
     c = "commit"
+    cs = "commit --signoff"
+    cS = "commit --gpg-sign"
+    css = "commit --gpg-sign --signoff"
 
     # log
     l = "log"
