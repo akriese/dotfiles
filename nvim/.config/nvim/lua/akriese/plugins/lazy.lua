@@ -68,9 +68,8 @@ local plugins = {
         dependencies = { "nvim-lua/plenary.nvim", "stevearc/dressing.nvim" },
         config = true,
     },
-    {
-        "Nash0x7E2/awesome-flutter-snippets",
-    },
+    "Nash0x7E2/awesome-flutter-snippets",
+    "Shirk/vim-gas",
 
     -- Debugging
     {
