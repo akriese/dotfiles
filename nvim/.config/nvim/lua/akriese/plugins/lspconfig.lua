@@ -7,6 +7,7 @@ local mason_installed = {
     "rust_analyzer",
     "tsserver",
     "emmet_ls",
+    "asm_lsp"
 }
 
 require("mason").setup({})
