@@ -280,6 +280,10 @@ M.setup = function()
 
     -- Terminal
     map("t", "ii", [[<C-\><C-n>]])
+    map("t", "<C-h>", [[<C-\><C-n><C-w>h]])
+    map("t", "<C-j>", [[<C-\><C-n><C-w>j]])
+    map("t", "<C-k>", [[<C-\><C-n><C-w>k]])
+    map("t", "<C-l>", [[<C-\><C-n><C-w>l]])
 
     local term_cmd = ""
     if string.find(vim.o.shell, "zsh") then
