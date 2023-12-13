@@ -47,7 +47,11 @@ local plugins = {
     "tpope/vim-fugitive",
 
     -- Bracket / pair plugins
-    "jiangmiao/auto-pairs",
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {}, -- this is equalent to setup({}) function
+    },
     "tpope/vim-surround",
     "AndrewRadev/sideways.vim", -- Swap function arguments
 
