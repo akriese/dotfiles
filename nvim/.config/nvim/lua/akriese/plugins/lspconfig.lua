@@ -7,7 +7,8 @@ local mason_installed = {
     "rust_analyzer",
     "tsserver",
     "emmet_ls",
-    "asm_lsp"
+    "asm_lsp",
+    "kotlin_language_server",
 }
 
 require("mason").setup({})
@@ -165,6 +166,7 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua, -- cargo install stylua
         null_ls.builtins.code_actions.refactoring, -- install plugin
         null_ls.builtins.formatting.prettier, -- npm install --global prettier
+        null_ls.builtins.formatting.ktlint, -- :MasonInstall ktlint
     },
     on_attach = on_attach,
 })
