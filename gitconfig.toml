@@ -26,6 +26,7 @@
     # checking out
     co = "checkout"
     cb = "checkout -b"
+    cm = "checkout main"
 
     # pushing
     p = "push"
