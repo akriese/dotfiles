@@ -32,10 +32,10 @@ fzf_projects_cd () {
 
         result=$(rg "${1}.*${name_dir_separator}" "${projects_file}")
 
-        if [[ -z "${result}" ]] then
-            directory=$(cat "${projects_file}" | fzf -q "${1}")
-        else
+        if [[ $(wc -l <<< ${result}) -eq "1" ]] then
             directory="$result"
+        else
+            directory=$(echo "${result}" | fzf -q "${1}")
         fi
     else
         directory=$(cat "${projects_file}" | fzf)

@@ -37,11 +37,13 @@ $projects_file = "$DOTFILES/projects.txt"
 $name_dir_separator = " -> "
 Function fzf_projects_cd { param ( $Query )
     if ($PSBoundParameters.ContainsKey('Query')) {
-        $result = rg "$Query\.*$name_dir_separator" $projects_file
+        $rg_query = "$Query.*$name_dir_separator"
 
-        if ("$result" -eq "") {
-            echo "rg didnt find"
-            $directory = cat "$projects_file" | fzf -q "$Query"
+        $result = (rg "$rg_query" $projects_file)
+
+        $lines = (echo $result | Measure-Object -line).Lines
+        if ($lines -ne 1) {
+            $directory = $result | fzf -q "$Query"
         } else {
             $directory = $result
         }
