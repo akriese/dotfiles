@@ -29,7 +29,7 @@ local plugins = {
     },
     {
         "nvim-lualine/lualine.nvim", -- status line
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         cond = not vim.g.started_by_firenvim,
         config = true,
     },
@@ -129,7 +129,10 @@ local plugins = {
             "hrsh7th/cmp-nvim-lua",
         },
     },
-    "L3MON4D3/LuaSnip",
+    {
+        "L3MON4D3/LuaSnip",
+        tag = "v2.*",
+    },
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     {
@@ -161,15 +164,15 @@ local plugins = {
 
     -- file tree
     {
-        "kyazdani42/nvim-tree.lua",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        "nvim-tree/nvim-tree.lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = true,
     },
 
     -- buffer plugins
     {
         "akinsho/bufferline.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         version = "v3.*",
         cond = not vim.g.started_by_firenvim,
     },
