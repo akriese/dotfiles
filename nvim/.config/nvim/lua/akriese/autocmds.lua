@@ -18,6 +18,7 @@ set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=tmux", { pattern = "tmux.
 set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=vim", { pattern = "vimrc.local" })
 set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=sh", { pattern = "*bashrc" })
 set_autocmd({ "BufRead", "BufNewFile" }, "set syntax=gas", { pattern = "*.S" })
+set_autocmd({ "BufRead", "BufNewFile" }, "set filetype=c", { pattern = "*.h" })
 
 -- remove trailing whitespace on saving
 set_autocmd("BufWritePre", F.remove_trailing_spaces)
