@@ -23,6 +23,7 @@ require("nvim-treesitter.configs").setup({
         "markdown",
         "markdown_inline",
         "regex",
+        "kotlin",
     },
 
     -- Install languages synchronously (only applied to `ensure_installed`)
