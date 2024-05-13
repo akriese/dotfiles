@@ -81,7 +81,7 @@ local plugins = {
         dependencies = { "mfussenegger/nvim-dap-python" },
         lazy = true,
     },
-    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
     -- Startup panel
     "mhinz/vim-startify",
