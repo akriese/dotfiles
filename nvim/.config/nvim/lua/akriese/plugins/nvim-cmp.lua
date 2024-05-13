@@ -30,6 +30,7 @@ local kind_icons = {
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./lua/akriese/snippets" } })
 
 cmp.setup({
     snippet = {

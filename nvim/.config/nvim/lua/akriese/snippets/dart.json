@@ -1,0 +1,7 @@
+{
+  "asyncfun": {
+    "prefix": "asyncfun",
+    "description": "Insert an async function.",
+    "body": ["Future<${3:void}> ${1:name}(${2:args}) async {", "", "}"]
+  }
+}

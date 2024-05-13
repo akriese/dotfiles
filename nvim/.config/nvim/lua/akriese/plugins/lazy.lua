@@ -132,9 +132,9 @@ local plugins = {
     {
         "L3MON4D3/LuaSnip",
         tag = "v2.*",
+        dependencies = { "rafamadriz/friendly-snippets" },
     },
     "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
     {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
@@ -204,7 +204,6 @@ local plugins = {
     },
 
     -- UI sugar
-    --h
     {
         "folke/noice.nvim",
         config = function()
