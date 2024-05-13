@@ -245,14 +245,23 @@ local plugins = {
     "stevearc/dressing.nvim",
 
     -- github integration
-    { "pwntester/octo.nvim", config = true },
+    {
+        "pwntester/octo.nvim",
+        config = function()
+            require("octo").setup({
+                suppress_missing_scope = {
+                    projects_v2 = true,
+                },
+            })
+        end,
+    },
 
     -- Browser integration
     {
         "glacambre/firenvim",
         cond = not not vim.g.started_by_firenvim,
         build = function()
-            require("lazy").load({ plugins = "firenvim", wait = true })
+            require("lazy").load({ plugins = { "firenvim" }, wait = true })
             vim.fn["firenvim#install"](0)
         end,
         config = function()
