@@ -95,24 +95,33 @@ F.map("n", "<leader>lc", function()
     choose_ltex_lang(ltex_settings)
 end, { desc = "Switch latex language" })
 
--- Lua setup
-nvim_lsp.lua_ls.setup(vim.tbl_extend("force", opts, {
-    settings = {
-        Lua = {
-            completion = {
-                callSnippets = "Replace",
-            },
-            format = {
-                enable = false,
-                defaultConfig = {
-                    indent_style = "space",
-                    indent_size = "4",
+local server_settings = {
+    lua_ls = {
+        settings = {
+            Lua = {
+                completion = {
+                    callSnippets = "Replace",
+                },
+                format = {
+                    enable = false,
+                    defaultConfig = {
+                        indent_style = "space",
+                        indent_size = "4",
+                    },
                 },
             },
         },
     },
-}))
-table.insert(non_default_servers, "lua_ls")
+    rust_analyzer = {
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy",
+                },
+            },
+        },
+    },
+}
 
 local default_config_servers = vim.tbl_filter(function(x)
     return not vim.tbl_contains(non_default_servers, x)
@@ -120,7 +129,12 @@ end, mason_installed)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
-    nvim_lsp[server].setup(opts)
+    local settings = server_settings[server]
+    if settings == nil then
+        nvim_lsp[server].setup(opts)
+    else
+        nvim_lsp[server].setup(vim.tbl_deep_extend("force", opts, server_settings[server]))
+    end
 end
 
 -- flutter setup
