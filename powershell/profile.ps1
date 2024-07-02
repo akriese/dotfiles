@@ -43,7 +43,7 @@ Function fzf_projects_cd { param ( $Query )
 
         $lines = (echo $result | Measure-Object -line).Lines
         if ($lines -ne 1) {
-            $directory = $result | fzf -q "$Query"
+            $directory = cat "$projects_file" | fzf -q "$Query"
         } else {
             $directory = $result
         }

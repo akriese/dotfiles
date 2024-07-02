@@ -35,7 +35,7 @@ fzf_projects_cd () {
         if [[ $(wc -l <<< ${result}) -eq "1" ]] then
             directory="$result"
         else
-            directory=$(echo "${result}" | fzf -q "${1}")
+            directory=$(cat "${projects_file}" | fzf -q "${1}")
         fi
     else
         directory=$(cat "${projects_file}" | fzf)
