@@ -39,8 +39,7 @@ dapui.setup({
         toggle = "t",
     },
     -- Expand lines larger than the window
-    -- Requires >= 0.7
-    expand_lines = vim.fn.has("nvim-0.7"),
+    expand_lines = true,
     floating = {
         max_height = nil, -- These can be integers or a float between 0 and 1.
         max_width = nil, -- Floats will be treated as percentage of your screen.
