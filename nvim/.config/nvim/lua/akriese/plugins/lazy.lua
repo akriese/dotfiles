@@ -91,7 +91,7 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
     },
-    "p00f/nvim-ts-rainbow",
+    "HiPhish/rainbow-delimiters.nvim",
 
     { "nvim-treesitter/playground", lazy = true },
     {
