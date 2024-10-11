@@ -18,12 +18,22 @@ local plugins = {
     "numToStr/Comment.nvim", -- comments
     {
         "max397574/better-escape.nvim", -- Escape with ii without delay
+        event = { "InsertEnter", "TermEnter" },
         config = function()
             require("better_escape").setup({
-                mapping = { "ii" }, -- a table with mappings to use
+                mappings = {
+                    i = {
+                        i = {
+                            i = "<Esc>",
+                        },
+                    },
+                    t = {
+                        i = {
+                            i = "<C-\\><C-n>",
+                        },
+                    },
+                }, -- a table with mappings to use
                 timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-                clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-                keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
             })
         end,
     },
@@ -173,7 +183,7 @@ local plugins = {
     {
         "akinsho/bufferline.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        version = "v3.*",
+        version = "v4.*",
         cond = not vim.g.started_by_firenvim,
     },
     { "ThePrimeagen/harpoon", lazy = true },

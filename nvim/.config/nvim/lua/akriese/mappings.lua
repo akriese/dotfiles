@@ -20,80 +20,88 @@ M.setup = function()
     end, { desc = "Generate doc string" })
 
     -- TELESCOPE
-    wk.register({
-        f = {
-            name = "Find",
-            d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-            f = {
-                "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>",
-                "Files",
-            },
-            F = {
-                "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<cr>",
-                "Files w/ ignored",
-            },
-            g = { "<cmd>Telescope git_files<cr>", "Git files" },
-            h = { "<cmd>Telescope help_tags<cr>", "Help" },
-            m = { "<cmd>Telescope keymaps<cr>", "Mappings" },
-            M = { "<cmd>Telescope noice<cr>", "Messages" },
-            o = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-            r = { "<cmd>Telescope lsp_references<cr>", "LSP references" },
-            b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
-            B = {
-                function()
-                    t_builtins.live_grep({ grep_open_files = true })
-                end,
-                "Text in open buffers",
-            },
-            t = { "<cmd>Telescope live_grep<cr>", "Text" }, -- live grep with respect to gitignore and hidden files
-            -- includes search in hidden and ignored files
-            T = {
-                function()
-                    t_builtins.live_grep({ additional_args = { "-uu" } })
-                end,
-                "Text including in ignored files",
-            },
-            w = { "<cmd>Telescope grep_string<cr>", "String under cursor" },
-            -- search in hidden and ignored files too
-            W = {
-                function()
-                    t_builtins.grep_string({ additional_args = { "-uu" } })
-                end,
-                "String under cursor (also ignored)",
-            },
-            l = { "<cmd>Telescope flutter commands<cr>", "Flutter commands" },
-            p = { "<cmd>Telescope projects<cr>", "Projects" },
+    wk.add({
+        { "<leader>f", group = "Find" },
+        {
+            "<leader>fB",
+            function()
+                t_builtins.live_grep({ grep_open_files = true })
+            end,
+            desc = "Text in open buffers",
         },
-    }, { prefix = "<leader>" })
+        {
+            "<leader>fF",
+            "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<cr>",
+            desc = "Files w/ ignored",
+        },
+        { "<leader>fM", "<cmd>Telescope noice<cr>", desc = "Messages" },
+        {
+            "<leader>fT",
+            function()
+                t_builtins.live_grep({ additional_args = { "-uu" } })
+            end,
+            desc = "Text including in ignored files",
+        },
+        {
+            "<leader>fW",
+            function()
+                t_builtins.grep_string({ additional_args = { "-uu" } })
+            end,
+            desc = "String under cursor (also ignored)",
+        },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Open buffers" },
+        { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+        {
+            "<leader>ff",
+            "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>",
+            desc = "Files",
+        },
+        { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git files" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+        { "<leader>fl", "<cmd>Telescope flutter commands<cr>", desc = "Flutter commands" },
+        { "<leader>fm", "<cmd>Telescope keymaps<cr>", desc = "Mappings" },
+        { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
+        { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
+        { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "LSP references" },
+        { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Text" },
+        { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "String under cursor" },
+    })
 
     -- Buffers
-    local goto_buffer = {}
+    local buffers_table = {
+        { "<leader>b", group = "Buffers" },
+    }
     for buffer = 1, 9 do
-        goto_buffer[tostring(buffer)] = { "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>", "Go to buffer " .. buffer }
+        table.insert(buffers_table, {
+            "<leader>b" .. buffer,
+            "<cmd>BufferLineGoToBuffer " .. buffer .. "<cr>",
+            desc = "Go to buffer " .. buffer,
+        })
     end
 
-    wk.register({
-        b = vim.tbl_extend("force", goto_buffer, {
-            name = "Buffers",
-            c = {
-                name = "Close",
-                l = { "<cmd>BufferLineCloseRight<cr>", "to the right (bufferline)" },
-                h = { "<cmd>BufferLineCloseLeft<cr>", "to the left (bufferline)" },
-            },
-            C = {
-                function()
-                    local current_buf = vim.api.nvim_get_current_buf()
-                    vim.cmd([[BufferLineCycleNext]])
-                    vim.cmd("bdelete! " .. current_buf)
-                end,
+    local extra_buffer_cmds = {
+        {
+            "<leader>bC",
+            function()
+                local current_buf = vim.api.nvim_get_current_buf()
+                vim.cmd([[BufferLineCycleNext]])
+                vim.cmd("bdelete! " .. current_buf)
+            end,
 
-                -- "<cmd>bdelete! | bnext<cr>",
-                "Close buffer and next",
-            },
-            l = { "<cmd>BufferLineCycleNext<cr>", "Go buffer to right" },
-            h = { "<cmd>BufferLineCyclePrev<cr>", "Go buffer to left" },
-        }),
-    }, { prefix = "<leader>", silent = true })
+            desc = "Close buffer and next",
+        },
+        { "<leader>bc", group = "Close" },
+        { "<leader>bch", "<cmd>BufferLineCloseLeft<cr>", desc = "to the left (bufferline)" },
+        { "<leader>bcl", "<cmd>BufferLineCloseRight<cr>", desc = "to the right (bufferline)" },
+        { "<leader>bh", "<cmd>BufferLineCyclePrev<cr>", desc = "Go buffer to left" },
+        { "<leader>bl", "<cmd>BufferLineCycleNext<cr>", desc = "Go buffer to right" },
+    }
+
+    for _, v in ipairs(extra_buffer_cmds) do
+        table.insert(buffers_table, v)
+    end
+
+    wk.add(buffers_table)
 
     -- DAP
     local dap, widgets = require("dap"), require("dap.ui.widgets")
@@ -101,76 +109,63 @@ M.setup = function()
     map("n", "<F10>", dap.step_over, { silent = true })
     map("n", "<F11>", dap.step_into, { silent = true })
     map("n", "<F12>", dap.step_out, { silent = true })
-    wk.register({
-        d = {
-            name = "Debugging",
-            b = { dap.toggle_breakpoint, "Toggle breakpoint" },
-            i = { dap.step_into, "Step into" },
-            o = { dap.step_over, "Step over" },
-            c = { dap.continue, "Continue" },
-            t = { dap.terminate, "Terminate" },
-            r = { dap.repl.open, "Open REPL" },
-            v = { widgets.sidebar(widgets.scopes).open, "Open variables sidebar" },
-        },
-    }, { prefix = "<leader>", silent = true })
+    wk.add({
+        { "<leader>d", group = "Debugging" },
+        { "<leader>db", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
+        { "<leader>di", dap.step_into, desc = "Step into" },
+        { "<leader>do", dap.step_over, desc = "Step over" },
+        { "<leader>dc", dap.continue, desc = "Continue" },
+        { "<leader>dt", dap.terminate, desc = "Terminate" },
+        { "<leader>dr", dap.repl.open, desc = "Open REPL" },
+        { "<leader>dv", widgets.sidebar(widgets.scopes).open, desc = "Open variables sidebar" },
+    })
     map("n", "<leader>K", widgets.hover, { silent = true, desc = "Hover info" })
 
     -- Git stuff
-    wk.register({
-        g = {
-            name = "Git",
-            a = { "<cmd>Git commit --amend<CR>", "Amend" },
-            B = { "<cmd>Git blame<CR>", "Open blame" },
-            c = { ":Git cherry-pick", "Cherry-pick" },
-            g = { "<cmd>Git<CR>", "Open fugitive" },
-            -- L = { "<cmd>Gclog<CR>", "" },
-            p = { "<cmd>Git pull<CR>", "Pull" },
-            P = { "<cmd>Git push<CR>", "Push" },
-            U = {
-                function()
-                    vim.cmd("Git push --set-upstream origin " .. F.current_branch())
-                end,
-                "Push to new upstream branch",
-            },
-            l = { "<cmd>Telescope git_commits<CR>", "Commits (log)" },
-            L = { "<cmd>Telescope git_bcommits<CR>", "Buffer commits" },
-            b = { "<cmd>Telescope git_branches<cr>", "Branches" },
+    wk.add({
+        { "<leader>g", group = "Git" },
+        { "<leader>gB", "<cmd>Git blame<CR>", desc = "Open blame" },
+        { "<leader>gL", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer commits" },
+        { "<leader>gP", "<cmd>Git push<CR>", desc = "Push" },
+        {
+            "<leader>gU",
+            function()
+                vim.cmd("Git push --set-upstream origin " .. F.current_branch())
+            end,
+            desc = "Push to new upstream branch",
         },
-    }, { prefix = "<leader>" })
+        { "<leader>ga", "<cmd>Git commit --amend<CR>", desc = "Amend" },
+        { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
+        { "<leader>gc", ":Git cherry-pick", desc = "Cherry-pick" },
+        { "<leader>gg", "<cmd>Git<CR>", desc = "Open fugitive" },
+        { "<leader>gl", "<cmd>Telescope git_commits<CR>", desc = "Commits (log)" },
+        { "<leader>gp", "<cmd>Git pull<CR>", desc = "Pull" },
+    })
     map("n", "<leader><", "<cmd>diffget //3<CR>", { desc = "Choose change from right" })
     map("n", "<leader>>", "<cmd>diffget //2<CR>", { desc = "Choose change from left" })
 
     -- Octo (GitHub integration) commands
-    wk.register({
-        G = {
-            name = "Github",
-            p = {
-                name = "PR",
-                l = { "<cmd>Octo pr list<cr>", "List" },
-                c = { ":Octo pr checkout", "Checkout" },
-            },
-            r = { "<cmd>Octo repo list<cr>", "List repos" },
-        },
-    }, { prefix = "<leader>" })
+    wk.add({
+        { "<leader>G", group = "Github" },
+        { "<leader>Gp", group = "PR" },
+        { "<leader>Gpc", ":Octo pr checkout", desc = "Checkout" },
+        { "<leader>Gpl", "<cmd>Octo pr list<cr>", desc = "List" },
+        { "<leader>Gr", "<cmd>Octo repo list<cr>", desc = "List repos" },
+    })
 
     -- Sideways stuff
     map("n", "<leader>,", "<cmd>SidewaysLeft<cr>", { desc = "Switch arguments to left" })
     map("n", "<leader>.", "<cmd>SidewaysRight<cr>", { desc = "Switch arguments to right" })
 
     -- Info commands
-    wk.register({
-        i = {
-            name = "Info",
-            m = { "<cmd>Mason<cr>", "Mason" },
-            n = { "<cmd>NullLsInfo<cr>", "null-ls Info" },
-            N = { "<cmd>NullLsLog<cr>", "null-ls Log" },
-            l = { "<cmd>Lazy<cr>", "Lazy" },
-            -- L = {"<cmd>Lazy profile<cr>", "Lazy profile"},
-            L = { "<cmd>LspInfo<cr>", "LSP Info" },
-            h = { "<cmd>checkhealth<cr>", "Health check" },
-        },
-    }, {
-        prefix = "<leader>",
+    wk.add({
+        { "<leader>i", group = "Info" },
+        { "<leader>iL", "<cmd>LspInfo<cr>", desc = "LSP Info" },
+        { "<leader>iN", "<cmd>NullLsLog<cr>", desc = "null-ls Log" },
+        { "<leader>ih", "<cmd>checkhealth<cr>", desc = "Health check" },
+        { "<leader>il", "<cmd>Lazy<cr>", desc = "Lazy" },
+        { "<leader>im", "<cmd>Mason<cr>", desc = "Mason" },
+        { "<leader>in", "<cmd>NullLsInfo<cr>", desc = "null-ls Info" },
     })
 
     ----- NON-PLUGIN keybinds
@@ -184,27 +179,27 @@ M.setup = function()
     map("i", "<C-BS>", "<C-W>")
     map("i", "<C-h>", "<C-W>")
 
-    wk.register({
-        s = {
-            name = "Set",
-            t = {
-                function()
-                    F.set_tab_width()
-                end,
-                "Tab width",
-            },
-            s = {
-                function()
-                    vim.ui.input({ prompt = "Enter a syntax:" }, function(input)
-                        if input ~= nil then
-                            vim.opt_local.syntax = input
-                        end
-                    end)
-                end,
-                "Syntax",
-            },
+    wk.add({
+        { "<leader>s", group = "Set" },
+        {
+            "<leader>ss",
+            function()
+                vim.ui.input({ prompt = "Enter a syntax:" }, function(input)
+                    if input ~= nil then
+                        vim.opt_local.syntax = input
+                    end
+                end)
+            end,
+            desc = "Syntax",
         },
-    }, { prefix = "<leader>" })
+        {
+            "<leader>st",
+            function()
+                F.set_tab_width()
+            end,
+            desc = "Tab width",
+        },
+    })
 
     -- recenter after search or jump
     map("n", "n", "nzz")
@@ -224,21 +219,20 @@ M.setup = function()
     map("n", "gP", "'[V']")
 
     -- vimrc loading and saving
-    wk.register({
-        v = {
-            name = "Config",
-            s = { F.source_local_config, "Reload" },
-            e = { "<cmd>vsplit $MYVIMRC<CR>", "Open init.lua" },
-            f = {
-                function()
-                    require("telescope.builtin").find_files({
-                        cwd = vim.fn.fnamemodify(vim.fn.expand("$MYVIMRC"), ":p:h"),
-                    })
-                end,
-                "Find config files",
-            },
+    wk.add({
+        { "<leader>v", group = "Config" },
+        { "<leader>ve", "<cmd>vsplit $MYVIMRC<CR>", desc = "Open init.lua" },
+        {
+            "<leader>vf",
+            function()
+                require("telescope.builtin").find_files({
+                    cwd = vim.fn.fnamemodify(vim.fn.expand("$MYVIMRC"), ":p:h"),
+                })
+            end,
+            desc = "Find config files",
         },
-    }, { prefix = "<leader>" })
+        { "<leader>vs", F.source_local_config, desc = "Reload" },
+    })
     map("n", "<leader>E", function()
         vim.cmd.edit()
     end, { desc = "Re-edit file" })
@@ -279,7 +273,6 @@ M.setup = function()
     map("n", "<C-l>", "<C-w>l")
 
     -- Terminal
-    map("t", "ii", [[<C-\><C-n>]])
     map("t", "<C-h>", [[<C-\><C-n><C-w>h]])
     map("t", "<C-j>", [[<C-\><C-n><C-w>j]])
     map("t", "<C-k>", [[<C-\><C-n><C-w>k]])
@@ -299,25 +292,22 @@ M.setup = function()
     end
 
     -- TOGGLE stuff
-    wk.register({
-        t = {
-            h = { "<cmd>set hlsearch!<CR>", "Toggle search highlight" },
-            t = { "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>", "Open terminal" },
-            d = { require("dapui").toggle, "DAP UI" },
-            H = { "<cmd>TSBufToggle highlight<cr>", "Toggle TS highlight" },
-        },
-    }, { prefix = "<leader>" })
+    wk.add({
+        { "<leader>tH", "<cmd>TSBufToggle highlight<cr>", desc = "Toggle TS highlight" },
+        { "<leader>td", require("dapui").toggle, desc = "DAP UI" },
+        { "<leader>th", "<cmd>set hlsearch!<CR>", desc = "Toggle search highlight" },
+        { "<leader>tt", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>", desc = "Open terminal" },
+    })
 
-    wk.register({
-        h = { name = "Harpoon" },
-        c = { name = "Change cwd", cd = { "<cmd>cd %:p:h<CR><cmd>pwd<CR>", "Change cwd" } },
-        l = {
-            name = "LSP",
-            R = { "<cmd>LspRestart<cr>", "Restart" },
-            r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename variable" },
-            c = "Latex language select",
-        },
-    }, { prefix = "<leader>" })
+    wk.add({
+        { "<leader>c", group = "Change cwd" },
+        { "<leader>ccd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>", desc = "Change cwd" },
+        { "<leader>h", group = "Harpoon" },
+        { "<leader>l", group = "LSP" },
+        { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
+        { "<leader>lc", desc = "Latex language select" },
+        { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename variable" },
+    })
 end
 
 M.set_lsp_mappings = function(bufnr)

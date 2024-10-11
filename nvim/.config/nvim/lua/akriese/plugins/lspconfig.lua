@@ -5,7 +5,7 @@ local mason_installed = {
     "clangd",
     "pyright",
     "rust_analyzer",
-    "tsserver",
+    "ts_ls",
     "emmet_ls",
     "asm_lsp",
     "kotlin_language_server",
