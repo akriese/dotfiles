@@ -23,5 +23,7 @@ verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
 
 command -v tmux &> /dev/null && verlte "$(tmux -V | cut -d' ' -f2)" "3.1" && ln -s "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
 
+ln -s "${DOTFILES}/gitconfig.toml" "${HOME}/.gitconfig"
+
 echo "Reload your shell config now please!"
 
