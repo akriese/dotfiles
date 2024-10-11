@@ -1,19 +1,19 @@
-local mason_installed = {
-    "lua_ls",
-    "ltex",
+local lsps = {
+    "asm_lsp",
     "bashls",
     "clangd",
+    "emmet_ls",
+    "kotlin_language_server",
+    "ltex",
+    "lua_ls",
     "pyright",
     "rust_analyzer",
     "ts_ls",
-    "emmet_ls",
-    "asm_lsp",
-    "kotlin_language_server",
 }
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-    ensure_installed = mason_installed,
+    ensure_installed = lsps,
 })
 
 require("neodev").setup({})
@@ -125,7 +125,7 @@ local server_settings = {
 
 local default_config_servers = vim.tbl_filter(function(x)
     return not vim.tbl_contains(non_default_servers, x)
-end, mason_installed)
+end, lsps)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 for _, server in ipairs(default_config_servers) do
@@ -156,6 +156,18 @@ require("flutter-tools").setup({
     },
 })
 
+-- e.g. for null ls formatters that Mason offers
+local non_ls_mason_installed = {
+    "black",
+    "flake8",
+    "isort",
+    "ktlint",
+    "prettier",
+    "stylua",
+}
+-- TODO: put this into a command
+-- require("mason.api.command").MasonInstall(non_ls_mason_installed)
+
 -- null-ls
 local null_ls = require("null-ls")
 
@@ -163,7 +175,7 @@ null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.flake8.with({
             extra_args = { "--max-line-length", "88" }, -- set to black's length
-        }), -- pip install flake8
+        }),
         -- null_ls.builtins.formatting.isort.with({
         --     args = {
         --         "--format",
@@ -173,14 +185,14 @@ null_ls.setup({
         --         "$FILENAME",
         --         "-",
         --     },
-        -- }), -- pip install isort
+        -- }),
         null_ls.builtins.formatting.black.with({
             extra_args = { "--fast" },
-        }), -- pip install black
-        null_ls.builtins.formatting.stylua, -- cargo install stylua
+        }),
+        null_ls.builtins.formatting.stylua,
         null_ls.builtins.code_actions.refactoring, -- install plugin
-        null_ls.builtins.formatting.prettier, -- npm install --global prettier
-        null_ls.builtins.formatting.ktlint, -- :MasonInstall ktlint
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.ktlint,
     },
     on_attach = on_attach,
 })
