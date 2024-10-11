@@ -46,4 +46,9 @@ compinit
 
 source "$ZDOTDIR/zsh-keybinds"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+command -v fzf &> /dev/null && {
+    # zsh fzf config is sourced differently from 0.44.0 on
+    verlte $(fzf --version) "0.44.0" \
+        && {[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh} \
+        || source <(fzf --zsh)
+}

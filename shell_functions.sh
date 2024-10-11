@@ -62,3 +62,5 @@ fzf_projects_add () {
     fi
     echo "${name}${name_dir_separator}${dir}" >> "${projects_file}"
 }
+
+verlte() { printf '%s\n%s' "$1" "$2" | sort -C -V }
