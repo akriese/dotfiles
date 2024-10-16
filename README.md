@@ -49,9 +49,12 @@ bash "$DOTFILES/setup.sh"
 ```
 
 ### Neovim setup
-Firstly, neovim must be installed. Visit [neovim's](https://github.com/neovim/neovim) page to find help on that.
-After installing Neovim, run it. There will be errors on the first couple of starts, complaining about missing Plugins etc.
-Run `:PlugInstall` to install all configured plugins. Also run `:TSUpdate` to get the latest syntax files for treesitter.
+Run `$DOTFILES/nvim_install.sh` which installs some dependencies (node, cargo, clipboard),
+mostly user-locally. There will be errors on the first couple of starts, complaining about
+missing Plugins etc.
+
+Plugins and such will be installed by `lazy.nvim` and `mason`. There will probably errors
+for missing tools, which you then have to add to make the errors go away.
 
 ### Oh My Posh setup
 [oh-my-posh](https://ohmyposh.dev/) is a tool that beautifies the command prompt. This config includes a theme which shows

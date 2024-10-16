@@ -1,52 +1,50 @@
 #!/bin/bash
 
-# nodejs installieren (mit nvm)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source $HOME/.bashrc
-nvm install --lts
+nvim_version_to_install=${1:-v0.10.2}
 
-# python installieren
-sudo apt install python2 python3 python3-pip -y
-python3 -m pip install --upgrade pip
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-sudo python2 get-pip.py
-rm get-pip.py
-python2 -m pip install --upgrade neovim
-python3 -m pip install --upgrade pylint jedi jedi-language-server neovim
+function check_cmd {
+    command -v ${1} &>/dev/null
+}
 
-# clangd installieren für coc
-sudo apt install clangd -y
+# install node.js
+check_cmd node || {
+    # if nvm is not installed yet, install it
+    check_cmd nvm || {
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+        source ${LOCAL_RC}
+    }
 
-# general dependencies for installation
-sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip -y # for neovim installation
+    nvm install --lts
+}
 
 ### CLIPBOARD FIX
 # if WSL
-if grep -q Microsoft /proc/version
-  then
-    curl -sLo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-    unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
-    chmod +x /tmp/win32yank.exe
-    mv /tmp/win32yank.exe ~/.local/bin
-  # if UNIX
-  else
+if grep -q -i Microsoft /proc/version
+then
+    if [[ ! -x /usr/local/bin/win32yank.exe ]]; then
+        echo "Installing win32yank32.exe..."
+        curl -sLo /tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
+        unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
+        chmod +x /tmp/win32yank.exe
+        sudo mv /tmp/win32yank.exe /usr/local/bin
+    fi
+    # if UNIX
+else
     sudo apt install xsel xclip -y # for neovim clipboard
 fi
 
-# ruby setup
-sudo apt install ruby ruby-dev -y
-sudo gem install neovim
+check_cmd cargo || {
+    echo Install cargo to install nvim and other dependencies.
+    exit 1
+}
 
-NEOVIM_DIR=~/Documents/neovim
+cargo install bob-nvim
 
-mkdir -p $NEOVIM_DIR
-git clone https://github.com/neovim/neovim.git $NEOVIM_DIR
-cd $NEOVIM_DIR
-git checkout release-0.5
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+bob install ${nvim_version_to_install}
+bob use ${nvim_version_to_install}
 
-# coc settings
+# append bob nvim path to PATH in local shell config file
+echo 'export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"' >> ${LOCAL_RC}
 
-# was tun, wenn es keine SUDO rechte gibt?
+
 
