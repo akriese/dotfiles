@@ -75,10 +75,3 @@ Install the tool into `~/.local/bin/` with the script [omp\_setup.sh](omp_setup.
 bash "$DOTFILES/omp_setup.sh"
 ```
 This automatically adds the installation path to PATH and the `oh-my-posh` eval command in either your local `~/.bashrc` or `~/.zshrc`.
-
-### Git setup
-To make use of the git config in `gitconfig.toml`, include the following in your global git config file:
-```toml
-[include]
-    path = "~/path/to/dotfiles/gitconfig.toml"
-```
