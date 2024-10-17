@@ -35,7 +35,11 @@ local on_attach = function(client, bufnr)
 
     if client.server_capabilities.documentFormattingProvider or client.server_capabilities.document_formatting then
         F.set_autocmd("BufWritePre", function()
-            vim.lsp.buf.format()
+            vim.lsp.buf.format({
+                filter = function(client)
+                    return client.name ~= "ts_ls"
+                end,
+            })
         end, { buffer = bufnr })
     end
 end
