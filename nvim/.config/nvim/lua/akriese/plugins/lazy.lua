@@ -188,13 +188,15 @@ local plugins = {
     },
     { "ThePrimeagen/harpoon", lazy = true },
 
-    -- Indentation marker
+    -- Indentation marker and guessing
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        config = function()
-            require("ibl").setup()
-        end,
+        config = true,
+    },
+    {
+        "nmac427/guess-indent.nvim",
+        config = true,
     },
 
     -- Telescope

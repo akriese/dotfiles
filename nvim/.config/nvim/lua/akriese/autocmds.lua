@@ -36,11 +36,6 @@ set_autocmd("WinLeave", function()
     end
 end)
 
-local langs_with_4_spaces = { "python", "sh", "zsh", "Rust", "cpp", "lua", "snakemake", "javascript", "haskell" }
-local langs_with_2_spaces = { "vim", "html", "dart" }
-set_autocmd("FileType", "setlocal shiftwidth=4 tabstop=4 softtabstop=4", { pattern = langs_with_4_spaces })
-set_autocmd("FileType", "setlocal sw=2 ts=2 sts=2", { pattern = langs_with_2_spaces })
-
 set_autocmd(
     { "BufRead", "BufNewFile" },
     "set filetype=snakemake commentstring=#%s",
