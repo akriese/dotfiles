@@ -301,7 +301,8 @@ M.setup = function()
 
     wk.add({
         { "<leader>c", group = "Change cwd" },
-        { "<leader>ccd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>", desc = "Change cwd" },
+        { "<leader>cc", "<cmd>cd %:p:h<CR><cmd>pwd<CR>", desc = "Change cwd to current files' directory" },
+        { "<leader>cr", "<cmd>ProjectRoot<cr>", desc = "Change cwd to current projects' root" },
         { "<leader>h", group = "Harpoon" },
         { "<leader>l", group = "LSP" },
         { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },

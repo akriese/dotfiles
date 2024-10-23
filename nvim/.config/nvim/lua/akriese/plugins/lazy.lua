@@ -48,7 +48,10 @@ local plugins = {
     {
         "ahmedkhalf/project.nvim", -- project root cd
         config = function()
-            require("project_nvim").setup({})
+            require("project_nvim").setup({
+                detection_methods = { "pattern" }, --, "lsp" },
+                patterns = { ".git", "Makefile", "package.json", "lazy-lock.json" },
+            })
         end,
     },
 
