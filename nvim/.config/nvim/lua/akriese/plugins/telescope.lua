@@ -28,7 +28,7 @@ end
 local git_yank_hash = function(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
-    vim.fn.setreg('"', selection.value)
+    vim.fn.setreg("*", selection.value)
 end
 
 -- view diff between two selected commits
