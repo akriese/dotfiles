@@ -25,6 +25,13 @@ local git_diff_single = function(prompt_bufnr)
     vim.cmd("Git show " .. selection.value)
 end
 
+-- create fixup commit for the selected commit
+local git_fixup = function(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    actions.close(prompt_bufnr)
+    vim.cmd("Git commit --fixup=" .. selection.value)
+end
+
 local git_yank_hash = function(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
@@ -86,6 +93,7 @@ telescope.setup({
                     ["<C-d>o"] = git_diff_single,
                     ["<C-d>b"] = git_diff_between,
                     ["<C-y>"] = git_yank_hash,
+                    ["<C-f>"] = git_fixup,
                 },
             },
         },
