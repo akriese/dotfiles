@@ -8,7 +8,7 @@ local action_state = require("telescope.actions.state")
 local git_rebase_interactive = function(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
-    vim.cmd("Git rebase --interactive " .. selection.value)
+    vim.cmd("Git rebase --interactive " .. selection.value .. "~")
 end
 
 -- view diff since selected commit
