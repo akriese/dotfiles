@@ -27,6 +27,7 @@
     co = "checkout"
     cb = "checkout -b"
     cm = "checkout main"
+    cd = "checkout develop"
 
     # pushing
     p = "push"

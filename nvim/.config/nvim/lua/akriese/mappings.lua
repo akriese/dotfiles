@@ -127,6 +127,8 @@ M.setup = function()
         { "<leader>gB", "<cmd>Git blame<CR>", desc = "Open blame" },
         { "<leader>gL", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer commits" },
         { "<leader>gP", "<cmd>Git push<CR>", desc = "Push" },
+        { "<leader>gF", "<cmd>Git push --force-with-lease<CR>", desc = "Push force with check" },
+        { "<leader>g<space>", ":Git ", desc = "Type git command" },
         {
             "<leader>gU",
             function()
