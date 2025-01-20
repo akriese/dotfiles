@@ -10,6 +10,9 @@
 [pull]
     rebase = false
 
+[rerere]
+    enabled = true
+
 [alias]
     st = "status"
     s = "status -s -b"
