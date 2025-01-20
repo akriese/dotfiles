@@ -2,7 +2,6 @@ require("akriese.plugins.lazy")
 
 -- Specific plugin setups
 require("akriese.plugins.treesitter")
-require("akriese.plugins.nvim-cmp")
 require("akriese.plugins.nvim-tree")
 require("akriese.plugins.lspconfig")
 require("akriese.plugins.telescope")

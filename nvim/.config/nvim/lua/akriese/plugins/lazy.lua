@@ -149,21 +149,92 @@ local plugins = {
 
     -- Completion plugins
     {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
-        },
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
+        "saghen/blink.cmp",
         dependencies = { "rafamadriz/friendly-snippets" },
+        version = "*",
+        opts = {
+            completion = {
+                documentation = { auto_show = true, auto_show_delay_ms = 500 },
+                ghost_text = { enabled = true },
+                list = {
+                    selection = {
+                        preselect = function(ctx)
+                            return ctx.mode ~= "cmdline"
+                        end,
+                    },
+                },
+            },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = "mono",
+                kind_icons = {
+                    Text = "󰉿",
+                    Method = "m",
+                    Function = "󰊕",
+                    Constructor = "󰒓",
+
+                    Field = "󰜢",
+                    Variable = "󰆦",
+                    Property = "󰖷",
+
+                    Class = "",
+                    Interface = "",
+                    Struct = "",
+                    Module = "",
+
+                    Unit = "󰪚",
+                    Value = "",
+                    Enum = "",
+                    EnumMember = "",
+
+                    Keyword = "",
+                    Constant = "󰏿",
+
+                    Snippet = "",
+                    Color = "󰏘",
+                    File = "󰈔",
+                    Reference = "",
+                    Folder = "󰉋",
+                    Event = "",
+                    Operator = "",
+                    TypeParameter = "",
+                },
+            },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer", "cmdline" },
+            },
+            keymap = {
+                preset = "default",
+                ["<C-s>"] = { "snippet_forward", "fallback" },
+                ["<C-a>"] = { "snippet_backward", "fallback" },
+
+                ["<Up>"] = { "select_prev", "fallback" },
+                ["<Down>"] = { "select_next", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "fallback" },
+                ["<Tab>"] = { "select_next", "fallback" },
+
+                ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+                ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+                ["<C-y>"] = {
+                    function(cmp)
+                        cmp.show({ providers = { "snippets" } })
+                    end,
+                },
+                ["<C-l>"] = {
+                    function(cmp)
+                        cmp.show({ providers = { "lsp" } })
+                    end,
+                },
+
+                ["<CR>"] = { "accept", "fallback" },
+
+                ["<C-space>"] = { "show", "fallback" },
+                ["<C-e>"] = { "hide", "fallback" },
+            },
+        },
+        opts_extend = { "sources.default" },
     },
-    "saadparwaiz1/cmp_luasnip",
     {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
