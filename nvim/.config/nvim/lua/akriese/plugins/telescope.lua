@@ -32,6 +32,13 @@ local git_fixup = function(prompt_bufnr)
     vim.cmd("Git commit --fixup=" .. selection.value)
 end
 
+-- rebase from selected commit with autosquash, useful for quick application of fixup commits
+local git_rebase_autosquash = function(prompt_bufnr)
+    local selection = action_state.get_selected_entry()
+    actions.close(prompt_bufnr)
+    vim.cmd("Git rebase " .. selection.value .. "~ --autosquash")
+end
+
 local git_yank_hash = function(prompt_bufnr)
     local selection = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
@@ -89,6 +96,7 @@ telescope.setup({
             mappings = {
                 i = {
                     ["<C-b>i"] = git_rebase_interactive,
+                    ["<C-b>a"] = git_rebase_autosquash,
                     ["<C-d>s"] = git_diff_since,
                     ["<C-d>o"] = git_diff_single,
                     ["<C-d>b"] = git_diff_between,
