@@ -58,6 +58,8 @@ local opts = {
         ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
         extended = false,
     },
+
+    pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 }
 
 comment.setup(opts)

@@ -12,10 +12,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    -- Miscellaneous plugins
-    -- "tmhedberg/SimpylFold", -- Folds
     "nvim-lua/plenary.nvim", -- General utility
-    "numToStr/Comment.nvim", -- comments
+
+    -- Comments
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        opts = {
+            enable_autocmd = false,
+        },
+    },
+    {
+        "numToStr/Comment.nvim",
+        dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    },
+
+    -- Miscellaneous plugins
     {
         "max397574/better-escape.nvim", -- Escape with ii without delay
         event = { "InsertEnter", "TermEnter" },
