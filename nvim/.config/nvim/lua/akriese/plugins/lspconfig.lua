@@ -2,13 +2,13 @@ local lsps = {
     "asm_lsp",
     "bashls",
     "clangd",
-    "emmet_ls",
+    -- "emmet_ls",
     "kotlin_language_server",
     "ltex",
     "lua_ls",
     "pyright",
     "rust_analyzer",
-    "ts_ls",
+    -- "ts_ls",
 }
 
 require("mason").setup({})
@@ -69,7 +69,7 @@ local ltex_settings = vim.tbl_extend("force", opts, {
 
 local setup_latex = function(lang, settings)
     settings.settings.ltex.language = lang
-    vim.lsp.stop_client(vim.lsp.get_active_clients())
+    vim.lsp.stop_client(vim.lsp.get_clients())
     nvim_lsp.ltex.setup(settings)
 end
 
@@ -199,4 +199,35 @@ null_ls.setup({
         null_ls.builtins.formatting.ktlint,
     },
     on_attach = on_attach,
+})
+
+require("typescript-tools").setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        -- spawn additional tsserver instance to calculate diagnostics on it
+        separate_diagnostic_server = true,
+        expose_as_code_action = "all",
+        -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
+        complete_function_calls = false,
+        include_completions_with_insert_text = true,
+        -- CodeLens
+        -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
+        -- possible values: ("off"|"all"|"implementations_only"|"references_only")
+        code_lens = "off",
+        -- by default code lenses are displayed on all referencable values and for some of you it can
+        -- be too much this option reduce count of them by removing member references from lenses
+        disable_member_code_lens = true,
+        -- JSXCloseTag
+        -- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-ts-autotag,
+        -- that maybe have a conflict if enable this feature. )
+        jsx_close_tag = {
+            enable = true,
+            filetypes = { "javascriptreact", "typescriptreact" },
+        },
+        tsserver_plugins = {
+            -- install with `npm i -g @styled/typescript-styled-plugin typescript-styled-plugin`
+            "@styled/typescript-styled-plugin",
+        },
+    },
 })

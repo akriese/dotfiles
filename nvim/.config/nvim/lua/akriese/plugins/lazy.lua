@@ -141,6 +141,11 @@ local plugins = {
             "nvim-treesitter/nvim-treesitter",
         },
     },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    },
 
     -- Completion plugins
     {
