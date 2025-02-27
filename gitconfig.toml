@@ -14,6 +14,7 @@
     enabled = true
 
 [alias]
+    aliases = "config --get-regexp ^alias"
     st = "status"
     s = "status -s -b"
     c = "commit"
