@@ -142,6 +142,7 @@ M.setup = function()
         { "<leader>gg", "<cmd>Git<CR>", desc = "Open fugitive" },
         { "<leader>gl", "<cmd>Telescope git_commits<CR>", desc = "Commits (log)" },
         { "<leader>gp", "<cmd>Git pull<CR>", desc = "Pull" },
+        { "<leader>gs", "<cmd>Git switch -<CR>", desc = "Switch to previous branch" },
     })
     map("n", "<leader><", "<cmd>diffget //3<CR>", { desc = "Choose change from right" })
     map("n", "<leader>>", "<cmd>diffget //2<CR>", { desc = "Choose change from left" })
