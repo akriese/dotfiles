@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
         F.set_autocmd("BufWritePre", function()
             vim.lsp.buf.format({
                 filter = function(client)
-                    return client.name ~= "ts_ls"
+                    return client.name ~= "typescript-tools"
                 end,
             })
         end, { buffer = bufnr })
