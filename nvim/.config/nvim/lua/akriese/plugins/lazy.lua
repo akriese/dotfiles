@@ -166,15 +166,8 @@ local plugins = {
         version = "*",
         opts = {
             completion = {
-                documentation = { auto_show = true, auto_show_delay_ms = 500 },
+                documentation = { auto_show = true },
                 ghost_text = { enabled = true },
-                list = {
-                    selection = {
-                        preselect = function(ctx)
-                            return ctx.mode ~= "cmdline"
-                        end,
-                    },
-                },
             },
             appearance = {
                 use_nvim_cmp_as_default = true,
@@ -213,9 +206,6 @@ local plugins = {
                 },
             },
             snippets = { preset = "luasnip" },
-            sources = {
-                default = { "lsp", "path", "snippets", "buffer", "cmdline" },
-            },
             keymap = {
                 preset = "default",
                 ["<C-s>"] = { "snippet_forward", "fallback" },
@@ -245,6 +235,12 @@ local plugins = {
                 ["<C-space>"] = { "show", "fallback" },
                 ["<C-e>"] = { "hide", "fallback" },
             },
+            cmdline = {
+                completion = {
+                    menu = { auto_show = true },
+                },
+            },
+            signature = { enabled = true },
         },
         opts_extend = { "sources.default" },
     },
