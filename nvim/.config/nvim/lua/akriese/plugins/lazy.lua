@@ -165,6 +165,9 @@ local plugins = {
         dependencies = { { "L3MON4D3/LuaSnip", version = "v2.*" } },
         version = "*",
         opts = {
+            enabled = function()
+                return not vim.tbl_contains({ "DressingInput", "TelescopePrompt" }, vim.bo.filetype)
+            end,
             completion = {
                 documentation = { auto_show = true },
                 ghost_text = { enabled = true },
