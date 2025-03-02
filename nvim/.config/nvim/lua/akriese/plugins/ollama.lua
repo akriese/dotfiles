@@ -112,12 +112,21 @@ local function parse_curl_args(self, code_opts)
     }
     -- Check if tools table is empty
     -- local tools = (code_opts.tools and next(code_opts.tools)) and code_opts.tools or nil
+    local user_question = messages[#messages].content
+    local first_word = string.lower(string.match(user_question, "\n(%a+)"))
+
+    -- whitelist for prompts using tools, will grow over time
+    local tool_keywords = { "replace", "add", "refactor", "fetch", "reason", "generate", "search" }
+
     local tools = nil
-    if code_opts.tools then
+    local stream = true
+    if code_opts.tools and vim.tbl_contains(tool_keywords, first_word) then
         tools = {}
         for _, tool in ipairs(code_opts.tools) do
             table.insert(tools, transform_tool(tool))
         end
+        -- dont stream when using tools (see https://github.com/yetone/avante.nvim/issues/1149#issuecomment-2661287476)
+        stream = false
     end
 
     -- Return the final request table
@@ -132,7 +141,7 @@ local function parse_curl_args(self, code_opts)
             messages = messages,
             options = options,
             tools = tools, -- Optional tool support
-            stream = false, -- Keep streaming enabled
+            stream = stream, -- Keep streaming enabled
         },
     }
 end
