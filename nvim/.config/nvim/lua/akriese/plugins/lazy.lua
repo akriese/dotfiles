@@ -166,7 +166,7 @@ local plugins = {
         version = "*",
         opts = {
             enabled = function()
-                return not vim.tbl_contains({ "DressingInput", "TelescopePrompt" }, vim.bo.filetype)
+                return not vim.tbl_contains({ "DressingInput", "TelescopePrompt", "AvanteInput" }, vim.bo.filetype)
             end,
             completion = {
                 documentation = { auto_show = true },
@@ -271,6 +271,63 @@ local plugins = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
+        },
+    },
+
+    -- LLM integration
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = "*",
+        opts = {
+            provider = "ollama",
+            auto_suggestions_provider = "ollama",
+            vendors = {
+                ollama = require("akriese.plugins.ollama").ollama,
+            },
+        },
+        -- if build fails on windows because of some expand-archive weirdness, check if
+        -- the module Pscx overwrites the cmdlet
+        build = (vim.fn.has("windows") == 1 and vim.fn.has("unix") == 0)
+                and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+            or "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+            "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+            "ibhagwan/fzf-lua", -- for file_selector provider fzf
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                        -- required for Windows users
+                        use_absolute_path = true,
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
         },
     },
 
