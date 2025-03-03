@@ -212,7 +212,8 @@ M.ollama = {
     endpoint = "http://127.0.0.1:11434",
     model = "qwen2.5-coder:14b",
     options = {
-        num_ctx = 32768,
+        num_ctx = 4096,
+        temperature = 0,
     },
     parse_messages = parse_messages,
     parse_curl_args = parse_curl_args,
