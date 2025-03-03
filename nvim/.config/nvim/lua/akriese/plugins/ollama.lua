@@ -184,17 +184,28 @@ local function parse_response_without_stream(data, _, handler_opts)
     end
 end
 
+-- buffering chunks as avante struggles with increasing content length rendering.
+-- instead we collect many chunks and add them to the displayed content as bulk.
+-- this avoid avante having to rerender the markdown on each received token.
+local buffer_chunks = {}
 local function parse_stream_data(data, handler_opts)
     local json_data = vim.fn.json_decode(data)
     if json_data then
         if json_data.done then
+            handler_opts.on_chunk(table.concat(buffer_chunks))
+            buffer_chunks = {}
             handler_opts.on_stop({ reason = json_data.done_reason or "stop" })
             return
         end
         if json_data.message then
             local content = json_data.message.content
             if content and content ~= "" then
-                handler_opts.on_chunk(content)
+                table.insert(buffer_chunks, content)
+                -- at ~40 tokens per second, this will make avante render once per second
+                if #buffer_chunks > 40 then
+                    handler_opts.on_chunk(table.concat(buffer_chunks))
+                    buffer_chunks = {}
+                end
             end
         end
         -- Handle tool calls if present
