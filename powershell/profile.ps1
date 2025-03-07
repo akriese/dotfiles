@@ -8,16 +8,39 @@ oh-my-posh init pwsh --config "$DOTFILES\oh-my-posh\.oh-my-posh_theme.json" | In
 # load fzf
 Import-Module PSFzf
 
-# Override PSReadLine's history search
+# Override PSReadLine's file, history and directory seacrh
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
-                -PSReadlineChordReverseHistory 'Ctrl+r'
+                -PSReadlineChordReverseHistory 'Ctrl+r' `
+                -PSReadlineChordSetLocation 'Alt+c'
+
 
 # Override default tab completion
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
+# intelligent history shortcuts
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineKeyHandler -Key "Ctrl+Spacebar" -Function AcceptSuggestion
+Set-PSReadLineKeyHandler -Key RightArrow -BriefDescription ForwardCharAndAcceptNextSuggestionWord `
+    -ScriptBlock {
+        param($key, $arg)
+        $line = $null
+        $cursor = $null
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+        if ($cursor -lt $line.Length) {
+            [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+        } else {
+            [Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
+        }
+    }
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# to get an FZF style list below
+# Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Aliases
 Set-Alias -Name v -Value nvim
+Set-Alias -Name vim -Value nvim
 
 Function list_all { Get-ChildItem -Force }
 Set-Alias -Name ll -Value list_all
