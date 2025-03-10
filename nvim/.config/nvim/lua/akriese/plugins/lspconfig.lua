@@ -179,6 +179,9 @@ null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.flake8.with({
             extra_args = { "--max-line-length", "88" }, -- set to black's length
+            diagnostics_postprocess = function(diagnostic)
+                diagnostic.severity = vim.diagnostic.severity.INFO
+            end,
         }),
         -- null_ls.builtins.formatting.isort.with({
         --     args = {
