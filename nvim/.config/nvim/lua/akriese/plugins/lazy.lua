@@ -419,11 +419,13 @@ local plugins = {
     {
         "pwntester/octo.nvim",
         config = function()
-            require("octo").setup({
-                suppress_missing_scope = {
-                    projects_v2 = true,
-                },
-            })
+            if vim.fn.executable("gh") == 1 then
+                require("octo").setup({
+                    suppress_missing_scope = {
+                        projects_v2 = true,
+                    },
+                })
+            end
         end,
     },
 
