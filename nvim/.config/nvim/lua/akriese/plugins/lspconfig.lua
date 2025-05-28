@@ -6,7 +6,8 @@ local lsps = {
     "kotlin_language_server",
     "ltex",
     "lua_ls",
-    "pyright",
+    -- "pyright",
+    "ruff",
     "rust_analyzer",
     -- "ts_ls",
 }
@@ -125,6 +126,7 @@ local server_settings = {
             },
         },
     },
+    -- ruff = {},
 }
 
 local default_config_servers = vim.tbl_filter(function(x)
@@ -135,10 +137,11 @@ end, lsps)
 for _, server in ipairs(default_config_servers) do
     local settings = server_settings[server]
     if settings == nil then
-        nvim_lsp[server].setup(opts)
+        vim.lsp.config(server, opts)
     else
-        nvim_lsp[server].setup(vim.tbl_deep_extend("force", opts, server_settings[server]))
+        vim.lsp.config(server, vim.tbl_deep_extend("force", opts, settings))
     end
+    vim.lsp.enable(server)
 end
 
 -- flutter setup
@@ -162,8 +165,6 @@ require("flutter-tools").setup({
 
 -- e.g. for null ls formatters that Mason offers
 local non_ls_mason_installed = {
-    "black",
-    "flake8",
     "isort",
     "ktlint",
     "prettier",
@@ -177,25 +178,6 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.diagnostics.flake8.with({
-            extra_args = { "--max-line-length", "88" }, -- set to black's length
-            diagnostics_postprocess = function(diagnostic)
-                diagnostic.severity = vim.diagnostic.severity.INFO
-            end,
-        }),
-        -- null_ls.builtins.formatting.isort.with({
-        --     args = {
-        --         "--format",
-        --         "black",
-        --         "--stdout",
-        --         "--filename",
-        --         "$FILENAME",
-        --         "-",
-        --     },
-        -- }),
-        null_ls.builtins.formatting.black.with({
-            extra_args = { "--fast" },
-        }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.code_actions.refactoring, -- install plugin
         null_ls.builtins.formatting.prettier,

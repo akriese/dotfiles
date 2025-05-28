@@ -131,7 +131,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         dependencies = "nvim-lua/plenary.nvim",
     },
     {
