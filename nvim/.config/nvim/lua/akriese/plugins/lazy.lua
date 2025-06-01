@@ -163,7 +163,7 @@ local plugins = {
     {
         "saghen/blink.cmp",
         dependencies = { { "L3MON4D3/LuaSnip", version = "v2.*" } },
-        version = "*",
+        version = "1.*",
         opts = {
             enabled = function()
                 return not vim.tbl_contains({ "DressingInput", "TelescopePrompt", "AvanteInput" }, vim.bo.filetype)

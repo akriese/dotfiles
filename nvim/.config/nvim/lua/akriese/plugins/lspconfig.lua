@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local non_default_servers = {}
 
@@ -216,3 +216,6 @@ require("typescript-tools").setup({
         },
     },
 })
+
+-- enable virtual diagnostics text (only from 0.11)
+vim.diagnostic.config({ virtual_text = true, virtual_lines = false })

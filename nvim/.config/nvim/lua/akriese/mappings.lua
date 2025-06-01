@@ -300,6 +300,17 @@ M.setup = function()
         { "<leader>td", require("dapui").toggle, desc = "DAP UI" },
         { "<leader>th", "<cmd>set hlsearch!<CR>", desc = "Toggle search highlight" },
         { "<leader>tt", "<cmd>split term://" .. term_cmd .. "<CR><cmd>resize12<cr>", desc = "Open terminal" },
+        {
+            "<leader>tl",
+            function()
+                if not vim.diagnostic.config().virtual_lines then
+                    vim.diagnostic.config({ virtual_lines = { current_line = true } })
+                else
+                    vim.diagnostic.config({ virtual_lines = false })
+                end
+            end,
+            desc = "Toggle virtual lines for diagnostics",
+        },
     })
 
     wk.add({
